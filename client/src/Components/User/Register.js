@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { FaUserAlt } from "react-icons/fa";
-import { RegisterSchema } from "../formValidation/Register";
+import { RegisterSchema } from "../../formValidation/Register";
 import { Country } from "country-state-city";
-import "../Form/user/Register.css";
-import "../App.css";
-import Error from "../formValidation/Error";
+import "../../Form/user/Register.css";
+import "../../App.css";
+import Error from "../../formValidation/Error";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -24,11 +25,7 @@ const Register = () => {
     <>
       <div className="row mx-0">
         <div className="col RegisterLeftStyle">
-          <h5 className="card-title">Special title treatment</h5>
-          <p className="card-text">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p>
+          <h5 className="text-center my-5 text-info">REGISTER WITH US</h5>
         </div>
         <Formik
           initialValues={initialValue}
@@ -92,6 +89,11 @@ const Register = () => {
               <button type="submit" className="btn  btn-outline-info btn-sm">
                 REGISTER
               </button>
+            </div>
+            <div className="text-center">
+              <Link to="/login" className=" text-info">
+                If you have account? Login
+              </Link>
             </div>
           </Form>
         </Formik>

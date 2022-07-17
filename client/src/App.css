@@ -10,7 +10,10 @@
   border-left: none;
   border-right: none;
   outline: none;
-  border-bottom: 1px solid rgb(24, 153, 228);
+  border-bottom: 1px solid #c1c4c5;
+}
+.GInput:hover {
+  border-bottom: 1px solid #1899e4;
 }
 .GSelect {
   width: 100%;
@@ -18,9 +21,9 @@
   border-left: none;
   border-right: none;
   outline: none;
-  border-bottom: 1px solid rgb(24, 153, 228);
+  border-bottom: 1px solid #c1c4c5;
   cursor: pointer;
 }
-.GButton {
-  outline: none;
+.GSelect:hover {
+  border-bottom: 1px solid #1899e4;
 }

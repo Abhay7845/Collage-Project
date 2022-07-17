@@ -4,7 +4,10 @@
   }
 }
 .RegisterLeftStyle {
-  background-color: aqua;
+  background-image: url("../../../public/avatar/RegisterImage.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #d1fafaee;
   height: 100vh;
 }
 .RegisterLeftRight {
