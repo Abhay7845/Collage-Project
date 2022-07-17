@@ -1,11 +1,24 @@
-import React from "react";
-import { Input } from "antd";
+import React, { useState } from "react";
+import { Formik, Form, Field } from "formik";
+import { FaUserAlt } from "react-icons/fa";
+import { RegisterSchema } from "../formValidation/Register";
 import { Country } from "country-state-city";
 import "../Form/user/Register.css";
 import "../App.css";
+import Error from "../formValidation/Error";
 
 const Register = () => {
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
+
   const country = Country.getAllCountries();
+  const initialValue = {
+    fullName: "",
+    email: "",
+    password: "",
+  };
 
   return (
     <>
@@ -17,43 +30,71 @@ const Register = () => {
             content.
           </p>
         </div>
-        <div className="col RegisterLeftRight">
-          <h4 className="text-center text-info my-4">REGISTER</h4>
-          <div className="my-2">
-            <b>
-              Full Name <span className="text-danger"> *</span>
-            </b>
-            <Input placeholder="Enter Full Name" className="GInput" />
-          </div>
-          <div className="my-2">
-            <b>
-              Email Address <span className="text-danger"> *</span>
-            </b>
-            <Input placeholder="Email Address" className="GInput" />{" "}
-          </div>
-          <div className="my-2">
-            <b>
-              Set Password <span className="text-danger"> *</span>
-            </b>
-            <Input placeholder="Enter Password" className="GInput" />
-          </div>
-          <div className="my-2">
-            <b>Country </b>
-            <select className="GSelect">
-              <option>Select your Country</option>
-              {country.map((countryName, i) => {
-                return (
-                  <option key={i} value={country.name}>
-                    {countryName.name}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          <div className="d-flex justify-content-end my-4">
-            <button className="btn btn-outline-info">REGISTER</button>
-          </div>
-        </div>
+        <Formik
+          initialValues={initialValue}
+          validationSchema={RegisterSchema}
+          onSubmit={(value) => {
+            console.log(value);
+          }}
+        >
+          <Form className="col RegisterLeftRight">
+            <div className="text-center text-info my-5">
+              <FaUserAlt size={30} />
+              <h4>REGISTER</h4>
+            </div>
+            <div className="my-2">
+              <b>
+                Full Name <span className="text-danger"> *</span>
+              </b>
+              <Field
+                placeholder="Enter Full Name"
+                name="fullName"
+                className="GInput"
+              />
+              <Error name="fullName" />
+            </div>
+            <div className="my-2">
+              <b>
+                Email Address <span className="text-danger"> *</span>
+              </b>
+              <Field
+                placeholder="Email Address"
+                name="email"
+                autocomplete="off"
+                className="GInput"
+              />
+              <Error name="email" />
+            </div>
+            <div className="my-2">
+              <b>
+                Set Password <span className="text-danger"> *</span>
+              </b>
+              <Field
+                type={passwordShown ? "text" : "password"}
+                placeholder="Enter Password"
+                name="password"
+                autocomplete="off"
+                className="GInput"
+                onClick={togglePassword}
+              />
+              <Error name="password" />
+            </div>
+            <div className="my-2">
+              <b>Country </b>
+              <Field className="GSelect" as="select" name="country">
+                <option>Select your Country</option>
+                {country.map((countryName, i) => {
+                  return <option key={i}>{countryName.name}</option>;
+                })}
+              </Field>
+            </div>
+            <div className="d-flex justify-content-end my-4">
+              <button type="submit" className="btn  btn-outline-info btn-sm">
+                REGISTER
+              </button>
+            </div>
+          </Form>
+        </Formik>
       </div>
     </>
   );
