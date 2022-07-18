@@ -44,8 +44,10 @@ const Register = () => {
                 Full Name <span className="text-danger"> *</span>
               </b>
               <Field
+                type="text"
                 placeholder="Enter Full Name"
                 name="fullName"
+                // autoComplete="off"
                 className="GInput"
               />
               <Error name="fullName" />
@@ -55,9 +57,10 @@ const Register = () => {
                 Email Address <span className="text-danger"> *</span>
               </b>
               <Field
+                type="text"
                 placeholder="Email Address"
                 name="email"
-                autocomplete="off"
+                // autoComplete="off"
                 className="GInput"
               />
               <Error name="email" />
@@ -70,7 +73,7 @@ const Register = () => {
                 type={passwordShown ? "text" : "password"}
                 placeholder="Enter Password"
                 name="password"
-                autocomplete="off"
+                // autoComplete="off"
                 className="GInput"
                 onClick={togglePassword}
               />
