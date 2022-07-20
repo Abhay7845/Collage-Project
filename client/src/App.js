@@ -2,7 +2,7 @@ import React from "react";
 import Register from "./Components/User/Register";
 import Login from "./Components/User/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Components/Home/Home";
+import Home from "./Components/HomePage/Home";
 
 const App = () => {
   return (

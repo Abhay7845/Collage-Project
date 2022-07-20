@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaLock } from "react-icons/fa";
-import "../../Form/user/Register.css";
+import "../../Components/User/CssStyle/RegisterLogin.css";
 import "../../App.css";
 import { Link } from "react-router-dom";
 
@@ -61,7 +61,11 @@ const Login = () => {
             <span className="text-info">Show Password</span>
           </div>
           <div className="d-flex justify-content-end my-4">
-            <button type="submit" className="GButton" onClick={login}>
+            <button
+              type="submit"
+              className="btn btn-outline-info"
+              onClick={login}
+            >
               LOGIN
             </button>
           </div>

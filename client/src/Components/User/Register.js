@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
-import "../../Form/user/Register.css";
+import "../../Components/User/CssStyle/RegisterLogin.css";
 import "../../App.css";
 
 const Register = () => {
@@ -84,7 +84,11 @@ const Register = () => {
             <span className="text-info">Show Password</span>
           </div>
           <div className="d-flex justify-content-end my-4">
-            <button type="submit" className="GButton" onClick={onSubmit}>
+            <button
+              type="submit"
+              className="btn btn-outline-info"
+              onClick={onSubmit}
+            >
               REGISTER
             </button>
           </div>
