@@ -10,7 +10,11 @@ const JWT_SECRET = "AryanIsGoodBoy";
 // REGISTER ROUTER :-1
 router.post(
   "/register",
-  [body("name"), body("email").isEmail(), body("password")],
+  [
+    body("name", "FullName is required").isLength({ min: 3 }),
+    body("email", "Enter valid Email").isEmail(),
+    body("password", "Password is required").isLength({ min: 5 }),
+  ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

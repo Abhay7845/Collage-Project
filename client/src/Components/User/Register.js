@@ -5,7 +5,7 @@ import "../../Form/user/Register.css";
 import "../../App.css";
 
 const Register = () => {
-  const [fullName, setFullName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,7 +17,7 @@ const Register = () => {
   const onSubmit = async () => {
     let result = await fetch("http://localhost:5000/api/user/register", {
       method: "POST",
-      body: JSON.stringify({ fullName, email, password }),
+      body: JSON.stringify({ name, email, password }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -45,8 +45,8 @@ const Register = () => {
               placeholder="Enter Full Name"
               // autoComplete="off"
               className="GInput"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="my-2">
