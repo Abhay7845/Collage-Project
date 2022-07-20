@@ -23,7 +23,7 @@ const Register = () => {
       },
     });
     result = await result.json();
-    console.log(result);
+    console.log(result.massage);
   };
   return (
     <>
@@ -72,9 +72,16 @@ const Register = () => {
               // autoComplete="off"
               className="GInput"
               value={password}
-              onClick={togglePassword}
               onChange={(e) => setPassword(e.target.value)}
             />
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              onClick={togglePassword}
+            />
+            <span className="text-info">Show Password</span>
           </div>
           <div className="d-flex justify-content-end my-4">
             <button type="submit" className="GButton" onClick={onSubmit}>
