@@ -18,14 +18,14 @@
 }
 .GButton {
   outline-style: none;
-  border: none;
+  border: 2px solid #04b6b6;
   border-radius: 5px;
   padding: 5px;
   width: 100px;
-  background-color: #12a8a8f5;
+  background-color: #fff;
 }
 .GButton:hover {
-  background-color: #0ae9e9f5;
-  border: none;
+  background-color: #04b6b6;
+  border: 2px solid #04b6b6;
   outline-style: none;
 }
