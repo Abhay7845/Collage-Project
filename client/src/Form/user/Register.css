@@ -16,3 +16,16 @@
   height: 100vh;
   width: 100vw;
 }
+.GButton {
+  outline-style: none;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100px;
+  background-color: #12a8a8f5;
+}
+.GButton:hover {
+  background-color: #0ae9e9f5;
+  border: none;
+  outline-style: none;
+}
