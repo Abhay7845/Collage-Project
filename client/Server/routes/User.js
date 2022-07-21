@@ -11,19 +11,23 @@ const JWT_SECRET = "AryanIsGoodBoy";
 router.post(
   "/register",
   [
-    body("name", "FullName is required").isLength({ min: 3 }),
+    body("name", "Full Name is required").isLength({ min: 3 }),
     body("email", "Enter valid Email").isEmail(),
     body("password", "Password is required").isLength({ min: 5 }),
   ],
   async (req, res) => {
+    let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
     try {
       let user = await User.findOne({ email: req.body.email });
+      success = true;
       if (user) {
-        return res.status(400).json({ massage: "email is already registered" });
+        return res
+          .status(400)
+          .json({ success, massage: "email is already registered" });
       }
 
       const salt = await bcrypt.genSalt(10);
@@ -41,7 +45,8 @@ router.post(
       };
 
       const AuthToken = jwt.sign(data, JWT_SECRET);
-      res.json({ AuthToken });
+      success = true;
+      res.json({ success, AuthToken });
     } catch (error) {
       console.error(error.massage);
       res.status(500).send("some error accrued");
@@ -54,6 +59,7 @@ router.post(
   "/login",
   [body("email").isEmail(), body("password").exists()],
   async (req, res) => {
+    let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -62,15 +68,17 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (!user) {
+        success = false;
         return res
           .status(400)
-          .json({ error: "Sorry!  please register with us" });
+          .json({ success, error: "Sorry!  please register with us" });
       }
       const comparePassword = await bcrypt.compare(password, user.password);
       if (!comparePassword) {
+        success = false;
         return res
           .status(400)
-          .json({ error: "Sorry!  password dose not matched" });
+          .json({ success, error: "Sorry!  password dose not matched" });
       }
       const data = await {
         user: {
@@ -78,7 +86,8 @@ router.post(
         },
       };
       const AuthToken = await jwt.sign(data, JWT_SECRET);
-      res.json(AuthToken);
+      success = true;
+      res.json({ success, AuthToken });
     } catch (error) {
       console.error(error.massage);
       res.status(500).send("some error accrued");

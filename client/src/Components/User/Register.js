@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import "../../Components/User/CssStyle/RegisterLogin.css";
 import "../../App.css";
@@ -8,12 +8,11 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
-
+  const navigate = useNavigate();
   const onSubmit = async () => {
     let result = await fetch("http://localhost:5000/api/user/register", {
       method: "POST",
@@ -23,8 +22,12 @@ const Register = () => {
       },
     });
     result = await result.json();
-    console.log(result.massage);
+    console.log("response", result);
+    if (result.success === true) {
+      navigate("/");
+    }
   };
+
   return (
     <>
       <div className="row mx-0">
@@ -48,6 +51,9 @@ const Register = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
+            <span className="text-danger">
+              {/* {result.errors[0].value === false ? result.errors[0].msg : } */}
+            </span>
           </div>
           <div className="my-2">
             <b>
@@ -61,6 +67,7 @@ const Register = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            {/* <span className="text-danger">{result.errors[1].msg}</span> */}
           </div>
           <div className="my-2">
             <b>
@@ -74,6 +81,7 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            {/* <span className="text-danger">{result.errors[2].msg}</span> */}
           </div>
           <div className="form-check">
             <input

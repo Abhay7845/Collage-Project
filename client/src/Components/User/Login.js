@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaLock } from "react-icons/fa";
 import "../../Components/User/CssStyle/RegisterLogin.css";
 import "../../App.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,8 +11,23 @@ const Login = () => {
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
-  const login = () => {
-    console.log(email, password);
+  const navigate = useNavigate();
+  const login = async (e) => {
+    // e.preventDefault();
+    const response = await fetch("http://localhost:5000/api/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await response.json();
+    console.log(">>>>>>data", data);
+    if (data.success === true) {
+      navigate("/home");
+    } else {
+      alert("please enter valid email and password");
+    }
   };
   return (
     <>
