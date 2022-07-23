@@ -7,12 +7,14 @@
   background-image: url("../../../../public/avatar/RegisterImage.webp");
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #d1fafaee;
+  background-color: #ddf7f7ee;
   height: 100vh;
+  z-index: -1;
 }
 .RegisterLeftRight {
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  padding-top: 15px;
 }

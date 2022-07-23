@@ -27,7 +27,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ success, massage: "email is already registered" });
+          .json({ success, massage: "sorry! Email is already registered" });
       }
 
       const salt = await bcrypt.genSalt(10);

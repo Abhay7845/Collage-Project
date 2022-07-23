@@ -4,7 +4,7 @@ import "../../Components/User/CssStyle/RegisterLogin.css";
 import "../../App.css";
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
@@ -22,11 +22,11 @@ const Login = () => {
       body: JSON.stringify({ email, password }),
     });
     const data = await response.json();
-    console.log(">>>>>>data", data);
     if (data.success === true) {
       navigate("/home");
+      props.showAlert("Logged in Successfully", "success");
     } else {
-      alert("please enter valid email and password");
+      props.showAlert("Please enter your valid email and password", "danger");
     }
   };
   return (

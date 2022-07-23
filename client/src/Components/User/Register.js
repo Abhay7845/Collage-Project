@@ -4,10 +4,11 @@ import { FaUserAlt } from "react-icons/fa";
 import "../../Components/User/CssStyle/RegisterLogin.css";
 import "../../App.css";
 
-const Register = () => {
+const Register = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -23,11 +24,14 @@ const Register = () => {
     });
     result = await result.json();
     console.log("response", result);
-    if (result.success === true) {
-      navigate("/");
+    if (result.success && result.massage) {
+      localStorage.setItem("token", result.authToken);
+      props.showAlert("Your Account Successfully created", "success");
+      navigate("/home");
+    } else {
+      props.showAlert("Please enter your Correct Details", "danger");
     }
   };
-
   return (
     <>
       <div className="row mx-0">

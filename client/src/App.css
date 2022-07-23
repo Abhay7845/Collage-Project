@@ -27,3 +27,11 @@
 .GSelect:hover {
   border-bottom: 1px solid #1899e4;
 }
+
+/* AlertStyle CSS */
+.alertStyle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
