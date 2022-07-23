@@ -21,7 +21,10 @@ const Footer = () => {
               </a>
             </li>
             <li className="mx-2">
-              <a style={{ color: "red" }} href="/">
+              <a
+                style={{ color: "red" }}
+                href="https://instagram.com/abhayaryan678?igshid=YmMyMTA2M2Y="
+              >
                 <FaInstagram size={25} />
               </a>
             </li>

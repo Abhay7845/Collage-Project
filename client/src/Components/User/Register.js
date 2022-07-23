@@ -25,7 +25,7 @@ const Register = (props) => {
     });
     result = await result.json();
     console.log("response", result);
-    if (result.success && result.massage) {
+    if (result.success) {
       localStorage.setItem("token", result.authToken);
       props.showAlert("Your Account Successfully created", "success");
       navigate("/home");
