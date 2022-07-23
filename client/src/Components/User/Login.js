@@ -3,6 +3,7 @@ import { FaLock } from "react-icons/fa";
 import "../../Components/User/CssStyle/RegisterLogin.css";
 import "../../App.css";
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "../HomePage/Footer";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -90,6 +91,9 @@ const Login = (props) => {
             </Link>
           </div>
         </div>
+      </div>
+      <div className="footerStyle">
+        <Footer />
       </div>
     </>
   );

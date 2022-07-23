@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import "../../Components/User/CssStyle/RegisterLogin.css";
 import "../../App.css";
+import Footer from "../HomePage/Footer";
 
 const Register = (props) => {
   const [name, setName] = useState("");
@@ -110,6 +111,9 @@ const Register = (props) => {
             </Link>
           </div>
         </div>
+      </div>
+      <div className="footerStyle">
+        <Footer />
       </div>
     </>
   );
