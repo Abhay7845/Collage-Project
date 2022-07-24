@@ -4,6 +4,9 @@ import Login from "./Components/User/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Components/HomePage/Home";
 import Alert from "./Components/Alert";
+import UserDetail from "./Components/User/UserDetail";
+import Profile from "./Components/User/Profile";
+import PrivateComponent from "./Components/PrivateComponent";
 
 const App = () => {
   const [alert, setAlert] = useState(null);
@@ -15,15 +18,21 @@ const App = () => {
   };
   return (
     <>
-      <Alert alert={alert} />
       <BrowserRouter>
+        <Alert alert={alert} />
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route
-            path="/register"
-            element={<Register showAlert={showAlert} />}
-          />
-          <Route path="/login" element={<Login showAlert={showAlert} />} />
+          <Route>
+            <Route path="/home" element={<Home />} />
+            <Route
+              path="/register"
+              element={<Register showAlert={showAlert} />}
+            />
+            <Route path="/login" element={<Login showAlert={showAlert} />} />
+            <Route element={<PrivateComponent />}>
+              <Route path="/user" element={<UserDetail />} />
+              <Route path="/profile" element={<Profile />} />
+            </Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

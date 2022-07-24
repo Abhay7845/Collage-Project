@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import "../../Components/User/CssStyle/RegisterLogin.css";
@@ -24,15 +24,21 @@ const Register = (props) => {
       },
     });
     result = await result.json();
-    console.log("response", result);
+    // console.log("response", result);
     if (result.success) {
-      localStorage.setItem("token", result.authToken);
+      localStorage.setItem("token", result.AuthToken);
       props.showAlert("Your Account Successfully created", "success");
       navigate("/home");
     } else {
       props.showAlert("Please enter your Correct Details", "danger");
     }
   };
+    useEffect(() => {
+      const AuthToken = localStorage.getItem("token");
+      if (AuthToken) {
+        navigate("/user");
+      }
+    });
   return (
     <>
       <div className="row mx-0">

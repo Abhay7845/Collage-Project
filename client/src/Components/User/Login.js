@@ -23,9 +23,11 @@ const Login = (props) => {
       body: JSON.stringify({ email, password }),
     });
     const data = await response.json();
+    // console.log("data = ", data);
     if (data.success === true) {
-      navigate("/home");
+      localStorage.setItem("token", data.AuthToken);
       props.showAlert("Logged in Successfully", "success");
+      navigate("/home");
     } else {
       props.showAlert("Please enter your valid email and password", "danger");
     }

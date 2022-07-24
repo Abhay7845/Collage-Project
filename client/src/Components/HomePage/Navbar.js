@@ -1,13 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FaUserCircle, FaHome } from "react-icons/fa";
 
 const Navbar = () => {
+  let navigate = useNavigate();
+  const LogOut = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-info">
+      <nav className="navbar navbar-expand-lg bg-info ">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            Navbar
+          <Link className="navbar-brand" to="/home">
+            <FaHome size={30} color="#fff" />
           </Link>
           <button
             className="navbar-toggler"
@@ -23,22 +29,38 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Link
+                <Link className="nav-link" to="/user">
+                  USER
                 </Link>
               </li>
             </ul>
             <form className="d-flex">
-              <Link className="nav-link" to="/register">
-                <button className="btn btn-outline-light btn-sm">
-                  Register
-                </button>
-              </Link>
+              {!localStorage.getItem("token") ? (
+                <>
+                  <Link className="nav-link" to="/login">
+                    <button className="btn btn-outline-light btn-sm mx-2">
+                      LOGIN
+                    </button>
+                  </Link>
+                  <Link className="nav-link" to="/register">
+                    <button className="btn btn-outline-light btn-sm">
+                      REGISTER
+                    </button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link className="nav-link mx-2" to="/profile">
+                    <FaUserCircle size={30} color="gray" />
+                  </Link>
+                  <button
+                    onClick={LogOut}
+                    className="btn btn-outline-light btn-sm"
+                  >
+                    LOGOUT
+                  </button>
+                </>
+              )}
             </form>
           </div>
         </div>
