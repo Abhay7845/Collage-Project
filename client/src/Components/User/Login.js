@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaLock } from "react-icons/fa";
 import "../../Components/User/CssStyle/RegisterLogin.css";
 import "../../App.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Footer from "../HomePage/Footer";
 
 const Login = (props) => {
@@ -86,11 +86,6 @@ const Login = (props) => {
             >
               LOGIN
             </button>
-          </div>
-          <div className="text-center">
-            <Link to="/register" className=" text-info">
-              Don't have an account? SignUp
-            </Link>
           </div>
         </div>
       </div>

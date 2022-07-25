@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import "../../Components/User/CssStyle/RegisterLogin.css";
 import "../../App.css";
@@ -33,12 +33,12 @@ const Register = (props) => {
       props.showAlert("Please enter your Correct Details", "danger");
     }
   };
-    useEffect(() => {
-      const AuthToken = localStorage.getItem("token");
-      if (AuthToken) {
-        navigate("/user");
-      }
-    });
+  useEffect(() => {
+    const AuthToken = localStorage.getItem("token");
+    if (AuthToken) {
+      navigate("/user");
+    }
+  });
   return (
     <>
       <div className="row mx-0">
@@ -110,11 +110,6 @@ const Register = (props) => {
             >
               REGISTER
             </button>
-          </div>
-          <div className="text-center">
-            <Link to="/login" className=" text-info">
-              If you have account? Login
-            </Link>
           </div>
         </div>
       </div>
