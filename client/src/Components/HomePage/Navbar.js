@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaUserCircle, FaHome } from "react-icons/fa";
+import { FaHome, FaUser } from "react-icons/fa";
+import "./HomePage.css";
 
 const Navbar = () => {
   let navigate = useNavigate();
@@ -12,9 +13,6 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg bg-info ">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/home">
-            <FaHome size={30} color="#fff" />
-          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -28,11 +26,31 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link" to="/user">
-                  USER
-                </Link>
-              </li>
+              {!localStorage.getItem("token") ? (
+                <li className="nav-item">
+                  <Link className="navbar-brand" to="/home">
+                    <FaHome size={30} color="#fff" />
+                  </Link>
+                </li>
+              ) : (
+                <>
+                  <Link className="nav-link userName" to="/profile">
+                    Welcome
+                  </Link>
+                  <Link className="nav-link NavbarList" to="/home">
+                    HOME
+                  </Link>
+                  <Link className="nav-link NavbarList" to="/user">
+                    USER
+                  </Link>
+                  <Link className="nav-link NavbarList" to="/product">
+                    PRODUCTS
+                  </Link>
+                  <Link className="nav-link NavbarList" to="/about">
+                    ABOUT
+                  </Link>
+                </>
+              )}
             </ul>
             <form className="d-flex">
               {!localStorage.getItem("token") ? (
@@ -51,14 +69,11 @@ const Navbar = () => {
               ) : (
                 <>
                   <Link className="nav-link mx-2" to="/profile">
-                    <FaUserCircle size={30} color="gray" />
+                    <FaUser size={25} color="white" className="mx-2" />
                   </Link>
-                  <button
-                    onClick={LogOut}
-                    className="btn btn-outline-light btn-sm"
-                  >
+                  <b className="logoutBtn" onClick={LogOut}>
                     LOGOUT
-                  </button>
+                  </b>
                 </>
               )}
             </form>

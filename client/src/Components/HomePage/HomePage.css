@@ -3,3 +3,53 @@
   padding: 0;
   box-sizing: border-box;
 }
+.NavbarList {
+  font-weight: bold;
+  color: #ffff;
+}
+.logoutBtn {
+  color: #ffff;
+  cursor: pointer;
+}
+.logoutBtn:hover {
+  color: #e2eaec;
+}
+
+.userName {
+  font-weight: bold;
+  font-family: initial;
+  color: #0c0b0c;
+}
+.HomeTextStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+.searchStyle {
+  outline: none;
+  border: 1px solid #069906;
+  width: 50%;
+  height: 39px;
+}
+@media screen and (max-width: 650px) {
+  .searchStyle {
+    width: 90%;
+  }
+}
+.searchStyle:hover {
+  border: 1px solid #1899e4;
+}
+.searchButton {
+  background-color: #069906;
+  padding: 7.5px;
+  color: #ffff;
+  cursor: pointer;
+}
+.asdfg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

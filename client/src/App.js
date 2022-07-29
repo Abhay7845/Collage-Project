@@ -8,6 +8,8 @@ import Profile from "./Components/User/Profile";
 import PrivateComponent from "./Components/PrivateComponent";
 import Home from "./Components/HomePage/Home";
 import Navbar from "./Components/HomePage/Navbar";
+import About from "./Components/About";
+import Products from "./Components/Products";
 
 const App = () => {
   const [alert, setAlert] = useState(null);
@@ -24,7 +26,7 @@ const App = () => {
         <Alert alert={alert} />
         <Routes>
           <Route>
-            <Route path="/home" element={ <Home/> } />
+            <Route path="/home" element={<Home />} />
             <Route
               path="/register"
               element={<Register showAlert={showAlert} />}
@@ -33,6 +35,8 @@ const App = () => {
             <Route element={<PrivateComponent />}>
               <Route path="/user" element={<UserDetail />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/product" element={<Products />} />
             </Route>
           </Route>
         </Routes>
