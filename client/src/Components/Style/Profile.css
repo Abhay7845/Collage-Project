@@ -1,0 +1,13 @@
+.userInfo {
+  display: flex;
+  justify-content: center;
+  height: 77vh;
+}
+.dataInfo {
+  width: 50%;
+}
+@media screen and (max-width: 700px) {
+  .dataInfo {
+    width: 100%;
+  }
+}
