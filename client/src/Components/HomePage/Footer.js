@@ -6,9 +6,9 @@ const Footer = () => {
   return (
     <>
       <hr className="mx-2" />
-      <div className="row my-3 mx-0 text-center">
+      <div className="row my-3 mx-0">
         <div className="col">
-          <span className="text-info">© BY ABHAY ARYAN {CurrentYear}</span>
+          <span className="text-info">© BY ABHAY ARYAN, {CurrentYear}</span>
         </div>
         <div className="col d-flex justify-content-end">
           <ul className="nav list-unstyled d-flex">

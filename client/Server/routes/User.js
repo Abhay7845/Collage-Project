@@ -13,6 +13,7 @@ router.post(
   [
     body("name", "Full Name is required").isLength({ min: 3 }),
     body("email", "Enter valid Email").isEmail(),
+    body("phone", "Enter valid Phone number").isLength({ min: 10 }),
     body("password", "Password is required").isLength({ min: 5 }),
   ],
   async (req, res) => {
@@ -36,6 +37,7 @@ router.post(
       user = await User.create({
         name: req.body.name,
         email: req.body.email,
+        phone: req.body.phone,
         password: SecPassword,
       });
       const data = {
@@ -100,6 +102,7 @@ router.post("/fetchUser", fetchUser, async (req, res) => {
   try {
     userId = req.user.id;
     const user = await User.findById(userId).select("-password");
+
     res.send(user);
   } catch (error) {
     console.error(error.massage);

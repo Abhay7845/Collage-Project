@@ -8,6 +8,7 @@ import Footer from "../HomePage/Footer";
 const Register = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
   const [passwordShown, setPasswordShown] = useState(false);
@@ -18,13 +19,13 @@ const Register = (props) => {
   const onSubmit = async () => {
     let result = await fetch("http://localhost:5000/api/user/register", {
       method: "POST",
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ name, email, phone, password }),
       headers: {
         "Content-Type": "application/json",
       },
     });
     result = await result.json();
-    // console.log("response", result);
+    console.log("response", result);
     if (result.success) {
       localStorage.setItem("token", result.AuthToken);
       props.showAlert("Your Account Successfully created", "success");
@@ -62,9 +63,7 @@ const Register = (props) => {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <span className="text-danger">
-              {/* {result.errors[0].value === false ? result.errors[0].msg : } */}
-            </span>
+            <span className="text-danger"></span>
           </div>
           <div className="my-2">
             <b>
@@ -78,7 +77,19 @@ const Register = (props) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {/* <span className="text-danger">{result.errors[1].msg}</span> */}
+          </div>
+          <div className="my-2">
+            <b>
+              Phone Number <span className="text-danger"> *</span>
+            </b>
+            <input
+              type="text"
+              placeholder="Phone Number"
+              // autoComplete="off"
+              className="GInput"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
           </div>
           <div className="my-2">
             <b>
@@ -92,7 +103,6 @@ const Register = (props) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {/* <span className="text-danger">{result.errors[2].msg}</span> */}
           </div>
           <div className="form-check">
             <input

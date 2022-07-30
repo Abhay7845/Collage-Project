@@ -15,12 +15,8 @@
   color: #e2eaec;
 }
 
-.userName {
-  font-weight: bold;
-  font-family: initial;
-  color: #0c0b0c;
-}
 .HomeTextStyle {
+  background-color: #cde5f5;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,6 +28,7 @@
   outline: none;
   border: 1px solid #069906;
   width: 50%;
+  text-align: center;
   height: 39px;
 }
 @media screen and (max-width: 650px) {
@@ -48,8 +45,14 @@
   color: #ffff;
   cursor: pointer;
 }
-.asdfg {
+.searchField {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+.textH4Style {
+  color: #0c0b0c;
+  font-weight: bold;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-style: italic;
 }

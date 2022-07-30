@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaHome, FaUser } from "react-icons/fa";
+import { FaHome, FaUser, FaDashcube } from "react-icons/fa";
 import "./HomePage.css";
 
 const Navbar = () => {
@@ -34,11 +34,8 @@ const Navbar = () => {
                 </li>
               ) : (
                 <>
-                  <Link className="nav-link userName" to="/profile">
-                    Welcome
-                  </Link>
                   <Link className="nav-link NavbarList" to="/home">
-                    HOME
+                    <FaDashcube size={30} />
                   </Link>
                   <Link className="nav-link NavbarList" to="/user">
                     USER
