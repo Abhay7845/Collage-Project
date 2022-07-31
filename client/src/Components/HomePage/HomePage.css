@@ -56,3 +56,8 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-style: italic;
 }
+.HomeImageStyle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}

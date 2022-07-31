@@ -3,17 +3,6 @@ import Footer from "../HomePage/Footer";
 import "../../Components/Style/Profile.css";
 
 const Profile = () => {
-  // let userInfo
-  // function async userInformation() {
-  //    userInfo = await fetch("http://localhost:5000/api/user/fetchUser", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // });
-  // }
-  // userInformation();
-
   return (
     <>
       <div className="mx-0 userInfo">

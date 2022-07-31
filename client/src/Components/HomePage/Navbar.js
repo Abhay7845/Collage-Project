@@ -10,9 +10,7 @@ const Navbar = () => {
     navigate("/login");
   };
   let location = useLocation();
-  useEffect(() => {
-    console.log("location==>", location.pathname);
-  }, [location]);
+  useEffect(() => {}, [location]);
 
   return (
     <>

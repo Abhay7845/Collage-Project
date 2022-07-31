@@ -11,3 +11,9 @@
     width: 100%;
   }
 }
+
+.AboutFooter {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}

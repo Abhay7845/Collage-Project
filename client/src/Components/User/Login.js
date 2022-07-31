@@ -81,7 +81,7 @@ const Login = (props) => {
           <div className="d-flex justify-content-end my-4">
             <button
               type="submit"
-              className="btn btn-outline-info"
+              className="btn btn-outline-info btn-sm"
               onClick={login}
             >
               LOGIN
