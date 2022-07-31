@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaHome, FaUser, FaDashcube } from "react-icons/fa";
 import "./HomePage.css";
 
@@ -9,6 +9,11 @@ const Navbar = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
+  let location = useLocation();
+  useEffect(() => {
+    console.log("location==>", location.pathname);
+  }, [location]);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-info ">
@@ -34,16 +39,36 @@ const Navbar = () => {
                 </li>
               ) : (
                 <>
-                  <Link className="nav-link NavbarList" to="/home">
+                  <Link
+                    className={`nav-link NavbarList ${
+                      location.pathname === "/home" ? "active" : ""
+                    }`}
+                    to="/home"
+                  >
                     <FaDashcube size={30} />
                   </Link>
-                  <Link className="nav-link NavbarList" to="/user">
+                  <Link
+                    className={`nav-link NavbarList ${
+                      location.pathname === "/user" ? "active" : ""
+                    }`}
+                    to="/user"
+                  >
                     USER
                   </Link>
-                  <Link className="nav-link NavbarList" to="/product">
+                  <Link
+                    className={`nav-link NavbarList ${
+                      location.pathname === "/product" ? "active" : ""
+                    }`}
+                    to="/product"
+                  >
                     PRODUCTS
                   </Link>
-                  <Link className="nav-link NavbarList" to="/about">
+                  <Link
+                    className={`nav-link NavbarList ${
+                      location.pathname === "/about" ? "active" : ""
+                    }`}
+                    to="/about"
+                  >
                     ABOUT
                   </Link>
                 </>
@@ -65,8 +90,19 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <Link className="nav-link mx-2" to="/profile">
-                    <FaUser size={25} color="white" className="mx-2" />
+                  <Link
+                    className={`nav-link mx-2 ${
+                      location.pathname === "/profile" ? "active" : ""
+                    }`}
+                    to="/profile"
+                  >
+                    <FaUser
+                      size={25}
+                      color={`${
+                        location.pathname === "/profile" ? "black" : "white"
+                      }`}
+                      className="mx-2"
+                    />
                   </Link>
                   <b className="logoutBtn" onClick={LogOut}>
                     LOGOUT
