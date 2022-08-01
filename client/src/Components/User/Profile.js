@@ -1,30 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
+import moment from "moment";
 import Footer from "../HomePage/Footer";
 import "../../Components/Style/Profile.css";
 
 const Profile = () => {
+  const [userInfo, setUserinfo] = useState("");
+  let userAccessToken = localStorage.getItem("token");
+  async function getUserInformation() {
+    const response = await fetch("http://localhost:5000/api/user/fetchUser", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": userAccessToken,
+      },
+    });
+    const json = await response.json();
+    setUserinfo(json);
+  }
+  getUserInformation();
   return (
     <>
       <div className="mx-0 userInfo">
         <div className="dataInfo">
           <h3 className="text-success text-center my-5">User Information</h3>
-          <div className="row mx-0">
-            <div className="col text-success">Name : </div>
-            <b className="col">Abhay</b>
-          </div>
-          <div className="row mx-0 my-2">
-            <div className="col text-success">Email : </div>
-            <b className="col text-bold">abhay123@gmail.com</b>
-          </div>
-          <div className="row mx-0">
-            <div className="col text-success">Phone Number : </div>
-            <div className="col">
-              +91 <b>9123437177</b>
-            </div>
-          </div>
-          <div className="row mx-0 my-2">
-            <div className="col text-success">Registered Date : </div>
-            <b className="col">30 Jul 2022</b>
+          <div className="mx-2">
+            <table className="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">S. No.</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">{userInfo.name}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1.</th>
+                  <td>Email Address</td>
+                  <td>{userInfo.email}</td>
+                </tr>
+                <tr>
+                  <th scope="row">2.</th>
+                  <td>Phone Number</td>
+                  <td>+91 {userInfo.phone}</td>
+                </tr>
+                <tr>
+                  <th scope="row">3.</th>
+                  <td>Registered Date</td>
+                  <td>{moment(userInfo.date).format("ll")}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
