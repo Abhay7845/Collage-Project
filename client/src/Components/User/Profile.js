@@ -46,14 +46,14 @@ const Profile = () => {
                 <tr>
                   <th scope="row">3.</th>
                   <td>Registered Date</td>
-                  <td>{moment(userInfo.date).format("ll")}</td>
+                  <td>{moment(userInfo.date).format("llll")}</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
-      <div>
+      <div className="profileUser">
         <Footer />
       </div>
     </>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { FaHome, FaUser, FaDashcube } from "react-icons/fa";
+import { FaUser, FaDashcube } from "react-icons/fa";
 import "./HomePage.css";
 
 const Navbar = () => {
@@ -32,7 +32,7 @@ const Navbar = () => {
               {!localStorage.getItem("token") ? (
                 <li className="nav-item">
                   <Link className="navbar-brand" to="/home">
-                    <FaHome size={30} color="#fff" />
+                    <FaDashcube size={30} color="#fff" />
                   </Link>
                 </li>
               ) : (
