@@ -25,7 +25,7 @@ const Register = (props) => {
       },
     });
     result = await result.json();
-    console.log("response", result);
+    // console.log("response", result);
     if (result.success) {
       localStorage.setItem("token", result.AuthToken);
       props.showAlert("Your Account Successfully created", "success");
