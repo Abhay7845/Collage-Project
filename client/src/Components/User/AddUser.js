@@ -1,19 +1,10 @@
 import React, { useState } from "react";
 import { Country, State, City } from "country-state-city";
+import { occupation } from "./UserListData";
 
 const AddUser = () => {
   const [state, setState] = useState([]);
   const [city, setCity] = useState([]);
-
-  const occupation = [
-    { code: "student", name: "Student" },
-    { code: "busMan", name: "Business Man" },
-    { code: "employee", name: "Employee" },
-    { code: "selfEmploy", name: "Self Employee" },
-    { code: "leader", name: "Leader" },
-    { code: "farmer", name: "Farmer" },
-    { code: "hWife", name: "House Wife" },
-  ];
 
   const countryName = Country.getAllCountries();
   const handleCountryCode = (e) => {
