@@ -10,6 +10,7 @@ import Home from "./Components/HomePage/Home";
 import Navbar from "./Components/HomePage/Navbar";
 import About from "./Components/About";
 import Products from "./Components/Products";
+import AddUser from "./Components/User/AddUser";
 
 const App = () => {
   const [alert, setAlert] = useState(null);
@@ -37,6 +38,7 @@ const App = () => {
               <Route path="/profile" element={<Profile />} />
               <Route path="/about" element={<About />} />
               <Route path="/product" element={<Products />} />
+              <Route path="/add-user" element={<AddUser />} />
             </Route>
           </Route>
         </Routes>
