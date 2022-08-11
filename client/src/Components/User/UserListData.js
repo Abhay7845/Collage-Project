@@ -2,7 +2,7 @@ export const UserDetails = [
   {
     id: 1,
     name: "Abhay Aryan",
-    username: "abhay0123",
+    occupation: "Student",
     email: "abhay123@gmail.com",
     phone: "+91 1234567890",
     address: {

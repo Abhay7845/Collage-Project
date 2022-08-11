@@ -15,7 +15,7 @@ const UserDetail = () => {
               <tr>
                 <th>S. No.</th>
                 <th>Name</th>
-                <th>Username</th>
+                <th>Occupation</th>
                 <th>Email Address</th>
                 <th>Phone Number</th>
                 <th>Address</th>
@@ -27,7 +27,7 @@ const UserDetail = () => {
                   <tr key={i}>
                     <td>{item.id}</td>
                     <td>{item.name}</td>
-                    <td>{item.username}</td>
+                    <td>{item.occupation}</td>
                     <td>{item.email}</td>
                     <td>{item.phone}</td>
                     <td>

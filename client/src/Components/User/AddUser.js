@@ -5,6 +5,16 @@ const AddUser = () => {
   const [state, setState] = useState([]);
   const [city, setCity] = useState([]);
 
+  const occupation = [
+    { code: "student", name: "Student" },
+    { code: "busMan", name: "Business Man" },
+    { code: "employee", name: "Employee" },
+    { code: "selfEmploy", name: "Self Employee" },
+    { code: "leader", name: "Leader" },
+    { code: "farmer", name: "Farmer" },
+    { code: "hWife", name: "House Wife" },
+  ];
+
   const countryName = Country.getAllCountries();
   const handleCountryCode = (e) => {
     const countryCode = e.target.value;
@@ -16,7 +26,6 @@ const AddUser = () => {
 
   const handleStateCode = (e) => {
     const stateCode = e.target.value;
-
     const getCity = City.getAllCities().filter(
       (city) => city.stateCode === stateCode,
     );
@@ -35,9 +44,18 @@ const AddUser = () => {
           </div>
           <div className="col-md my-2">
             <b>
-              Username <span className="text-danger"> *</span>
+              Occupation <span className="text-danger"> *</span>
             </b>
-            <input type="text" className="GInput" placeholder="Username" />
+            <select style={{ width: "100%" }} className="GInput">
+              <option value="">Select Occupation</option>
+              {occupation.map((item, i) => {
+                return (
+                  <option key={i} value={item.code}>
+                    {item.name}
+                  </option>
+                );
+              })}
+            </select>
           </div>
         </div>
         <div className="row">
@@ -103,7 +121,11 @@ const AddUser = () => {
             <select style={{ width: "100%" }} className="GInput">
               <option value="">Select City</option>
               {city.map((item, i) => {
-                return <option key={i}>{item.name}</option>;
+                return (
+                  <option key={i} value={item.name}>
+                    {item.name}
+                  </option>
+                );
               })}
             </select>
           </div>
