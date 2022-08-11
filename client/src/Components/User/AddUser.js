@@ -46,7 +46,7 @@ const AddUser = () => {
             <b>
               Occupation <span className="text-danger"> *</span>
             </b>
-            <select style={{ width: "100%" }} className="GInput">
+            <select className="GSelect">
               <option value="">Select Occupation</option>
               {occupation.map((item, i) => {
                 return (
@@ -78,11 +78,7 @@ const AddUser = () => {
             <b>
               Country <span className="text-danger"> *</span>
             </b>
-            <select
-              style={{ width: "100%" }}
-              className="GInput"
-              onChange={(e) => handleCountryCode(e)}
-            >
+            <select className="GSelect" onChange={(e) => handleCountryCode(e)}>
               <option value="">Select Country</option>
               {countryName.map((item, i) => {
                 return (
@@ -97,11 +93,7 @@ const AddUser = () => {
             <b>
               State <span className="text-danger"> *</span>
             </b>
-            <select
-              style={{ width: "100%" }}
-              className="GInput"
-              onChange={(e) => handleStateCode(e)}
-            >
+            <select className="GSelect" onChange={(e) => handleStateCode(e)}>
               <option value="">Select State</option>
               {state.map((item, i) => {
                 return (
@@ -118,7 +110,7 @@ const AddUser = () => {
             <b>
               City <span className="text-danger"> *</span>
             </b>
-            <select style={{ width: "100%" }} className="GInput">
+            <select className="GSelect">
               <option value="">Select City</option>
               {city.map((item, i) => {
                 return (
