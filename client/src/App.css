@@ -26,6 +26,15 @@
 .GSelect:hover {
   border-bottom: 1px solid #1899e4;
 }
+.GTextArea {
+  width: 100%;
+  outline: none;
+  padding: 5px;
+  border: 1px solid #c1c4c5;
+}
+.GTextArea:hover {
+  border: 1px solid #1899e4;
+}
 
 /* AlertStyle CSS */
 .alertStyle {

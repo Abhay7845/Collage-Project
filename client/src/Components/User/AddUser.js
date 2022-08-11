@@ -63,7 +63,12 @@ const AddUser = () => {
             <input type="text" className="GInput" placeholder="Phone Number" />
           </div>
         </div>
-        <h6 className="text-info my-2">ADDRESS DETAILS</h6>
+        <h6
+          className="bg-info text-white text-center my-3"
+          style={{ padding: "8px" }}
+        >
+          ADDRESS DETAILS
+        </h6>
         <div className="row">
           <div className="col-md my-2">
             <b>
@@ -118,9 +123,20 @@ const AddUser = () => {
             </b>
             <input type="text" className="GInput" placeholder="Pin Code" />
           </div>
+          <div className=" my-2">
+            <b>
+              Address <span className="text-danger"> *</span>
+            </b>
+            <textarea
+              type="text"
+              className="GTextArea"
+              rows={3}
+              placeholder="Address"
+            />
+          </div>
         </div>
         <div className="d-flex justify-content-end my-3">
-          <button className="btn btn-outline-info btn-sm">SUBMIT</button>
+          <button className="btn btn-info btn-sm">SUBMIT</button>
         </div>
       </div>
     </>
