@@ -111,6 +111,37 @@ router.get("/fetchUser", fetchUser, async (req, res) => {
   }
 });
 
+//ADD USER ROUTER - 4 
+router.post('/addUser',
+
+  [
+    body("name", "Name is required").isLength({ min: 3 }),
+    body("occupation", "Occupation is required"),
+    body("email", "Enter valid Email").isEmail(),
+    body("phone", "Enter valid Phone number").isLength({ min: 10 }),
+    body("country", "Country is required"),
+    body("state", "State is required"),
+    body("city", "City is required"),
+    body("postalCode", "Postal Code is required"),
+    body("address", "Address is required"),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    AddUser.create({
+      name: req.body.name,
+      occupation: req.body.occupation,
+      email: req.body.email,
+      phone: req.body.phone,
+      country: req.body.country,
+      state: req.body.state,
+      city: req.body.city,
+      postalCode: req.body.postalCode,
+      address: req.body.address
+    }).then(addUser =>res.json(addUser)).catch(error=>console.log(error));
+  })
 
 
 module.exports = router;

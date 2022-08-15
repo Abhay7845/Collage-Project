@@ -15,30 +15,27 @@ const AddUser = new mongoose.Schema({
     },
     phone: {
         type: Number,
-        unique: true,
         require: true
     },
-    fullAddress: {
-        country: {
-            type: String,
-            require: true
-        },
-        state: {
-            type: String,
-            require: true
-        },
-        city: {
-            type: String,
-            require: true
-        },
-        postalCode: {
-            type: Number,
-            require: true
-        },
-        address: {
-            type: String,
-            require: true
-        }
+    country: {
+        type: String,
+        require: true
+    },
+    state: {
+        type: String,
+        require: true
+    },
+    city: {
+        type: String,
+        require: true
+    },
+    postalCode: {
+        type: Number,
+        require: true
+    },
+    address: {
+        type: String,
+        require: true
     },
     date: {
         type: Date,
@@ -47,6 +44,4 @@ const AddUser = new mongoose.Schema({
 
 })
 
-const addUser = mongoose.model("addUser", AddUser);
-addUser.createIndexes();
-module.exports = addUser;
+module.exports =mongoose.model('adduser', AddUser)
