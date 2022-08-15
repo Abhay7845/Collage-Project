@@ -1,0 +1,24 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { FaLaptop } from "react-icons/fa";
+
+
+const NoPage = () => {
+    return (
+        <>
+            <div className='container noPageFound'>
+                <div><FaLaptop size={150} color="gray"/></div>
+                <h1 className='text-danger'>404</h1>
+                <p>This Page is Not Found</p>
+                <div className='my-3'>
+                    <Link to="/home">
+                        <button className='btn btn-info btn-sm text-white'>Go Home</button>
+                    </Link>
+                </div>
+            </div>
+
+        </>
+    )
+}
+
+export default NoPage

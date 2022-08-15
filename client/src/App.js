@@ -11,6 +11,7 @@ import Navbar from "./Components/HomePage/Navbar";
 import About from "./Components/About";
 import Products from "./Components/Products";
 import AddUser from "./Components/User/AddUser";
+import NoPage from "./Components/HomePage/NoPage";
 
 const App = () => {
   const [alert, setAlert] = useState(null);
@@ -27,8 +28,9 @@ const App = () => {
         <Alert alert={alert} />
         <Routes>
           <Route>
-            <Route path="/home" element={<Home />} />
             <Route index element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="*" element={<NoPage />} />
             <Route
               path="/register"
               element={<Register showAlert={showAlert} />}
