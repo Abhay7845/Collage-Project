@@ -9,7 +9,7 @@ const UserDetail = () => {
     <>
       <div className="container">
         <div className="table-responsive my-3">
-          <h3 className="text-center text-info my-3">AAD USER</h3>
+          <h3 className="text-center text-info my-3">ADD USER</h3>
           <table className="table table-hover table-bordered table-pointer">
             <thead className="bg-secondary text-white">
               <tr>

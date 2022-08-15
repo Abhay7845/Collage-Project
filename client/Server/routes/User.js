@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../model/Users");
+const AddUser = require('../model/AddUser')
 const { body, validationResult } = require("express-validator");
 var jwt = require("jsonwebtoken");
 var fetchUser = require("../middleware/FetchUser");
@@ -109,5 +110,7 @@ router.get("/fetchUser", fetchUser, async (req, res) => {
     res.status(500).send("some error accrued");
   }
 });
+
+
 
 module.exports = router;
