@@ -28,6 +28,7 @@ const App = () => {
         <Routes>
           <Route>
             <Route path="/home" element={<Home />} />
+            <Route index element={<Home />} />
             <Route
               path="/register"
               element={<Register showAlert={showAlert} />}
