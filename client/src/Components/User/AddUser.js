@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Country, State, City } from "country-state-city";
 import { occupation } from "./UserListData";
+import { useNavigate } from "react-router";
 
 const AddUser = () => {
   const [state, setState] = useState([]);
   const [city, setCity] = useState([]);
+
+const navigate = useNavigate()
 
   const countryName = Country.getAllCountries();
   const handleCountryCode = (e) => {
@@ -22,6 +25,11 @@ const AddUser = () => {
     );
     setCity(getCity);
   };
+
+const submitForm =()=>{
+  navigate('/user')
+}
+
   return (
     <>
       <div className="container my-5">
@@ -136,7 +144,7 @@ const AddUser = () => {
           </div>
         </div>
         <div className="d-flex justify-content-end my-3">
-          <button className="btn btn-info btn-sm">SUBMIT</button>
+          <button className="btn btn-info btn-sm" onClick={submitForm}>SUBMIT</button>
         </div>
       </div>
     </>
