@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../model/Users");
-const AddUser = require('../model/AddUser')
+const AddUser = require("../model/AddUser");
 const { body, validationResult } = require("express-validator");
 var jwt = require("jsonwebtoken");
 var fetchUser = require("../middleware/FetchUser");
@@ -103,7 +103,6 @@ router.get("/fetchUser", fetchUser, async (req, res) => {
   try {
     userId = req.user.id;
     const user = await User.findById(userId).select("-password");
-
     res.send(user);
   } catch (error) {
     console.error(error.massage);
@@ -111,8 +110,9 @@ router.get("/fetchUser", fetchUser, async (req, res) => {
   }
 });
 
-//ADD USER ROUTER - 4 
-router.post('/addUser',
+//ADD USER ROUTER - 4
+router.post(
+  "/addUser",
 
   [
     body("name", "Name is required").isLength({ min: 3 }),
@@ -139,9 +139,21 @@ router.post('/addUser',
       state: req.body.state,
       city: req.body.city,
       postalCode: req.body.postalCode,
-      address: req.body.address
-    }).then(addUser =>res.json(addUser)).catch(error=>console.log(error));
-  })
+      address: req.body.address,
+    })
+      .then((addUser) => res.json(addUser))
+      .catch((error) => console.log(error));
+  },
+);
 
+// FETCH ADD USER DETAILS ROUTES -5
+router.get("/fetchAddUser", async (req, res) => {
+  let addUserData = await AddUser.find();
+  if (addUserData.length > 0) {
+    res.send(addUserData);
+  } else {
+    res.status(400).json({ error: "AddUsers Not Found" });
+  }
+});
 
 module.exports = router;

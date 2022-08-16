@@ -1,10 +1,26 @@
-import React from "react";
-import { UserDetails } from "./UserListData";
+import React, { useState } from "react";
 import Footer from "../HomePage/Footer";
 import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 
 const UserDetail = () => {
+  const [addUserInfo, setaDDUserinfo] = useState([]);
+
+  async function getAddUsersInfo() {
+    const response = await fetch(
+      "http://localhost:5000/api/user/fetchAddUser",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    );
+    const json = await response.json();
+    setaDDUserinfo(json);
+  }
+  getAddUsersInfo();
+  console.log("addUserInfo==>", addUserInfo);
   return (
     <>
       <div className="container">
@@ -13,7 +29,6 @@ const UserDetail = () => {
           <table className="table table-hover table-bordered table-pointer">
             <thead className="bg-secondary text-white">
               <tr>
-                <th>S. No.</th>
                 <th>Name</th>
                 <th>Occupation</th>
                 <th>Email Address</th>
@@ -22,17 +37,16 @@ const UserDetail = () => {
               </tr>
             </thead>
             <tbody>
-              {UserDetails.map((item, i) => {
+              {addUserInfo.map((item, i) => {
                 return (
                   <tr key={i}>
-                    <td>{item.id}</td>
                     <td>{item.name}</td>
                     <td>{item.occupation}</td>
                     <td>{item.email}</td>
                     <td>{item.phone}</td>
                     <td>
-                      {item.address.country}, {item.address.state},{" "}
-                      {item.address.city}, {item.address.postalCode}
+                      {item.country}, {item.state}, {item.city},{" "}
+                      {item.postalCode}
                     </td>
                   </tr>
                 );
