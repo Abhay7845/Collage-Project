@@ -20,7 +20,6 @@ const UserDetail = () => {
     setaDDUserinfo(json);
   }
   getAddUsersInfo();
-  console.log("addUserInfo==>", addUserInfo);
   return (
     <>
       <div className="container">
@@ -65,9 +64,7 @@ const UserDetail = () => {
         </div>
       </div>
 
-      <div className="UserDetailsFooter">
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 };

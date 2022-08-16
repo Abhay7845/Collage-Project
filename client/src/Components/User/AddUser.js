@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { Country, State, City } from "country-state-city";
 import { occupation } from "./UserListData";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 
 const AddUser = () => {
+  const [country, setCountry] = useState("");
   const [state, setState] = useState([]);
   const [city, setCity] = useState([]);
+  const [selectedState, setSelectedState] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
 
-const navigate = useNavigate()
+  // INPUT USER DATA
+
+  // const navigate = useNavigate();
 
   const countryName = Country.getAllCountries();
   const handleCountryCode = (e) => {
     const countryCode = e.target.value;
+    setCountry(countryCode);
     const getState = State.getAllStates().filter(
       (state) => state.countryCode === countryCode,
     );
@@ -20,15 +26,17 @@ const navigate = useNavigate()
 
   const handleStateCode = (e) => {
     const stateCode = e.target.value;
+    setSelectedState(stateCode);
     const getCity = City.getAllCities().filter(
       (city) => city.stateCode === stateCode,
     );
     setCity(getCity);
   };
-
-const submitForm =()=>{
-  navigate('/user')
-}
+  const submitForm = () => {
+    console.log("country==>", country);
+    console.log("selectedState==>", selectedState);
+    console.log("selectedCity==>", selectedCity);
+  };
 
   return (
     <>
@@ -114,7 +122,10 @@ const submitForm =()=>{
             <b>
               City <span className="text-danger"> *</span>
             </b>
-            <select className="GSelect">
+            <select
+              className="GSelect"
+              onChange={(e) => setSelectedCity(e.target.value)}
+            >
               <option value="">Select City</option>
               {city.map((item, i) => {
                 return (
@@ -144,7 +155,9 @@ const submitForm =()=>{
           </div>
         </div>
         <div className="d-flex justify-content-end my-3">
-          <button className="btn btn-info btn-sm" onClick={submitForm}>SUBMIT</button>
+          <button className="btn btn-info btn-sm" onClick={submitForm}>
+            SUBMIT
+          </button>
         </div>
       </div>
     </>
