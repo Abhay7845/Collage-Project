@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Country, State, City } from "country-state-city";
 import { occupationData } from "./UserListData";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const AddUser = () => {
+const AddUser = (props) => {
   const [name, setName] = useState("");
   const [occupation, setOccupation] = useState("");
   const [email, setEmail] = useState("");
@@ -14,9 +14,7 @@ const AddUser = () => {
   const [postalCode, setPostalCode] = useState("");
   const [address, setAddress] = useState("");
 
-  const [showError, setShowError] = useState("");
-
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [selectedState, setSelectedState] = useState([]);
   const [selectedCity, setSelectedCity] = useState([]);
@@ -59,12 +57,12 @@ const AddUser = () => {
       }),
     });
     const data = await response.json();
-    setShowError(data);
+    if (data.success === false) {
+      props.showAlert("Please fill the all Correct details", "danger");
+    } else {
+      navigate("/user");
+    }
   };
-  console.log("showError==>", showError.errors);
-  if (showError.errors === "undefined") {
-    alert("please fill all Data");
-  }
   return (
     <>
       <div className="container my-5">

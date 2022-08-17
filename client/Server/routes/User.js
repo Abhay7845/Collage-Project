@@ -119,16 +119,17 @@ router.post(
     body("occupation", "Occupation is required"),
     body("email", "Enter valid Email").isEmail(),
     body("phone", "Enter valid Phone number").isLength({ min: 10 }),
-    body("country", "Country is required"),
-    body("state", "State is required"),
-    body("city", "City is required"),
-    body("postalCode", "Postal Code is required"),
-    body("address", "Address is required"),
+    body("country", "Country is required").isLength({ min: 1 }),
+    body("state", "State is required").isLength({ min: 1 }),
+    body("city", "City is required").isLength({ min: 1 }),
+    body("postalCode", "Postal Code is required").isLength({ min: 6 }),
+    body("address", "Address is required").isLength({ min: 4 }),
   ],
   async (req, res) => {
+    let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success, errors: errors.array() });
     }
     AddUser.create({
       name: req.body.name,
