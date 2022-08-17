@@ -1,9 +1,9 @@
-export const occupation = [
-  { code: "student", name: "Student" },
-  { code: "busMan", name: "Business Man" },
-  { code: "employee", name: "Employee" },
-  { code: "selfEmploy", name: "Self Employee" },
-  { code: "leader", name: "Leader" },
-  { code: "farmer", name: "Farmer" },
-  { code: "hWife", name: "House Wife" },
+export const occupationData = [
+  { name: "Student" },
+  { name: "Business Man" },
+  { name: "Employee" },
+  { name: "Self Employee" },
+  { name: "Leader" },
+  { name: "Farmer" },
+  { name: "House Wife" },
 ];

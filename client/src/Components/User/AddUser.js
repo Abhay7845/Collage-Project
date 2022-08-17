@@ -1,18 +1,25 @@
 import React, { useState } from "react";
 import { Country, State, City } from "country-state-city";
-import { occupation } from "./UserListData";
-// import { useNavigate } from "react-router";
+import { occupationData } from "./UserListData";
+import { Link } from "react-router-dom";
 
 const AddUser = () => {
+  const [name, setName] = useState("");
+  const [occupation, setOccupation] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [country, setCountry] = useState("");
-  const [state, setState] = useState([]);
-  const [city, setCity] = useState([]);
-  const [selectedState, setSelectedState] = useState("");
-  const [selectedCity, setSelectedCity] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [address, setAddress] = useState("");
 
-  // INPUT USER DATA
+  const [showError, setShowError] = useState("");
 
   // const navigate = useNavigate();
+
+  const [selectedState, setSelectedState] = useState([]);
+  const [selectedCity, setSelectedCity] = useState([]);
 
   const countryName = Country.getAllCountries();
   const handleCountryCode = (e) => {
@@ -21,23 +28,43 @@ const AddUser = () => {
     const getState = State.getAllStates().filter(
       (state) => state.countryCode === countryCode,
     );
-    setState(getState);
+    setSelectedState(getState);
   };
 
   const handleStateCode = (e) => {
     const stateCode = e.target.value;
-    setSelectedState(stateCode);
+    setState(stateCode);
     const getCity = City.getAllCities().filter(
       (city) => city.stateCode === stateCode,
     );
-    setCity(getCity);
+    setSelectedCity(getCity);
   };
-  const submitForm = () => {
-    console.log("country==>", country);
-    console.log("selectedState==>", selectedState);
-    console.log("selectedCity==>", selectedCity);
+  const addUserInfo = async (e) => {
+    e.preventDefault();
+    const response = await fetch("http://localhost:5000/api/user/addUser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        occupation,
+        email,
+        phone,
+        country,
+        state,
+        city,
+        postalCode,
+        address,
+      }),
+    });
+    const data = await response.json();
+    setShowError(data);
   };
-
+  console.log("showError==>", showError.errors);
+  if (showError.errors === "undefined") {
+    alert("please fill all Data");
+  }
   return (
     <>
       <div className="container my-5">
@@ -47,15 +74,25 @@ const AddUser = () => {
             <b>
               Name <span className="text-danger"> *</span>
             </b>
-            <input type="text" className="GInput" placeholder="Name" />
+            <input
+              type="text"
+              className="GInput"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <div className="col-md my-2">
             <b>
               Occupation <span className="text-danger"> *</span>
             </b>
-            <select className="GSelect">
+            <select
+              className="GSelect"
+              value={occupation}
+              onChange={(e) => setOccupation(e.target.value)}
+            >
               <option value="">Select Occupation</option>
-              {occupation.map((item, i) => {
+              {occupationData.map((item, i) => {
                 return (
                   <option key={i} value={item.code}>
                     {item.name}
@@ -70,13 +107,25 @@ const AddUser = () => {
             <b>
               Email Address <span className="text-danger"> *</span>
             </b>
-            <input type="text" className="GInput" placeholder="Email address" />
+            <input
+              type="text"
+              className="GInput"
+              placeholder="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="col-md my-2">
             <b>
               Phone Number <span className="text-danger"> *</span>
             </b>
-            <input type="text" className="GInput" placeholder="Phone Number" />
+            <input
+              type="text"
+              className="GInput"
+              placeholder="Phone Number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
           </div>
         </div>
         <h6
@@ -90,7 +139,11 @@ const AddUser = () => {
             <b>
               Country <span className="text-danger"> *</span>
             </b>
-            <select className="GSelect" onChange={(e) => handleCountryCode(e)}>
+            <select
+              className="GSelect"
+              value={country}
+              onChange={(e) => handleCountryCode(e)}
+            >
               <option value="">Select Country</option>
               {countryName.map((item, i) => {
                 return (
@@ -105,9 +158,13 @@ const AddUser = () => {
             <b>
               State <span className="text-danger"> *</span>
             </b>
-            <select className="GSelect" onChange={(e) => handleStateCode(e)}>
+            <select
+              className="GSelect"
+              value={state}
+              onChange={(e) => handleStateCode(e)}
+            >
               <option value="">Select State</option>
-              {state.map((item, i) => {
+              {selectedState.map((item, i) => {
                 return (
                   <option key={i} value={item.isoCode}>
                     {item.name}
@@ -124,10 +181,11 @@ const AddUser = () => {
             </b>
             <select
               className="GSelect"
-              onChange={(e) => setSelectedCity(e.target.value)}
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
             >
               <option value="">Select City</option>
-              {city.map((item, i) => {
+              {selectedCity.map((item, i) => {
                 return (
                   <option key={i} value={item.name}>
                     {item.name}
@@ -140,7 +198,13 @@ const AddUser = () => {
             <b>
               Pin Code <span className="text-danger"> *</span>
             </b>
-            <input type="text" className="GInput" placeholder="Pin Code" />
+            <input
+              type="text"
+              className="GInput"
+              placeholder="Pin Code"
+              value={postalCode}
+              onChange={(e) => setPostalCode(e.target.value)}
+            />
           </div>
           <div className=" my-2">
             <b>
@@ -151,11 +215,16 @@ const AddUser = () => {
               className="GTextArea"
               rows={3}
               placeholder="Address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
             />
           </div>
         </div>
-        <div className="d-flex justify-content-end my-3">
-          <button className="btn btn-info btn-sm" onClick={submitForm}>
+        <div className="d-flex justify-content-between my-3">
+          <Link to="/user">
+            <button className="btn btn-info btn-sm">GO BACK</button>
+          </Link>
+          <button className="btn btn-info btn-sm" onClick={addUserInfo}>
             SUBMIT
           </button>
         </div>

@@ -44,8 +44,8 @@ const UserDetail = () => {
                     <td>{item.email}</td>
                     <td>{item.phone}</td>
                     <td>
-                      {item.country}, {item.state}, {item.city},{" "}
-                      {item.postalCode}
+                      {item.address}, {item.city}, {item.state}, {item.country},{" "}
+                      ({item.postalCode})
                     </td>
                   </tr>
                 );
