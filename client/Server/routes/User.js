@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../model/Users");
 const AddUser = require("../model/AddUser");
+// const forgotSchema = require("../model/ForgotPassword");
 const { body, validationResult } = require("express-validator");
 var jwt = require("jsonwebtoken");
 var fetchUser = require("../middleware/FetchUser");
@@ -156,5 +157,37 @@ router.get("/fetchAddUser", async (req, res) => {
     res.status(400).json({ error: "AddUsers Not Found" });
   }
 });
+
+// FORGAT USER PASSWORD ROUTES -5
+// router.post(
+//   "/forgat/password",
+//   [
+//     body("email", "email is required").isEmail(),
+//     body("newPassword", "new password is required"),
+//     body("conPassword", "confirm password is required"),
+//   ],
+//   async (req, res) => {
+//     let success = false;
+//     const errors = validationResult(req);
+//     if (!errors.isEmpty()) {
+//       return res.status(400).json({ success, errors: errors.array() });
+//     }
+//     try {
+//       let user = await forgotSchema.findOne({ email: req.body.email });
+//       success = false;
+//       if (!user) {
+//         return res
+//           .status(400)
+//           .json({ success, message: "sorry email is not registered" });
+//       }
+
+//       const salt = await bcrypt.genSalt(10);
+//       const SecPassword = await bcrypt.hashSync(req.body.password, salt);
+//     } catch (error) {
+//       console.error(error.massage);
+//       res.status(500).send("some error accrued");
+//     }
+//   },
+// );
 
 module.exports = router;
