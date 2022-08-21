@@ -18,14 +18,14 @@ router.post(
     body("password", "Password is required").isLength({ min: 5 }),
   ],
   async (req, res) => {
-    let success = false;
+    let success = null;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success, errors: errors.array() });
     }
     try {
       let user = await User.findOne({ email: req.body.email });
-      success = true;
+      success = false;
       if (user) {
         return res
           .status(400)

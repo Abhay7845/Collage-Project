@@ -25,12 +25,15 @@ const Register = (props) => {
       },
     });
     result = await result.json();
-    // console.log("response", result);
     if (result.success) {
       localStorage.setItem("token", result.AuthToken);
       props.showAlert("Your Account Successfully created", "success");
       navigate("/home");
-    } else {
+    }
+    if (result.success === false) {
+      props.showAlert("Email is Already Registered", "danger");
+    }
+    if (result.success === null) {
       props.showAlert("Please enter your Correct Details", "danger");
     }
   };
@@ -58,7 +61,6 @@ const Register = (props) => {
             <input
               type="text"
               placeholder="Enter Full Name"
-              // autoComplete="off"
               className="GInput"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -72,7 +74,6 @@ const Register = (props) => {
             <input
               type="text"
               placeholder="Email Address"
-              // autoComplete="off"
               className="GInput"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -85,7 +86,6 @@ const Register = (props) => {
             <input
               type="text"
               placeholder="Phone Number"
-              // autoComplete="off"
               className="GInput"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -98,7 +98,6 @@ const Register = (props) => {
             <input
               type={passwordShown ? "text" : "password"}
               placeholder="Enter Password"
-              // autoComplete="off"
               className="GInput"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
