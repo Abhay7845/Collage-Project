@@ -63,7 +63,6 @@ const Login = (props) => {
               type={passwordShown ? "text" : "password"}
               placeholder="Enter Password"
               name="password"
-              // autoComplete="off"
               className="GInput"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -88,8 +87,8 @@ const Login = (props) => {
           </div>
           <hr className="mx-4" />
           <div className="text-center">
-            <Link to="/forgot/password" className="forgotPassStyle">
-              Forgot Password
+            <Link to="/forget/password" className="forgotPassStyle">
+              Forget Password
             </Link>
           </div>
         </div>

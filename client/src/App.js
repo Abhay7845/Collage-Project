@@ -37,7 +37,7 @@ const App = () => {
               element={<Register showAlert={showAlert} />}
             />
             <Route path="/login" element={<Login showAlert={showAlert} />} />
-            <Route path="/forgot/password" element={<ForgetPassword />} />
+            <Route path="/forget/password" element={<ForgetPassword />} />
             <Route element={<PrivateComponent />}>
               <Route path="/user" element={<UserDetail />} />
               <Route path="/profile" element={<Profile />} />

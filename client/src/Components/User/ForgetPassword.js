@@ -23,7 +23,7 @@ const ForgetPassword = () => {
         <div className="container forgotFormStyle">
           <div className="text-center text-info my-4">
             <FaLockOpen size={30} />
-            <h4>FORGAT PASSWORD</h4>
+            <h4>FORGET PASSWORD</h4>
           </div>
           <Formik
             initialValues={ForgotInitialValue}
@@ -72,7 +72,7 @@ const ForgetPassword = () => {
               </div>
               <div className="d-flex justify-content-end my-4 mx-2">
                 <button type="submit" className="btn btn-outline-info btn-sm">
-                  FORGOT
+                  FORGET
                 </button>
               </div>
             </Form>
