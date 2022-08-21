@@ -22,3 +22,9 @@
   width: 100%;
   bottom: 0;
 }
+.forgotPassStyle {
+  text-decoration: none;
+}
+.forgotPassStyle:hover {
+  text-decoration: underline;
+}

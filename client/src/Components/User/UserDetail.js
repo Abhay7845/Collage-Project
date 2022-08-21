@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Footer from "../HomePage/Footer";
 import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const UserDetail = () => {
   const [addUserInfo, setaDDUserinfo] = useState([]);
@@ -33,6 +34,7 @@ const UserDetail = () => {
                 <th>Email Address</th>
                 <th>Phone Number</th>
                 <th>Address</th>
+                <th className="text-center">Date</th>
               </tr>
             </thead>
             <tbody>
@@ -46,6 +48,9 @@ const UserDetail = () => {
                     <td>
                       {item.address}, {item.city}, {item.state}, {item.country},{" "}
                       ({item.postalCode})
+                    </td>
+                    <td className="text-center">
+                      {moment(item.date).format("ll")}
                     </td>
                   </tr>
                 );

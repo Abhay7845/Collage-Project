@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaLock } from "react-icons/fa";
 import "../../Components/User/CssStyle/RegisterLogin.css";
 import "../../App.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../HomePage/Footer";
 
 const Login = (props) => {
@@ -50,7 +50,6 @@ const Login = (props) => {
             <input
               placeholder="Email Address"
               name="email"
-              // autoComplete="off"
               className="GInput"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -86,6 +85,12 @@ const Login = (props) => {
             >
               LOGIN
             </button>
+          </div>
+          <hr className="mx-4" />
+          <div className="text-center">
+            <Link to="/forgot/password" className="forgotPassStyle">
+              Forgot Password
+            </Link>
           </div>
         </div>
       </div>

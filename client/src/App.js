@@ -12,6 +12,7 @@ import About from "./Components/About";
 import Products from "./Components/Products";
 import AddUser from "./Components/User/AddUser";
 import NoPage from "./Components/HomePage/NoPage";
+import ForgetPassword from "./Components/User/ForgetPassword";
 
 const App = () => {
   const [alert, setAlert] = useState(null);
@@ -36,6 +37,7 @@ const App = () => {
               element={<Register showAlert={showAlert} />}
             />
             <Route path="/login" element={<Login showAlert={showAlert} />} />
+            <Route path="/forgot/password" element={<ForgetPassword />} />
             <Route element={<PrivateComponent />}>
               <Route path="/user" element={<UserDetail />} />
               <Route path="/profile" element={<Profile />} />
