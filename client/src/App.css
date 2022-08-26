@@ -43,3 +43,16 @@
   left: 0;
   width: 100%;
 }
+.userId {
+  opacity: 0;
+  font-weight: bold;
+}
+@media screen and (max-width: 820px) {
+  .userId {
+    opacity: 1;
+  }
+}
+
+tr:hover .userId {
+  opacity: 1;
+}

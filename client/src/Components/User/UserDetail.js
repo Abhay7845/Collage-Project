@@ -29,6 +29,7 @@ const UserDetail = () => {
           <table className="table table-hover table-bordered table-pointer">
             <thead className="bg-secondary text-white">
               <tr>
+                <th>S. No.</th>
                 <th>Name</th>
                 <th>Occupation</th>
                 <th>Email Address</th>
@@ -41,6 +42,7 @@ const UserDetail = () => {
               {addUserInfo.map((item, i) => {
                 return (
                   <tr key={i}>
+                    <td className="userId">#</td>
                     <td>{item.name}</td>
                     <td>{item.occupation}</td>
                     <td>{item.email}</td>
