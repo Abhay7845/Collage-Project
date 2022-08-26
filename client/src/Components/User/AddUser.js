@@ -13,6 +13,7 @@ const AddUser = (props) => {
   const [city, setCity] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [address, setAddress] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -38,6 +39,7 @@ const AddUser = (props) => {
     setSelectedCity(getCity);
   };
   const addUserInfo = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const response = await fetch("http://localhost:5000/api/user/addUser", {
       method: "POST",
@@ -57,6 +59,7 @@ const AddUser = (props) => {
       }),
     });
     const data = await response.json();
+    setLoading(false);
     if (data.success === false) {
       props.showAlert("Please fill the all Correct details", "danger");
     } else {
@@ -220,10 +223,13 @@ const AddUser = (props) => {
         </div>
         <div className="d-flex justify-content-between my-3">
           <Link to="/user">
-            <button className="btn btn-info btn-sm">GO BACK</button>
+            <button className="btn btn-info btn-sm text-white">GO BACK</button>
           </Link>
-          <button className="btn btn-info btn-sm" onClick={addUserInfo}>
-            SUBMIT
+          <button
+            className="btn btn-info btn-sm text-white"
+            onClick={addUserInfo}
+          >
+            {loading ? "Loading" : "SUBMIT"}
           </button>
         </div>
       </div>
