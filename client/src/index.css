@@ -1,0 +1,14 @@
+/* /DARK MODE OFF & ON  */
+.light-theme {
+  background-color: #fff;
+}
+.dark-theme {
+  background-color: #1c3442;
+  color: #fff;
+  --td-: #fff;
+}
+@media screen and (max-width: 991px) {
+  .lightDark {
+    display: none;
+  }
+}

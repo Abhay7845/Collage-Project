@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import * as Icon from "react-bootstrap-icons";
 import { FaUser, FaDashcube } from "react-icons/fa";
 import "./HomePage.css";
 
 const Navbar = () => {
+  const [theme, setTheme] = useState("light-theme");
   let navigate = useNavigate();
   const LogOut = () => {
     localStorage.removeItem("token");
@@ -11,6 +13,17 @@ const Navbar = () => {
   };
   let location = useLocation();
   useEffect(() => {}, [location]);
+
+  const ChangeTheme = () => {
+    if (theme === "dark-theme") {
+      setTheme("light-theme");
+    } else {
+      setTheme("dark-theme");
+    }
+  };
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
   return (
     <>
@@ -72,7 +85,15 @@ const Navbar = () => {
                 </>
               )}
             </ul>
+
             <form className="d-flex">
+              <Icon.SunFill
+                className="my-1 lightDark"
+                size={22}
+                cursor="pointer"
+                onClick={ChangeTheme}
+                color={theme === "light-theme" ? "#ffff" : "#000"}
+              />
               {!localStorage.getItem("token") ? (
                 <>
                   <Link className="nav-link" to="/login">
