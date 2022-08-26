@@ -9,10 +9,10 @@ import PrivateComponent from "./Components/PrivateComponent";
 import Home from "./Components/HomePage/Home";
 import Navbar from "./Components/HomePage/Navbar";
 import About from "./Components/About";
-import Products from "./Components/Products";
 import AddUser from "./Components/User/AddUser";
 import NoPage from "./Components/HomePage/NoPage";
 import ForgetPassword from "./Components/User/ForgetPassword";
+import Products from "./Components/Products/Products";
 
 const App = () => {
   const [alert, setAlert] = useState(null);
