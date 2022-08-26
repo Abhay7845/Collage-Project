@@ -3,52 +3,17 @@ import Footer from "./Footer";
 import Heading1 from "../../Asset/img/heading1.webp";
 import Heading2 from "../../Asset/img/heading2.jpg";
 import Heading3 from "../../Asset/img/heading3.jpg";
-
-const text1 =
-  "Grammarly’s plagiarism checker can detect plagiarism from billions of web pages as well as from ProQuest’s academic... databases. Our free plagiarism check will tell you whether or not your text contains duplicate content. Our Premium plagiarism check highlights passages that require citations and gives you the resources you need to properly credit your sources.";
-const text2 =
-  "The plagiarism checker is part of a robust writing app that offers advanced feedback on writing mechanics like... grammar and spelling as well as more complex stylistic issues like word choice, conciseness, tone, and more.";
-const text3 =
-  "You’re working on a paper and you’ve just written a line that seems kind of familiar. Did you read it somewhere while... you were researching the topic? If you did, does that count as plagiarism? Now that you’re looking at it, there are a couple of other lines that you know you borrowed from somewhere. You didn’t bother with a citation at the time because you weren’t planning to keep them.";
+import SearchEngine from "./SearchEngine";
+import { text1, text2, text3 } from "./DefaultText";
 
 const Home = () => {
-  const [search, setSearch] = useState("");
   const [showMore1, setShowMore1] = useState("");
   const [showMore2, setShowMore2] = useState("");
   const [showMore3, setShowMore3] = useState("");
-  const searchData = async () => {
-    console.log("search==>", search);
-    let BusinessList = await fetch("https://graph.microsoft.com/beta", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const response = await BusinessList.json();
-    console.log("response==>", response.value);
-  };
 
   return (
     <>
-      <div className="row mx-0">
-        <div className="col HomeTextStyle">
-          <h4 className="text-center textH4Style">
-            Find The Perfect Freelance Service <br />
-            For Your Business
-          </h4>
-          <div className="col searchField">
-            <input
-              type="search"
-              className="searchStyle"
-              placeholder="Search here"
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <span className="searchButton" onClick={searchData}>
-              Search
-            </span>
-          </div>
-        </div>
-      </div>
+      <SearchEngine />
       <div className="container">
         <div className="row mx-0 my-5">
           <div className="col-lg-4">
