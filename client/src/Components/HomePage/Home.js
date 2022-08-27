@@ -20,7 +20,7 @@ const Home = () => {
             <div className="text-center my-2">
               <img src={Heading1} className="HomeImageStyle" alt="" />
             </div>
-            <h5 className="fw-normal">Plagiarism Checking</h5>
+            <h6 className="fw-bold">Plagiarism Checking</h6>
             <p>{showMore1 ? text1 : `${text1.substring(0, 118)}`}</p>
             <div className="d-flex justify-content-end">
               <button
@@ -35,7 +35,7 @@ const Home = () => {
             <div className="text-center my-2">
               <img src={Heading2} className="HomeImageStyle" alt="" />
             </div>
-            <h5 className="fw-normal">Writing Enhancements</h5>
+            <h6 className="fw-bold">Writing Enhancements</h6>
             <p>{showMore2 ? text2 : `${text2.substring(0, 114)}`}</p>
             <div className="d-flex justify-content-end">
               <button
@@ -50,7 +50,7 @@ const Home = () => {
             <div className="text-center my-2">
               <img src={Heading3} className="HomeImageStyle" alt="" />
             </div>
-            <h5 className="fw-normal">Why Use a Plagiarism ?</h5>
+            <h6 className="fw-bold">Why Use a Plagiarism ?</h6>
             <p>{showMore3 ? text3 : `${text3.substring(0, 120)}`}</p>
             <div className="d-flex justify-content-end">
               <button

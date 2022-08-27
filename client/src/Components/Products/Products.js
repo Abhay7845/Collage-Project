@@ -42,8 +42,8 @@ const Products = () => {
       )}
       <div className="container">
         <div className="pricing-header p-3 pb-md-4 mx-auto text-center my-4">
-          <h3 className="fw-normal">Our Products</h3>
-          <p className="fs-5 text-muted">
+          <h3 className="fw-bold text-info">Our Products</h3>
+          <p className="fs-5 ">
             Quickly build an effective pricing table for your potential
             customers with this Bootstrap example. It’s built with default
             Bootstrap components and utilities with little customization.

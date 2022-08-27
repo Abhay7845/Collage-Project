@@ -5,7 +5,29 @@
 .dark-theme {
   background-color: #1c3442;
   color: #fff;
-  --td-: #fff;
+}
+
+.dark-theme .card {
+  background-color: #1c3442;
+  color: #fff;
+  border: 2px solid #fff;
+}
+.dark-theme .table {
+  background-color: #1c3442;
+  color: #fff;
+}
+.dark-theme tr:hover .userId {
+  color: #fff;
+}
+.dark-theme tr:hover td {
+  color: #fff;
+}
+.dark-theme .HomeTextStyle {
+  background-color: #22465a;
+  color: #fff;
+}
+.dark-theme .textH4Style {
+  color: #fff;
 }
 @media screen and (max-width: 991px) {
   .lightDark {

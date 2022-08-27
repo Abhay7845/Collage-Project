@@ -22,10 +22,10 @@ const SearchEngine = () => {
     <>
       <div className="row mx-0">
         <div className="col HomeTextStyle">
-          <h4 className="text-center textH4Style">
+          <h5 className="text-center textH4Style">
             Find The Perfect Freelance Service <br />
             For Your Business
-          </h4>
+          </h5>
           <div className="col searchField">
             <input
               type="search"

@@ -7,8 +7,8 @@ const About = () => {
       <section className="py-5 text-center container">
         <div className="row py-lg-5">
           <div className="col-lg-10 col-md-10 mx-auto">
-            <h3 className="fw-light">ABOUT US</h3>
-            <p className="lead text-muted">
+            <h3 className="fw-bold text-info">ABOUT US</h3>
+            <p className="lead">
               I am determined to do my part in removing the roadblock of poverty
               from student life. In graduate school and beyond, I look forward
               to using hard data to make radical, positive changes in the

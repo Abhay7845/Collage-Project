@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-info ">
+      <nav className="navbar navbar-expand-lg bg-info">
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -88,7 +88,7 @@ const Navbar = () => {
 
             <form className="d-flex">
               <Icon.SunFill
-                className="my-1 lightDark"
+                className="my-1 lightDark mx-1"
                 size={22}
                 cursor="pointer"
                 onClick={ChangeTheme}
