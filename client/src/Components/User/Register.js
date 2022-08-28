@@ -60,7 +60,7 @@ const Register = (props) => {
             </b>
             <input
               type="text"
-              placeholder="Enter Full Name"
+              placeholder="Full Name"
               className="GInput"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -97,7 +97,7 @@ const Register = (props) => {
             </b>
             <input
               type={passwordShown ? "text" : "password"}
-              placeholder="Enter Password"
+              placeholder="Set Password"
               className="GInput"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

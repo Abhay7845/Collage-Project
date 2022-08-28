@@ -27,7 +27,11 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-info">
+      <nav
+        className={`navbar navbar-expand-lg ${
+          theme === "light-theme" ? "bg-info" : "bg-primary"
+        }`}
+      >
         <div className="container-fluid">
           <button
             className="navbar-toggler"

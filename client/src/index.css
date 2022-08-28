@@ -29,6 +29,10 @@
 .dark-theme .textH4Style {
   color: #fff;
 }
+.dark-theme .RegisterLeftStyle {
+  background-color: #22465a;
+}
+
 @media screen and (max-width: 991px) {
   .lightDark {
     display: none;

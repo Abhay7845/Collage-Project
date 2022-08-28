@@ -44,7 +44,7 @@ const ForgetPassword = () => {
                 </b>
                 <Field
                   type={passwordShown ? "text" : "password"}
-                  placeholder="Enter Password"
+                  placeholder="New Password"
                   className="GInput"
                   name="newPassword"
                 />
@@ -56,7 +56,7 @@ const ForgetPassword = () => {
                 </b>
                 <Field
                   type={passwordShown ? "text" : "password"}
-                  placeholder="Enter Password"
+                  placeholder="Confirm Password"
                   className="GInput"
                   name="conPassword"
                 />

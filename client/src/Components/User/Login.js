@@ -61,7 +61,7 @@ const Login = (props) => {
             </b>
             <input
               type={passwordShown ? "text" : "password"}
-              placeholder="Enter Password"
+              placeholder="Password"
               name="password"
               className="GInput"
               value={password}
