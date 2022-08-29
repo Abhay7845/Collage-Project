@@ -13,6 +13,7 @@ import AddUser from "./Components/User/AddUser";
 import NoPage from "./Components/HomePage/NoPage";
 import ForgetPassword from "./Components/User/ForgetPassword";
 import Products from "./Components/Products/Products";
+import RProducts from "./Components/RetailProducts/RProducts";
 
 const App = () => {
   const [alert, setAlert] = useState(null);
@@ -43,6 +44,7 @@ const App = () => {
               <Route path="/profile" element={<Profile />} />
               <Route path="/about" element={<About />} />
               <Route path="/product" element={<Products />} />
+              <Route path="/retail/products" element={<RProducts />} />
               <Route
                 path="/add-user"
                 element={<AddUser showAlert={showAlert} />}

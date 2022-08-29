@@ -80,6 +80,14 @@ const Navbar = () => {
                   </Link>
                   <Link
                     className={`nav-link NavbarList ${
+                      location.pathname === "/retail/products" ? "active" : ""
+                    }`}
+                    to="/retail/products"
+                  >
+                    RETAIL PRODUCTS
+                  </Link>
+                  <Link
+                    className={`nav-link NavbarList ${
                       location.pathname === "/about" ? "active" : ""
                     }`}
                     to="/about"
