@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Country, State, City } from "country-state-city";
 import { occupationData } from "./UserListData";
 import { Link, useNavigate } from "react-router-dom";
@@ -17,27 +17,8 @@ const AddUser = (props) => {
   const navigate = useNavigate();
   const [selectedState, setSelectedState] = useState([]);
   const [selectedCity, setSelectedCity] = useState([]);
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setLatitude(position.coords.latitude);
-      setLongitude(position.coords.longitude);
-    });
-  }, []);
-
-  console.log("latitude==>", latitude);
-  console.log("longitude==>", longitude);
 
   const countryName = Country.getAllCountries();
-  console.log(
-    "country==>",
-    countryName.find(
-      (position) => position.latitude === 20.0 || position.longitude === 77.0,
-    ),
-  );
-  // console.log("country==>", countryName);
   const handleCountryCode = (e) => {
     const countryCode = e.target.value;
     setCountry(countryCode);
@@ -159,7 +140,7 @@ const AddUser = (props) => {
             </b>
             <select
               className="GSelect"
-              value={country}
+              defaultValue={country}
               onChange={(e) => handleCountryCode(e)}
             >
               <option value="">Select Country</option>
