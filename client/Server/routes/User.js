@@ -16,7 +16,7 @@ router.post(
     body("name", "Full Name is required").isLength({ min: 3 }),
     body("email", "Enter valid Email").isEmail(),
     body("phone", "Enter valid Phone number").isLength({ min: 10 }),
-    body("password", "Password is required").isLength({ min: 5 }),
+    body("password", "Password is required").isLength({ min: 8 }),
   ],
   async (req, res) => {
     let success = null;

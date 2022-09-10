@@ -19,6 +19,9 @@ export const forgotSchema = yup.object({
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g,
       "Password should be strong",
     )
-    .min(10, "Minimum 10 character"),
-  conPassword: yup.string().required("Confirm password is required"),
+    .min(8, "Minimum 8 character"),
+  conPassword: yup
+    .string()
+    .required("Confirm Password is required")
+    .oneOf([yup.ref("newPassword"), null], "Password doesn't matched"),
 });

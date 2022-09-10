@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   const CurrentYear = new Date().getFullYear();
@@ -34,6 +34,14 @@ const Footer = () => {
                 href="https://www.facebook.com/hero.a.12979"
               >
                 <FaFacebook size={25} />
+              </a>
+            </li>
+            <li className="mx-1">
+              <a
+                style={{ color: "#FF0000" }}
+                href="https://www.youtube.com/channel/UCzgB5kldzKedXQqD0D3NYbQ"
+              >
+                <FaYoutube size={30} />
               </a>
             </li>
           </ul>
