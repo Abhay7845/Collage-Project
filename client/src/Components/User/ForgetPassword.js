@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Field, Form, Formik } from "formik";
-import ShowError from "../ShowError";
+import ShowError from "../Common/ShowError";
 import "../Style/Forgot.css";
 import { FaLockOpen } from "react-icons/fa";
 import {

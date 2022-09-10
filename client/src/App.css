@@ -37,7 +37,16 @@
 .GTextArea:hover {
   border: 1px solid #1899e4;
 }
-
+.CButton {
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: large;
+  border: none;
+}
+.CButton:hover {
+  background-color: #c1c4c5;
+}
 /* AlertStyle CSS */
 .alertStyle {
   position: fixed;
