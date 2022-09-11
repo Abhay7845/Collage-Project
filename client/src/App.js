@@ -20,7 +20,7 @@ const App = () => {
     setAlert({ msg: massage, type: type });
     setTimeout(() => {
       setAlert(null);
-    }, 2500);
+    }, 4000);
   };
   return (
     <>
