@@ -48,6 +48,11 @@ const Profile = () => {
                   <td>Registered Date</td>
                   <td>{moment(userInfo.date).format("llll")}</td>
                 </tr>
+                <tr>
+                  <th scope="row">4.</th>
+                  <td>Profile Status</td>
+                  <td>{userAccessToken ? "Active" : "In Active"}</td>
+                </tr>
               </tbody>
             </table>
           </div>
