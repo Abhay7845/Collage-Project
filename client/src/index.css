@@ -38,3 +38,14 @@
     display: none;
   }
 }
+.dark-theme .GInput {
+  padding-left: 10px;
+}
+.dark-theme .GSelect {
+  padding-left: 10px;
+}
+
+/* ABOUT PAGE CSS  */
+.dark-theme .about-section {
+  background-color: #22465a;
+}

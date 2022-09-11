@@ -26,7 +26,7 @@ const SearchEngine = () => {
             Find The Perfect Freelance Service <br />
             For Your Business
           </h5>
-          <div className="col searchField">
+          <div className="col searchField my-3">
             <input
               type="search"
               className="searchStyle"

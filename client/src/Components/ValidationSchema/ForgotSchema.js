@@ -25,3 +25,15 @@ export const forgotSchema = yup.object({
     .required("Confirm Password is required")
     .oneOf([yup.ref("newPassword"), null], "Password doesn't matched"),
 });
+
+//CONTACT ABOUT INITIAL VALUE
+export const contactInitialValue = {
+  email: "",
+};
+
+export const contactSchema = yup.object({
+  email: yup
+    .string()
+    .required("Please enter your email")
+    .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g, "Enter valid Email"),
+});

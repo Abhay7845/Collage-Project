@@ -33,7 +33,7 @@
   border: 1px solid #069906;
   width: 50%;
   text-align: center;
-  height: 39px;
+  padding: 9px;
 }
 
 @media screen and (max-width: 820px) {
@@ -48,7 +48,7 @@
 
 .searchButton {
   background-color: #069906;
-  padding: 7.5px;
+  padding: 10px;
   color: #ffff;
   cursor: pointer;
 }

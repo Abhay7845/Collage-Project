@@ -1,10 +1,47 @@
 .about-section {
   background-color: #cde5f5;
   padding-top: 6%;
-  padding-bottom: 2%;
+  padding-bottom: 4%;
+  padding-left: 2%;
+  padding-right: 2%;
   display: flex;
   justify-content: center;
   text-align: center;
   flex-direction: column;
   font-weight: bold;
+}
+@media screen and (max-width: 760px) {
+  .about-image-row {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.about-image-col {
+  display: flex;
+  justify-content: center;
+}
+.about-image {
+  height: 250px;
+}
+.about-contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.subscribe-button {
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: large;
+  border: none;
+  background-color: #ddbc26;
+}
+.subscribe-button:hover {
+  background-color: #977d06;
+}
+
+@media screen and (max-width: 540px) {
+  .subscribe-button {
+    width: 100%;
+  }
 }

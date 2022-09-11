@@ -9,7 +9,8 @@
   border-left: none;
   border-right: none;
   outline: none;
-  padding: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #c1c4c5;
 }
 .GInput:hover {
@@ -21,7 +22,8 @@
   border-left: none;
   border-right: none;
   outline: none;
-  padding: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #c1c4c5;
   cursor: pointer;
 }
