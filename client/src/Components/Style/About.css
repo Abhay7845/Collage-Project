@@ -30,14 +30,15 @@
 }
 .subscribe-button {
   padding: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: large;
   border: none;
-  background-color: #ddbc26;
+  background-color: #7fe40d;
+  color: #fff;
 }
 .subscribe-button:hover {
-  background-color: #977d06;
+  background-color: #ddbc26;
 }
 
 @media screen and (max-width: 540px) {

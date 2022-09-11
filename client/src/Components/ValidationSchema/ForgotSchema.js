@@ -28,6 +28,7 @@ export const forgotSchema = yup.object({
 
 //CONTACT ABOUT INITIAL VALUE
 export const contactInitialValue = {
+  name: "",
   email: "",
 };
 

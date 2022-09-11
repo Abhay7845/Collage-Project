@@ -39,6 +39,13 @@ const About = () => {
             >
               <Form>
                 <h5 className="text-center my-3">JOIN WITH US</h5>
+                <b>Name</b>
+                <Field
+                  type="text"
+                  name="name"
+                  placeholder="Name (Optional)"
+                  className="GInput my-2"
+                />
                 <b>
                   Email Address <span className="text-danger"> *</span>
                 </b>
@@ -51,7 +58,7 @@ const About = () => {
                 <ShowError name="email" />
                 <div className="d-flex justify-content-end">
                   <button type="submit" className="subscribe-button my-2">
-                    Subscribe
+                    SUBSCRIBE
                   </button>
                 </div>
               </Form>

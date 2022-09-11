@@ -40,14 +40,15 @@
   border: 1px solid #1899e4;
 }
 .CButton {
-  padding: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 6px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: large;
   border: none;
+  background-color: #80c7f0;
 }
 .CButton:hover {
-  background-color: #c1c4c5;
+  background-color: #65bff3;
 }
 /* AlertStyle CSS */
 .alertStyle {
