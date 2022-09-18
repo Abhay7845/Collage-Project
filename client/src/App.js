@@ -13,11 +13,15 @@ import AddUser from "./Components/User/AddUser";
 import NoPage from "./Components/HomePage/NoPage";
 import ForgetPassword from "./Components/User/ForgetPassword";
 import Products from "./Components/Products/Products";
+import Translate from "./Components/Tranlate/Translate";
 
 const App = () => {
   const [alert, setAlert] = useState(null);
   const showAlert = (massage, type) => {
-    setAlert({ msg: massage, type: type });
+    setAlert({
+      msg: massage,
+      type: type,
+    });
     setTimeout(() => {
       setAlert(null);
     }, 4000);
@@ -38,6 +42,7 @@ const App = () => {
             />
             <Route path="/login" element={<Login showAlert={showAlert} />} />
             <Route path="/forget/password" element={<ForgetPassword />} />
+            <Route path="/translate" element={<Translate />} />
             <Route element={<PrivateComponent />}>
               <Route path="/user" element={<UserDetail />} />
               <Route path="/profile" element={<Profile />} />

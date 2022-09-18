@@ -81,3 +81,36 @@
   margin-top: 50px;
   padding: 10px;
 }
+
+/* translate style */
+.translateStyle {
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.GTranslate {
+  width: 15%;
+  border-top: none;
+  border-left: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 3px;
+  outline: none;
+}
+.GTranslate:hover {
+  border-bottom: 1px solid #1899e4;
+}
+@media screen and (max-width: 500px) {
+  .GTranslate {
+    width: 20%;
+  }
+}
+@media screen and (max-width: 353px) {
+  .GTranslate {
+    width: 100%;
+  }
+}

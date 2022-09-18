@@ -91,6 +91,18 @@ const Navbar = () => {
             </ul>
 
             <form className="d-flex">
+              <Link
+                className={`nav-link NavbarList ${
+                  location.pathname === "/translate" ? "active" : ""
+                }`}
+                to="/translate"
+              >
+                <Icon.Translate
+                  className="my-1  mx-3 my-1"
+                  size={22}
+                  cursor="pointer"
+                />
+              </Link>
               <Icon.SunFill
                 className="my-1 lightDark mx-1"
                 size={22}
