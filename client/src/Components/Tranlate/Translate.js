@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Footer from "../HomePage/Footer";
 const axios = require("axios");
 
 const Translate = () => {
@@ -94,7 +95,7 @@ const Translate = () => {
         <div className="d-flex justify-content-end my-4">
           <button
             onClick={(e) => translateLanguage()}
-            className="btn btn-primary"
+            className="CButton text-white"
           >
             {loading ? (
               <span
@@ -103,11 +104,12 @@ const Translate = () => {
                 aria-hidden="true"
               />
             ) : (
-              <span className="sr-only">Next</span>
+              <span className="sr-only">NEXT</span>
             )}
           </button>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
