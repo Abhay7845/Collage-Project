@@ -1,23 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
+import axios from "axios";
 import Footer from "../HomePage/Footer";
 import "../../Components/Style/Profile.css";
 
 const Profile = () => {
   const [userInfo, setUserinfo] = useState("");
   let userAccessToken = localStorage.getItem("token");
-  async function getUserInformation() {
-    const response = await fetch("http://localhost:5000/api/user/fetchUser", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": userAccessToken,
-      },
-    });
-    const json = await response.json();
-    setUserinfo(json);
-  }
-  getUserInformation();
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/user/fetchUser", {
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": userAccessToken,
+        },
+      })
+      .then(async (res) => {
+        const response = await res.data;
+        setUserinfo(response);
+      });
+  }, [userAccessToken]);
+
   return (
     <>
       <div className="mx-0 userInfo">
@@ -27,31 +31,39 @@ const Profile = () => {
             <table className="table table-bordered">
               <thead>
                 <tr>
-                  <th scope="col">S. No.</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">{userInfo.name}</th>
+                  <th>S. No.</th>
+                  <th>Name</th>
+                  <th>{userInfo.name}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">1.</th>
+                  <th>1.</th>
                   <td>Email Address</td>
                   <td>{userInfo.email}</td>
                 </tr>
                 <tr>
-                  <th scope="row">2.</th>
+                  <th>2.</th>
                   <td>Phone Number</td>
                   <td>+91 {userInfo.phone}</td>
                 </tr>
                 <tr>
-                  <th scope="row">3.</th>
+                  <th>3.</th>
                   <td>Registered Date</td>
                   <td>{moment(userInfo.date).format("llll")}</td>
                 </tr>
                 <tr>
-                  <th scope="row">4.</th>
+                  <th>4.</th>
                   <td>Profile Status</td>
-                  <td>{userAccessToken ? "Active" : "In Active"}</td>
+                  <td
+                    style={
+                      userAccessToken
+                        ? { color: "#65ef08", fontWeight: "bold" }
+                        : { color: "#ff0000", fontWeight: "bold" }
+                    }
+                  >
+                    {userAccessToken ? "Active" : "Inactive"}
+                  </td>
                 </tr>
               </tbody>
             </table>

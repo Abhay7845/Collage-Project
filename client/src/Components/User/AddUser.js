@@ -23,7 +23,7 @@ const AddUser = (props) => {
     const countryCode = e.target.value;
     setCountry(countryCode);
     const getState = State.getAllStates().filter(
-      (state) => state.countryCode === countryCode,
+      (state) => state.countryCode === countryCode
     );
     setSelectedState(getState);
   };
@@ -32,7 +32,7 @@ const AddUser = (props) => {
     const stateCode = e.target.value;
     setState(stateCode);
     const getCity = City.getAllCities().filter(
-      (city) => city.stateCode === stateCode,
+      (city) => city.stateCode === stateCode
     );
     setSelectedCity(getCity);
   };
