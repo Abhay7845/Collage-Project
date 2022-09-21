@@ -55,7 +55,7 @@ router.post(
       console.error(error.massage);
       res.status(500).send("some error accrued");
     }
-  },
+  }
 );
 
 // LOGIN ROUTER :-2
@@ -96,7 +96,7 @@ router.post(
       console.error(error.massage);
       res.status(500).send("some error accrued");
     }
-  },
+  }
 );
 
 // FETCH USER DETAILS ROUTES -3
@@ -145,16 +145,17 @@ router.post(
     })
       .then((addUser) => res.json(addUser))
       .catch((error) => console.log(error));
-  },
+  }
 );
 
 // FETCH ADD USER DETAILS ROUTES -5
 router.get("/fetchAddUser", async (req, res) => {
   let addUserData = await AddUser.find();
+  let success = false;
   if (addUserData.length > 0) {
     res.send(addUserData);
   } else {
-    res.status(400).json({ error: "AddUsers Not Found" });
+    res.status(400).json({ success, error: "AddUsers Not Found" });
   }
 });
 
