@@ -77,11 +77,7 @@ const Login = (props) => {
             <span className="text-info">Show Password</span>
           </div>
           <div className="d-flex justify-content-end my-4">
-            <button
-              type="submit"
-              className="btn btn-outline-info btn-sm"
-              onClick={login}
-            >
+            <button type="submit" className="CButton" onClick={login}>
               LOGIN
             </button>
           </div>

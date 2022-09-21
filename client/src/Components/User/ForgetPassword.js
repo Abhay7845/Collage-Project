@@ -71,8 +71,8 @@ const ForgetPassword = () => {
                 <span className="text-info">Show Password</span>
               </div>
               <div className="d-flex justify-content-end my-4 mx-2">
-                <button type="submit" className="btn btn-outline-info btn-sm">
-                  FORGET
+                <button type="submit" className="CButton">
+                  NEXT
                 </button>
               </div>
             </Form>

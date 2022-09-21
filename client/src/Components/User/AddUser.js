@@ -221,12 +221,9 @@ const AddUser = (props) => {
         </div>
         <div className="d-flex justify-content-between my-3">
           <Link to="/user">
-            <button className="btn btn-info btn-sm text-white">GO BACK</button>
+            <button className="CButton">GO BACK</button>
           </Link>
-          <button
-            className="btn btn-info btn-sm text-white"
-            onClick={addUserInfo}
-          >
+          <button className="CButton" onClick={addUserInfo}>
             {loading ? "Loading" : "SUBMIT"}
           </button>
         </div>

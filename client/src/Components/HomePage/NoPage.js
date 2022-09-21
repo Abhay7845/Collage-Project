@@ -13,7 +13,7 @@ const NoPage = () => {
         <p>Page is Not Found</p>
         <div className="my-3">
           <Link to="/home">
-            <button className="btn btn-info btn-sm text-white">Go Home</button>
+            <button className="CButton">Go Home</button>
           </Link>
         </div>
       </div>

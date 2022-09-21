@@ -112,11 +112,7 @@ const Register = (props) => {
             <span className="text-info">Show Password</span>
           </div>
           <div className="d-flex justify-content-end my-4">
-            <button
-              type="submit"
-              className="btn btn-outline-info btn-sm"
-              onClick={onSubmit}
-            >
+            <button type="submit" className="CButton" onClick={onSubmit}>
               REGISTER
             </button>
           </div>

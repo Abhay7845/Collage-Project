@@ -24,7 +24,7 @@ const Home = () => {
             <p>{showMore1 ? text1 : `${text1.substring(0, 118)}`}</p>
             <div className="d-flex justify-content-end">
               <button
-                className="btn btn-outline-info btn-sm"
+                className="CButton"
                 onClick={() => setShowMore1(!showMore1)}
               >
                 {showMore1 ? "Hide Details" : "View Details"}
@@ -39,7 +39,7 @@ const Home = () => {
             <p>{showMore2 ? text2 : `${text2.substring(0, 114)}`}</p>
             <div className="d-flex justify-content-end">
               <button
-                className="btn btn-outline-info btn-sm"
+                className="CButton"
                 onClick={() => setShowMore2(!showMore2)}
               >
                 {showMore2 ? "Hide Details" : "View Details"}
@@ -54,7 +54,7 @@ const Home = () => {
             <p>{showMore3 ? text3 : `${text3.substring(0, 120)}`}</p>
             <div className="d-flex justify-content-end">
               <button
-                className="btn btn-outline-info btn-sm"
+                className="CButton"
                 onClick={() => setShowMore3(!showMore3)}
               >
                 {showMore3 ? "Hide Details" : "View Details"}
