@@ -10,6 +10,7 @@ const Register = (props) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
@@ -17,6 +18,7 @@ const Register = (props) => {
   };
   const navigate = useNavigate();
   const onSubmit = async () => {
+    setLoading(true);
     let result = await fetch("http://localhost:5000/api/user/register", {
       method: "POST",
       body: JSON.stringify({ name, email, phone, password }),
@@ -29,12 +31,15 @@ const Register = (props) => {
       localStorage.setItem("token", result.AuthToken);
       props.showAlert("Your Account Successfully created", "success");
       navigate("/home");
+      setLoading(false);
     }
     if (result.success === false) {
       props.showAlert("Email is Already Registered", "danger");
+      setLoading(false);
     }
     if (result.success === null) {
       props.showAlert("Please enter your Correct Details", "danger");
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -112,8 +117,16 @@ const Register = (props) => {
             <span className="text-info">Show Password</span>
           </div>
           <div className="d-flex justify-content-end my-4">
-            <button type="submit" className="CButton" onClick={onSubmit}>
-              REGISTER
+            <button onClick={(e) => onSubmit()} className="CButton">
+              {loading ? (
+                <span
+                  className="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              ) : (
+                <span className="sr-only">REGISTER</span>
+              )}
             </button>
           </div>
         </div>

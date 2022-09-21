@@ -9,12 +9,15 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
   const navigate = useNavigate();
+
   const login = async (e) => {
-    e.preventDefault();
+    setLoading(true);
     const response = await fetch("http://localhost:5000/api/user/login", {
       method: "POST",
       headers: {
@@ -23,13 +26,14 @@ const Login = (props) => {
       body: JSON.stringify({ email, password }),
     });
     const data = await response.json();
-    // console.log("data = ", data);
     if (data.success === true) {
       localStorage.setItem("token", data.AuthToken);
       props.showAlert("Logged in Successfully", "success");
       navigate("/home");
+      setLoading(true);
     } else {
       props.showAlert("Please enter your valid email and password", "danger");
+      setLoading(false);
     }
   };
   return (
@@ -77,8 +81,16 @@ const Login = (props) => {
             <span className="text-info">Show Password</span>
           </div>
           <div className="d-flex justify-content-end my-4">
-            <button type="submit" className="CButton" onClick={login}>
-              LOGIN
+            <button onClick={(e) => login()} className="CButton">
+              {loading ? (
+                <span
+                  className="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              ) : (
+                <span className="sr-only">LOGIN</span>
+              )}
             </button>
           </div>
           <hr className="mx-4" />

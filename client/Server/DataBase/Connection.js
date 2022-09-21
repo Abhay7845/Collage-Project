@@ -5,7 +5,7 @@ const DataBaseConnectionURI =
 
 const DatabaseConnection = () => {
   mongoose.connect(DataBaseConnectionURI, () => {
-    console.log("connection Successfully");
+    console.log("Connection Successfully");
   });
 };
 

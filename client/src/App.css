@@ -45,10 +45,11 @@
   padding-right: 20px;
   font-size: large;
   border: none;
-  background-color: #80c7f0;
+  background-color: #1899e4;
+  color: #ffff;
 }
 .CButton:hover {
-  background-color: #65bff3;
+  background-color: #53b8f2;
 }
 /* AlertStyle CSS */
 .alertStyle {

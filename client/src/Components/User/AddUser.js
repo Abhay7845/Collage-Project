@@ -38,7 +38,6 @@ const AddUser = (props) => {
   };
   const addUserInfo = async (e) => {
     setLoading(true);
-    e.preventDefault();
     const response = await fetch("http://localhost:5000/api/user/addUser", {
       method: "POST",
       headers: {
@@ -223,8 +222,16 @@ const AddUser = (props) => {
           <Link to="/user">
             <button className="CButton">GO BACK</button>
           </Link>
-          <button className="CButton" onClick={addUserInfo}>
-            {loading ? "Loading" : "SUBMIT"}
+          <button onClick={addUserInfo} className="CButton">
+            {loading ? (
+              <span
+                className="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              />
+            ) : (
+              <span className="sr-only">SUBMIT</span>
+            )}
           </button>
         </div>
       </div>
