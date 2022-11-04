@@ -2,8 +2,10 @@ import React, { useState } from "react";
 
 const SearchEngine = () => {
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const searchData = async () => {
+    setLoading(true);
     console.log("search==>", search);
     let BusinessList = await fetch(
       `https://jsonplaceholder.typicode.com/comments?q=${search}`,
@@ -12,10 +14,11 @@ const SearchEngine = () => {
         headers: {
           "Content-Type": "application/json",
         },
-      },
+      }
     );
     const response = await BusinessList.json();
     console.log("response==>", response);
+    setLoading(false);
   };
 
   return (
@@ -34,7 +37,15 @@ const SearchEngine = () => {
               onChange={(e) => setSearch(e.target.value)}
             />
             <span className="searchButton" onClick={searchData}>
-              Search
+              {loading ? (
+                <span
+                  className="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              ) : (
+                <span className="sr-only">Search</span>
+              )}
             </span>
           </div>
         </div>

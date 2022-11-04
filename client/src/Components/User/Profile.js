@@ -6,18 +6,17 @@ import "../../Components/Style/Profile.css";
 
 const Profile = () => {
   const [userInfo, setUserinfo] = useState("");
-  let userAccessToken = localStorage.getItem("token");
-
+  const userAccessToken = localStorage.getItem("token");
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/user/fetchUser", {
         headers: {
           "Content-Type": "application/json",
-          "auth-token": userAccessToken,
+          Authorization: userAccessToken,
         },
       })
       .then(async (res) => {
-        const response = await res.data;
+        const response = await res.data.data;
         setUserinfo(response);
       });
   }, [userAccessToken]);

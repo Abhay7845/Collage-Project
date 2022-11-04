@@ -5,8 +5,10 @@ const connectTOdb = require("./DataBase/Connection");
 connectTOdb();
 app.use(express.json());
 app.use(cors());
-const port = 5000;
+const PORT = 5000;
 // Available Routes
 app.use("/api/user", require("./routes/User"));
 
-app.listen(port);
+app.listen(PORT, () => {
+  console.log(`server is running on port ${PORT}`);
+});

@@ -6,19 +6,20 @@ import axios from "axios";
 
 const UserDetail = () => {
   const [addUserInfo, setAddUserInfo] = useState([]);
-
+  const userAccessToken = localStorage.getItem("token");
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/user/fetchAddUser", {
         headers: {
           accept: "application/json",
+          Authorization: userAccessToken,
         },
       })
       .then(async (res) => {
-        const response = await res.data;
+        const response = await res.data.addUserData;
         setAddUserInfo(response);
       });
-  }, []);
+  }, [userAccessToken]);
 
   return (
     <>

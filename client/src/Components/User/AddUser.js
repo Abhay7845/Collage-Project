@@ -27,7 +27,7 @@ const AddUser = (props) => {
     );
     setSelectedState(getState);
   };
-
+  const userAccessToken = localStorage.getItem("token");
   const handleStateCode = (e) => {
     const stateCode = e.target.value;
     setState(stateCode);
@@ -36,12 +36,13 @@ const AddUser = (props) => {
     );
     setSelectedCity(getCity);
   };
-  const addUserInfo = async (e) => {
+  const addUserInfo = async () => {
     setLoading(true);
     const response = await fetch("http://localhost:5000/api/user/addUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: userAccessToken,
       },
       body: JSON.stringify({
         name,
