@@ -59,7 +59,7 @@
   width: 100%;
 }
 .userId {
-  opacity: 0;
+  opacity: 0.3;
   font-weight: bold;
   text-align: center;
 }

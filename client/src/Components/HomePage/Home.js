@@ -21,7 +21,9 @@ const Home = () => {
               <img src={Heading1} className="HomeImageStyle" alt="" />
             </div>
             <h6 className="fw-bold">Plagiarism Checking</h6>
-            <p>{showMore1 ? text1 : `${text1.substring(0, 118)}`}</p>
+            <p className="textJustify">
+              {showMore1 ? text1 : `${text1.substring(0, 118)}`}
+            </p>
             <div className="d-flex justify-content-end">
               <button
                 className="CButton"
@@ -36,7 +38,9 @@ const Home = () => {
               <img src={Heading2} className="HomeImageStyle" alt="" />
             </div>
             <h6 className="fw-bold">Writing Enhancements</h6>
-            <p>{showMore2 ? text2 : `${text2.substring(0, 114)}`}</p>
+            <p className="textJustify">
+              {showMore2 ? text2 : `${text2.substring(0, 114)}`}
+            </p>
             <div className="d-flex justify-content-end">
               <button
                 className="CButton"
@@ -51,7 +55,9 @@ const Home = () => {
               <img src={Heading3} className="HomeImageStyle" alt="" />
             </div>
             <h6 className="fw-bold">Why Use a Plagiarism ?</h6>
-            <p>{showMore3 ? text3 : `${text3.substring(0, 120)}`}</p>
+            <p className="textJustify">
+              {showMore3 ? text3 : `${text3.substring(0, 120)}`}
+            </p>
             <div className="d-flex justify-content-end">
               <button
                 className="CButton"

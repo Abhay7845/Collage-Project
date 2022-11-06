@@ -24,9 +24,9 @@ const Profile = () => {
   return (
     <>
       <div className="mx-0 userInfo">
-        <div className="dataInfo">
+        <div className="table-responsive dataInfo">
           <h3 className="text-info text-center my-5">Your Profile</h3>
-          <div className="mx-2">
+          <div className="mx-1">
             <table className="table table-bordered">
               <thead>
                 <tr>
@@ -61,7 +61,7 @@ const Profile = () => {
                         : { color: "#ff0000", fontWeight: "bold" }
                     }
                   >
-                    {userAccessToken ? "Active" : "Inactive"}
+                    {userAccessToken !== undefined ? "Active" : "Inactive"}
                   </td>
                 </tr>
               </tbody>

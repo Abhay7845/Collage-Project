@@ -65,6 +65,10 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-style: italic;
 }
+/* PARAGRAPH STYLE */
+.textJustify {
+  text-align: justify;
+}
 
 .HomeImageStyle {
   width: 150px;

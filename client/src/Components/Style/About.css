@@ -23,6 +23,13 @@
 .about-image {
   height: 250px;
 }
+@media screen and (max-width: 333px) {
+  .about-image {
+    margin-top: 5%;
+    height: 180px;
+    width: 200px;
+  }
+}
 .about-contact {
   display: flex;
   justify-content: center;
