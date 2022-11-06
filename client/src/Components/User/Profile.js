@@ -25,7 +25,7 @@ const Profile = () => {
     <>
       <div className="mx-0 userInfo">
         <div className="dataInfo">
-          <h3 className="text-info text-center my-5">User Information</h3>
+          <h3 className="text-info text-center my-5">Your Profile</h3>
           <div className="mx-2">
             <table className="table table-bordered">
               <thead>

@@ -61,6 +61,7 @@
 .userId {
   opacity: 0;
   font-weight: bold;
+  text-align: center;
 }
 @media screen and (max-width: 820px) {
   .userId {
