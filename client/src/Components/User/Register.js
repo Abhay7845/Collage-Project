@@ -55,7 +55,7 @@ const Register = (props) => {
           <h5 className="text-center my-5 text-info">REGISTER WITH US</h5>
         </div>
         <div className="col RegisterLeftRight">
-          <div className="text-center text-info my-5">
+          <div className="text-center text-info my-4">
             <FaUserAlt size={30} />
             <h4>REGISTER</h4>
           </div>

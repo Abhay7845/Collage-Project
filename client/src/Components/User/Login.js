@@ -43,7 +43,7 @@ const Login = (props) => {
           <h5 className="text-center my-5 text-info">LOGIN WITH US</h5>
         </div>
         <div className="col RegisterLeftRight">
-          <div className="text-center text-info my-5">
+          <div className="text-center text-info my-4">
             <FaLock size={30} />
             <h4>LOGIN</h4>
           </div>
