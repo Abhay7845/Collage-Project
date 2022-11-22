@@ -57,7 +57,7 @@ router.post("/login", loginValidation, async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(400).send({ errors: errors.array() });
   }
-  const { email, password } = req.body;
+  const { email, password } = await req.body;
   try {
     let user = await User.findOne({ email });
     if (!user) {
@@ -65,7 +65,7 @@ router.post("/login", loginValidation, async (req, res) => {
         .status(400)
         .json({ success: false, error: "Sorry!  please register with us" });
     }
-    const comparePassword = await bcrypt.compare(password, user.password);
+    const comparePassword =  bcrypt.compare(password, user.password);
     if (!comparePassword) {
       return res
         .status(400)

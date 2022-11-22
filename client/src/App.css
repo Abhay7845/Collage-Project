@@ -72,3 +72,21 @@
 tr:hover .userId {
   opacity: 1;
 }
+
+/* Register and Login Button Style */
+
+.registerLoginButton{
+  padding: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: none;
+  background-color: #56c0fe;
+  color: #ffff;
+  border: 1px solid #ffff;
+  border-radius: 2px;
+}
+
+.registerLoginButton:hover{
+  background-color: #edf7fa;
+  color: black;
+}
