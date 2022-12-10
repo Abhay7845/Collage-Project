@@ -13,6 +13,7 @@
     "formik": "^2.2.9",
     "geolocation": "^0.2.0",
     "moment": "^2.29.4",
+    "mongoose": "^6.7.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
     "react-bootstrap-icons": "^1.8.4",

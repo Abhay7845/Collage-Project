@@ -27,7 +27,7 @@ router.post("/register", registerValidation, async (req, res) => {
       });
     }
     const salt = await bcrypt.genSalt(10);
-    const SecPassword = await bcrypt.hashSync(req.body.password, salt);
+    const SecPassword = bcrypt.hashSync(req.body.password, salt);
     // create users
     user = await User.create({
       name: req.body.name,
@@ -65,7 +65,7 @@ router.post("/login", loginValidation, async (req, res) => {
         .status(400)
         .json({ success: false, error: "Sorry!  please register with us" });
     }
-    const comparePassword =  bcrypt.compare(password, user.password);
+    const comparePassword = bcrypt.compare(password, user.password);
     if (!comparePassword) {
       return res
         .status(400)

@@ -39,6 +39,7 @@ const UserDetail = () => {
                   <th className="text-center">Date</th>
                 </tr>
               </thead>
+
               <tbody>
                 {addUserInfo.map((item, i) => {
                   return (
