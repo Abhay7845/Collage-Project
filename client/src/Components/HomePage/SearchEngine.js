@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import TablePagination from "@mui/material/TablePagination";
 
 const SearchEngine = () => {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
+  const [responseData, setResponseData] = useState([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const searchData = async () => {
     setLoading(true);
-    console.log("search==>", search);
     let BusinessList = await fetch(
       `https://jsonplaceholder.typicode.com/comments?q=${search}`,
       {
@@ -17,8 +20,21 @@ const SearchEngine = () => {
       }
     );
     const response = await BusinessList.json();
-    console.log("response==>", response);
+    if (!response) {
+      alert("Data Not Found");
+    } else {
+      setResponseData(response);
+    }
     setLoading(false);
+  };
+  for (let i = 0; i < responseData.length; i++);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
   };
 
   return (
@@ -31,7 +47,7 @@ const SearchEngine = () => {
           </h5>
           <div className="col searchField my-3">
             <input
-              type="search"
+              type="text"
               className="searchStyle"
               placeholder="Search here"
               onChange={(e) => setSearch(e.target.value)}
@@ -50,6 +66,45 @@ const SearchEngine = () => {
           </div>
         </div>
       </div>
+      {responseData.length > 0 && (
+        <div className="container my-3 ">
+          <div className="table-responsive">
+            <table className="table table-hover table-bordered table-pointer">
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {responseData
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((item, i) => {
+                    return (
+                      <tr key={i} className="textJustify">
+                        <td>{i + 1}</td>
+                        <td>{item.name}</td>
+                        <td>{item.email}</td>
+                        <td>{item.body}</td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
+            <TablePagination
+              component="div"
+              count={responseData.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+          </div>
+        </div>
+      )}
+      {!responseData === null && <p>Data Not Found</p>}
     </>
   );
 };
