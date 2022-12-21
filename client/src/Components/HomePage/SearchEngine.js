@@ -73,8 +73,6 @@ const SearchEngine = () => {
               <thead>
                 <tr>
                   <th scope="col">No.</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Name</th>
                   <th scope="col">Description</th>
                 </tr>
               </thead>
@@ -85,8 +83,6 @@ const SearchEngine = () => {
                     return (
                       <tr key={i} className="textJustify">
                         <td>{i + 1}</td>
-                        <td>{item.name}</td>
-                        <td>{item.email}</td>
                         <td>{item.body}</td>
                       </tr>
                     );

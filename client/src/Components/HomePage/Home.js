@@ -5,6 +5,7 @@ import Heading2 from "../../Asset/img/heading2.jpg";
 import Heading3 from "../../Asset/img/heading3.jpg";
 import SearchEngine from "./SearchEngine";
 import { text1, text2, text3 } from "./DefaultText";
+import Services from "./Services";
 
 const Home = () => {
   const [showMore1, setShowMore1] = useState("");
@@ -69,6 +70,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Services />
       <div>
         <Footer />
       </div>
