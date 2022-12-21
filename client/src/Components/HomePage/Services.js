@@ -10,10 +10,20 @@ const Services = () => {
   return (
     <>
       <div className="container my-5">
+        <h4 className="my-3 text-info text-center">
+          <b>OUR SERVICES</b>
+        </h4>
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <div className="col">
-            <div className="shadow-sm">
-              <img src={img} className="img-fluid rounded" alt="..." />
+            <div className="card shadow">
+              <img src={img} className="img-fluid" alt="..." />
+              <div className="card-body">
+                <p className="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
             </div>
           </div>
           <div className="col">
