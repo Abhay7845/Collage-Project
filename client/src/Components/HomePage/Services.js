@@ -4,7 +4,7 @@ import img1 from "../../Asset/img/skill_developer1.jpg";
 import img2 from "../../Asset/img/skill_developer2.webp";
 import img3 from "../../Asset/img/skill_developer3.jpg";
 import img4 from "../../Asset/img/skill_developer4.jpg";
-import img5 from "../../Asset/img/skill_developer5.jpg";
+import owner from "../../Asset/img/Owner.jpg";
 
 const Services = () => {
   return (
@@ -17,39 +17,39 @@ const Services = () => {
           <div className="col">
             <div className="card shadow">
               <img src={img} className="img-fluid" alt="..." />
-              <div className="card-body">
+              {/* <div className="card-body">
                 <p className="card-text">
                   This is a wider card with supporting text below as a natural
                   lead-in to additional content. This content is a little bit
                   longer.
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="col">
-            <div className="shadow-sm">
+            <div className="card shadow">
               <img src={img1} className="img-fluid rounded" alt="..." />
             </div>
           </div>
           <div className="col">
-            <div className="shadow-sm">
+            <div className="card shadow">
               <img src={img2} className="img-fluid rounded" alt="..." />
             </div>
           </div>
 
           <div className="col">
-            <div className="shadow-sm">
+            <div className="card shadow">
               <img src={img3} className="img-fluid rounded" alt="..." />
             </div>
           </div>
           <div className="col">
-            <div className="shadow-sm">
+            <div className="card shadow">
               <img src={img4} className="img-fluid rounded" alt="..." />
             </div>
           </div>
           <div className="col">
-            <div className="shadow-sm">
-              <img src={img5} className="img-fluid rounded" alt="..." />
+            <div className="card shadow">
+              <img src={owner} className="img-fluid rounded" alt="..." />
             </div>
           </div>
         </div>

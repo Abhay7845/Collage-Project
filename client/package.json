@@ -23,6 +23,7 @@
     "react-bootstrap-icons": "^1.8.4",
     "react-dom": "^18.2.0",
     "react-fullscreen-loading": "0.0.4",
+    "react-html-table-to-excel": "^2.0.0",
     "react-icons": "^4.4.0",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TablePagination from "@mui/material/TablePagination";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 const SearchEngine = () => {
   const [search, setSearch] = useState("");
@@ -9,29 +10,33 @@ const SearchEngine = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const searchData = async () => {
-    setLoading(true);
-    let BusinessList = await fetch(
-      `https://jsonplaceholder.typicode.com/comments?q=${search}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const response = await BusinessList.json();
-    if (!response) {
-      alert("Data Not Found");
+    if (!search) {
+      alert("Please enter Your Text");
     } else {
-      setResponseData(response);
+      setLoading(true);
+      let BusinessList = await fetch(
+        `https://jsonplaceholder.typicode.com/comments?q=${search}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const response = await BusinessList.json();
+      if (response.length === 0) {
+        alert("Data Not Found");
+      } else {
+        setResponseData(response);
+      }
+      setLoading(false);
     }
-    setLoading(false);
   };
   for (let i = 0; i < responseData.length; i++);
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
@@ -49,7 +54,7 @@ const SearchEngine = () => {
             <input
               type="text"
               className="searchStyle"
-              placeholder="Search here"
+              placeholder="Search"
               onChange={(e) => setSearch(e.target.value)}
             />
             <span className="searchButton" onClick={searchData}>
@@ -67,13 +72,27 @@ const SearchEngine = () => {
         </div>
       </div>
       {responseData.length > 0 && (
-        <div className="container my-3 ">
+        <div className="container my-3">
+          <div className="d-flex justify-content-end my-2">
+            <b className="mx-2 my-1">DOWNLOAD YOUR LIST :-</b>
+            <ReactHTMLTableToExcel
+              id="test-table-xls-button"
+              className="downloadexcel"
+              table="table-to-xls"
+              filename="Freelancing List"
+              sheet="tablexls"
+              buttonText="DOWNLOAD"
+            />
+          </div>
           <div className="table-responsive">
-            <table className="table table-hover table-bordered table-pointer">
+            <table
+              id="table-to-xls"
+              className="table table-hover table-bordered table-pointer"
+            >
               <thead>
                 <tr>
-                  <th scope="col">No.</th>
-                  <th scope="col">Description</th>
+                  <th>No.</th>
+                  <th className="text-center">Description</th>
                 </tr>
               </thead>
               <tbody>
