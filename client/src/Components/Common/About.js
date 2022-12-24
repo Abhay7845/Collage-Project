@@ -37,15 +37,8 @@ const About = () => {
                 console.log("payload==>", payload);
               }}
             >
-              <Form>
+              <Form className="w-100">
                 <h5 className="text-center my-3">JOIN WITH US</h5>
-                <b>Name</b>
-                <Field
-                  type="text"
-                  name="name"
-                  placeholder="Name (Optional)"
-                  className="GInput my-2"
-                />
                 <b>
                   Email Address <span className="text-danger"> *</span>
                 </b>
@@ -56,6 +49,16 @@ const About = () => {
                   className="GInput my-2"
                 />
                 <ShowError name="email" />
+                <b>
+                  Comment <span className="text-danger"> *</span>
+                </b>
+                <Field
+                  type="text"
+                  name="comment"
+                  placeholder="Enter your commnet"
+                  className="GInput my-2"
+                />
+                <ShowError name="comment" />
                 <div className="d-flex justify-content-end">
                   <button type="submit" className="subscribe-button my-2">
                     SUBSCRIBE

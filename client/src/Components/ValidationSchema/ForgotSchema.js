@@ -17,7 +17,7 @@ export const forgotSchema = yup.object({
     .required("Password is required")
     .matches(
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g,
-      "Password should be strong",
+      "Password should be strong"
     )
     .min(8, "Minimum 8 character"),
   conPassword: yup
@@ -28,8 +28,8 @@ export const forgotSchema = yup.object({
 
 //CONTACT ABOUT INITIAL VALUE
 export const contactInitialValue = {
-  name: "",
   email: "",
+  comment: "",
 };
 
 export const contactSchema = yup.object({
@@ -37,4 +37,8 @@ export const contactSchema = yup.object({
     .string()
     .required("Please enter your email")
     .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g, "Enter valid Email"),
+  comment: yup
+    .string()
+    .required("Commnet is required")
+    .min(15, "Commnet should be more than 15 charectors"),
 });
