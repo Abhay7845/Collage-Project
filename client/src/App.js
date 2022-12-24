@@ -46,7 +46,7 @@ const App = () => {
             <Route element={<PrivateComponent />}>
               <Route path="/user" element={<UserDetail />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/about" element={<About showAlert={showAlert} />} />
               <Route path="/product" element={<Products />} />
               <Route
                 path="/add-user"

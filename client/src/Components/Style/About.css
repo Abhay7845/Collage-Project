@@ -10,19 +10,23 @@
   flex-direction: column;
   font-weight: bold;
 }
+
 @media screen and (max-width: 760px) {
   .about-image-row {
     display: flex;
     flex-direction: column;
   }
 }
+
 .about-image-col {
   display: flex;
   justify-content: center;
 }
+
 .about-image {
   height: 250px;
 }
+
 @media screen and (max-width: 333px) {
   .about-image {
     margin-top: 5%;
@@ -30,11 +34,13 @@
     width: 200px;
   }
 }
+
 .about-contact {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .subscribe-button {
   padding: 10px;
   padding-left: 20px;
@@ -44,6 +50,7 @@
   background-color: #7fe40d;
   color: #fff;
 }
+
 .subscribe-button:hover {
   background-color: #ddbc26;
 }
@@ -52,4 +59,10 @@
   .subscribe-button {
     width: 100%;
   }
+}
+
+
+/* USERS COMMENT STYLE  */
+.commentStyle {
+  margin-left: 28px;
 }

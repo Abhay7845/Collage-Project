@@ -1,15 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Field, Form, Formik } from "formik";
+import moment from "moment";
 import {
   contactInitialValue,
   contactSchema,
 } from "../ValidationSchema/ForgotSchema";
+import * as Icon from "react-bootstrap-icons";
 import ShowError from "../Common/ShowError";
 import Footer from "../HomePage/Footer";
 import "../../Components/Style/About.css";
 import image from "../../Asset/img/laptop.png";
+import axios from "axios";
 
-const About = () => {
+const About = (props) => {
+  const [loading, setLoading] = useState(false);
+  const [comments, setComments] = useState([]);
+
+  const onSendComment = async (payload) => {
+    setLoading(true);
+    const { email, comment } = payload;
+    let result = await fetch("http://localhost:5000/api/user/subscription", {
+      method: "POST",
+      body: JSON.stringify({ email, comment }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    result = await result.json();
+    if (result.success) {
+      props.showAlert("Thank You For  Support", "success");
+      setLoading(false);
+    }
+  };
+
+  //FETCH USERS COMMENTS
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/user//fetch/comment")
+      .then((res) => res)
+      .then((result) => setComments(result.data.comments));
+  }, [comments]);
+
   return (
     <>
       <div className="about-section">
@@ -33,11 +64,12 @@ const About = () => {
             <Formik
               initialValues={contactInitialValue}
               validationSchema={contactSchema}
-              onSubmit={(payload) => {
-                console.log("payload==>", payload);
+              onSubmit={(payload, { resetForm }) => {
+                onSendComment(payload);
+                resetForm();
               }}
             >
-              <Form className="w-100">
+              <Form className="w-100 mx-1">
                 <h5 className="text-center my-3">JOIN WITH US</h5>
                 <b>
                   Email Address <span className="text-danger"> *</span>
@@ -61,7 +93,15 @@ const About = () => {
                 <ShowError name="comment" />
                 <div className="d-flex justify-content-end">
                   <button type="submit" className="subscribe-button my-2">
-                    SUBSCRIBE
+                    {loading ? (
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <span className="sr-only">SUBSCRIBE</span>
+                    )}
                   </button>
                 </div>
               </Form>
@@ -69,6 +109,32 @@ const About = () => {
           </div>
         </div>
       </div>
+      {comments.length === 0 ? (
+        ""
+      ) : (
+        <div className="mx-2 p-2 my-3 border">
+          {comments.map((item, i) => {
+            return (
+              <div key={i}>
+                <Icon.PersonCircle
+                  size={23}
+                  className="text-secondary"
+                  style={{ marginTop: "-5px" }}
+                />
+                <b className="mx-1">{item.email}</b>
+                <p className="commentStyle">
+                  <span className="text-secondary">comment:</span>
+                  {item.comment}
+                </p>
+                <p className="d-flex justify-content-end">
+                  {moment(item.date).format("ll")}
+                </p>
+                <hr />
+              </div>
+            );
+          })}
+        </div>
+      )}
       <Footer />
     </>
   );

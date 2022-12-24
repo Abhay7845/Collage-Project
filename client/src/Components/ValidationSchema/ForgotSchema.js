@@ -40,5 +40,5 @@ export const contactSchema = yup.object({
   comment: yup
     .string()
     .required("Commnet is required")
-    .min(15, "Commnet should be more than 15 charectors"),
+    .min(20, "Commnet should be more than 20 charectors"),
 });
