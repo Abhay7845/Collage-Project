@@ -100,7 +100,7 @@ const About = (props) => {
                         aria-hidden="true"
                       />
                     ) : (
-                      <span className="sr-only">SUBSCRIBE</span>
+                      <span className="sr-only">COMMENT</span>
                     )}
                   </button>
                 </div>
@@ -119,12 +119,12 @@ const About = (props) => {
                 <Icon.PersonCircle
                   size={23}
                   className="text-secondary"
-                  style={{ marginTop: "-5px" }}
+                  style={{ marginTop: "-2px" }}
                 />
-                <b className="mx-1">{item.email}</b>
+                <b className="mx-2">{item.email}</b>
                 <p className="commentStyle">
                   <span className="text-secondary">comment:</span>
-                  {item.comment}
+                  {item.comment}.
                 </p>
                 <p className="d-flex justify-content-end">
                   {moment(item.date).format("ll")}
