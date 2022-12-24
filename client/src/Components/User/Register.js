@@ -37,7 +37,7 @@ const Register = (props) => {
       props.showAlert("Email is Already Registered", "danger");
       setLoading(false);
     }
-    if (result.success === null) {
+    if (result.errors) {
       props.showAlert("Please enter your Correct Details", "danger");
       setLoading(false);
     }
