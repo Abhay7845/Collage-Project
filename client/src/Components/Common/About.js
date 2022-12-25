@@ -41,6 +41,7 @@ const About = (props) => {
       .then((result) => setComments(result.data.comments));
   }, [comments]);
 
+  const totalComments = comments.length;
   return (
     <>
       <div className="about-section">
@@ -109,6 +110,9 @@ const About = (props) => {
           </div>
         </div>
       </div>
+      <p className="mx-2 text-secondary">
+        Comments Shown: <span>{totalComments}</span>
+      </p>
       {comments.length === 0 ? (
         ""
       ) : (
@@ -123,7 +127,7 @@ const About = (props) => {
                 />
                 <b className="mx-2">{item.email}</b>
                 <p className="commentStyle">
-                  <span className="text-secondary">comment:</span>
+                  <span className="text-secondary">comment: </span>
                   {item.comment}.
                 </p>
                 <p className="d-flex justify-content-end">
