@@ -2,6 +2,7 @@
 .light-theme {
   background-color: #fff;
 }
+
 .dark-theme {
   background-color: #1c3442;
   color: #fff;
@@ -12,35 +13,42 @@
   color: #fff;
   border: 2px solid #fff;
 }
+
 .dark-theme .table {
   background-color: #1c3442;
   color: #fff;
 }
+
 .dark-theme tr:hover .userId {
   color: #fff;
 }
+
 .dark-theme tr:hover td {
   color: #fff;
 }
+
 .dark-theme .HomeTextStyle {
   background-color: #22465a;
   color: #fff;
 }
+
 .dark-theme .textH4Style {
   color: #fff;
 }
+
 .dark-theme .RegisterLeftStyle {
   background-color: #22465a;
 }
 
-@media screen and (max-width: 991px) {
+/* @media screen and (max-width: 991px) {
   .lightDark {
     display: none;
   }
-}
+} */
 .dark-theme .GInput {
   padding-left: 10px;
 }
+
 .dark-theme .GSelect {
   padding-left: 10px;
 }

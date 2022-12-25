@@ -98,7 +98,7 @@ const Navbar = () => {
                 to="/translate"
               >
                 <Icon.Translate
-                  className="my-1  mx-3 my-1"
+                  className="my-1 mx-1"
                   size={22}
                   cursor="pointer"
                 />
@@ -113,20 +113,16 @@ const Navbar = () => {
               {!localStorage.getItem("token") ? (
                 <>
                   <Link className="nav-link" to="/login">
-                    <button className="registerLoginButton mx-2">
-                      LOGIN
-                    </button>
+                    <button className="registerLoginButton mx-2">LOGIN</button>
                   </Link>
                   <Link className="nav-link" to="/register">
-                    <button className="registerLoginButton">
-                      REGISTER
-                    </button>
+                    <button className="registerLoginButton">REGISTER</button>
                   </Link>
                 </>
               ) : (
                 <>
                   <Link
-                    className={`nav-link mx-2 ${
+                    className={`nav-link mx-1 ${
                       location.pathname === "/profile" ? "active" : ""
                     }`}
                     to="/profile"
@@ -136,7 +132,7 @@ const Navbar = () => {
                       color={`${
                         location.pathname === "/profile" ? "black" : "white"
                       }`}
-                      className="mx-2"
+                      className="mx-1"
                     />
                   </Link>
                   <b className="logoutBtn" onClick={LogOut}>
