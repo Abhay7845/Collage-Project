@@ -6,7 +6,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.0",
+    "@mui/material": "^5.11.4",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -16,6 +16,7 @@
     "country-state-city": "^3.0.1",
     "formik": "^2.2.9",
     "geolocation": "^0.2.0",
+    "material-ui-pagination": "^1.1.6",
     "moment": "^2.29.4",
     "mongoose": "^6.7.3",
     "react": "^18.2.0",

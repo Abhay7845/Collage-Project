@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
-import { FaUser, FaDashcube } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import image from "../../Asset/img/a_logo.png";
+
 import "./HomePage.css";
 
 const Navbar = () => {
@@ -49,7 +51,7 @@ const Navbar = () => {
               {!localStorage.getItem("token") ? (
                 <li className="nav-item">
                   <Link className="navbar-brand" to="/home">
-                    <FaDashcube size={30} color="#fff" />
+                    <img src={image} alt="aryan" width={36} />
                   </Link>
                 </li>
               ) : (
@@ -60,7 +62,7 @@ const Navbar = () => {
                     }`}
                     to="/home"
                   >
-                    <FaDashcube size={30} />
+                    <img src={image} alt="aryan" width={36} />
                   </Link>
                   <Link
                     className={`nav-link NavbarList ${

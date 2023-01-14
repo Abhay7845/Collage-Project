@@ -43,9 +43,9 @@
 }
 
 .subscribe-button {
-  padding: 2px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
   font-size: large;
   border: none;
   background-color: #7fe40d;

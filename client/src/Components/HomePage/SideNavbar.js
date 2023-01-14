@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import * as Icon from "react-bootstrap-icons";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { FaUser, FaDashcube } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import image from "../../Asset/img/a_logo.png";
 
 import "../Style/SideBar.css";
 
-const SideNavbar = () => {
+const SideNavbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const ToggleSidebar = () => {
@@ -31,6 +32,8 @@ const SideNavbar = () => {
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
+
+  console.log("props==>", props);
   return (
     <>
       <nav
@@ -47,7 +50,7 @@ const SideNavbar = () => {
               cursor="pointer"
             />
             <Link className="navbar-brand" to="/home">
-              <FaDashcube size={30} color="#fff" />
+              <img src={image} alt="aryan" width={33} />
             </Link>
           </div>
         </div>
@@ -58,7 +61,7 @@ const SideNavbar = () => {
       ${isOpen === true ? "active" : ""}`}
       >
         <div className="sd-header">
-          <h6 className="text-light mt-3">ARYAN GROUP</h6>
+          <h6 className="text-light mt-3">Welcome, ABHAY</h6>
           <Icon.ArrowLeft
             onClick={ToggleSidebar}
             size={25}

@@ -1,13 +1,19 @@
 import React, { useState } from "react";
-import TablePagination from "@mui/material/TablePagination";
+// import TablePagination from "@mui/material/TablePagination";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
+import Pagination from "../Products/Pagination";
 
 const SearchEngine = () => {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [responseData, setResponseData] = useState([]);
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [showPerPage, setShowPerPage] = useState(50);
+  // const [page, setPage] = useState(0);
+  // const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [pagination, setPagination] = useState({
+    start: 0,
+    end: showPerPage,
+  });
 
   const searchData = async () => {
     if (!search) {
@@ -28,20 +34,24 @@ const SearchEngine = () => {
         alert("Data Not Found");
       } else {
         setResponseData(response);
+        setShowPerPage(50);
       }
       setLoading(false);
     }
   };
   for (let i = 0; i < responseData.length; i++);
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
+  // const handleChangePage = (event, newPage) => {
+  //   setPage(newPage);
+  // };
+  // const handleChangeRowsPerPage = (event) => {
+  //   setRowsPerPage(+event.target.value);
+  //   setPage(0);
+  // };
 
+  const onPagination = (startValue, endValue) => {
+    setPagination({ start: startValue, end: endValue });
+  };
   return (
     <>
       <div className="row mx-0" style={{ marginTop: "-10px" }}>
@@ -97,7 +107,7 @@ const SearchEngine = () => {
               </thead>
               <tbody>
                 {responseData
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .slice(pagination.start, pagination.end)
                   .map((item, i) => {
                     return (
                       <tr key={i} className="textJustify">
@@ -108,13 +118,18 @@ const SearchEngine = () => {
                   })}
               </tbody>
             </table>
-            <TablePagination
+            {/* <TablePagination
               component="div"
               count={responseData.length}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
+            /> */}
+            <Pagination
+              showPerPage={showPerPage}
+              onPagination={onPagination}
+              setShowPerPage
             />
           </div>
         </div>
