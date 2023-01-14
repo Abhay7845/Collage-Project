@@ -115,3 +115,17 @@ tr:hover .userId {
 .downloadexcel:hover {
   background-color: #03bc03;
 }
+
+/* NavbarShowStyle */
+@media screen and (max-width:992px) {
+  .NavbarShowStyle {
+    display: none;
+  }
+}
+
+
+@media screen and (min-width:993px) {
+  .SideNavbarSwoStyle {
+    display: none;
+  }
+}

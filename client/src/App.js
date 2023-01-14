@@ -8,6 +8,7 @@ import Profile from "./Components/User/Profile";
 import PrivateComponent from "./Components/Common/PrivateComponent";
 import Home from "./Components/HomePage/Home";
 import Navbar from "./Components/HomePage/Navbar";
+import SideNavbar from "./Components/HomePage/SideNavbar";
 import About from "./Components/Common/About";
 import AddUser from "./Components/User/AddUser";
 import NoPage from "./Components/HomePage/NoPage";
@@ -29,7 +30,12 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        <div className="NavbarShowStyle">
+          <Navbar />
+        </div>
+        <div className="SideNavbarSwoStyle">
+          <SideNavbar />
+        </div>
         <Alert alert={alert} />
         <Routes>
           <Route>

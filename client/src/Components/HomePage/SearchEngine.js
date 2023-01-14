@@ -44,7 +44,7 @@ const SearchEngine = () => {
 
   return (
     <>
-      <div className="row mx-0">
+      <div className="row mx-0" style={{ marginTop: "-10px" }}>
         <div className="col HomeTextStyle">
           <h5 className="text-center textH4Style">
             Find The Perfect Freelance Service <br />
