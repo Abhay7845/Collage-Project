@@ -27,7 +27,7 @@ const Home = () => {
             </p>
             <div className="d-flex justify-content-end">
               <button
-                className="CButton"
+                className="VButton"
                 onClick={() => setShowMore1(!showMore1)}
               >
                 {showMore1 ? "Hide Details" : "View Details"}
@@ -44,7 +44,7 @@ const Home = () => {
             </p>
             <div className="d-flex justify-content-end">
               <button
-                className="CButton"
+                className="VButton"
                 onClick={() => setShowMore2(!showMore2)}
               >
                 {showMore2 ? "Hide Details" : "View Details"}
@@ -61,7 +61,7 @@ const Home = () => {
             </p>
             <div className="d-flex justify-content-end">
               <button
-                className="CButton"
+                className="VButton"
                 onClick={() => setShowMore3(!showMore3)}
               >
                 {showMore3 ? "Hide Details" : "View Details"}
