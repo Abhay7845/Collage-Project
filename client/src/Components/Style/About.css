@@ -9,6 +9,7 @@
   text-align: center;
   flex-direction: column;
   font-weight: bold;
+  margin-top: -10px;
 }
 
 @media screen and (max-width: 760px) {
@@ -42,9 +43,9 @@
 }
 
 .subscribe-button {
-  padding: 6px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
   font-size: large;
   border: none;
   background-color: #7fe40d;

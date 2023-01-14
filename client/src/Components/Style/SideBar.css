@@ -53,16 +53,14 @@
 
 .sd-body ul li {
     list-style: none;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .sd-body ul li .sd-link {
     display: inline-block;
-    width: 100%;
-    padding: 10px 16px;
     color: #475f7b;
-    background-color: #e5e8ec;
-    border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
+    font-weight: bold;
+    color: #fff;
 }

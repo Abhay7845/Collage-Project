@@ -10,7 +10,7 @@
 }
 
 .logoutBtn {
-  color: #ffff;
+  color: #c36060;
   cursor: pointer;
 }
 
@@ -65,6 +65,7 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-style: italic;
 }
+
 /* PARAGRAPH STYLE */
 .textJustify {
   text-align: justify;
@@ -105,14 +106,17 @@
   padding-left: 3px;
   outline: none;
 }
+
 .GTranslate:hover {
   border-bottom: 1px solid #1899e4;
 }
+
 @media screen and (max-width: 500px) {
   .GTranslate {
     width: 20%;
   }
 }
+
 @media screen and (max-width: 352px) {
   .GTranslate {
     width: 100%;
