@@ -33,7 +33,6 @@ const SideNavbar = (props) => {
     document.body.className = theme;
   }, [theme]);
 
-  console.log("props==>", props);
   return (
     <>
       <nav
@@ -61,7 +60,7 @@ const SideNavbar = (props) => {
       ${isOpen === true ? "active" : ""}`}
       >
         <div className="sd-header">
-          <h6 className="text-light mt-3">Welcome, ABHAY</h6>
+          <img src={image} alt="aryan" className="mx-5" width={25} />
           <Icon.ArrowLeft
             onClick={ToggleSidebar}
             size={25}
@@ -70,7 +69,7 @@ const SideNavbar = (props) => {
           />
         </div>
         <div className="sd-body">
-          <ul className="mx-3">
+          <ul className="mx-2">
             {localStorage.getItem("token") ? (
               <>
                 <li>

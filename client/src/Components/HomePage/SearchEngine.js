@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import TablePagination from "@mui/material/TablePagination";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import Pagination from "../Products/Pagination";
 
@@ -8,8 +7,6 @@ const SearchEngine = () => {
   const [loading, setLoading] = useState(false);
   const [responseData, setResponseData] = useState([]);
   const [showPerPage, setShowPerPage] = useState(50);
-  // const [page, setPage] = useState(0);
-  // const [rowsPerPage, setRowsPerPage] = useState(10);
   const [pagination, setPagination] = useState({
     start: 0,
     end: showPerPage,
@@ -40,14 +37,6 @@ const SearchEngine = () => {
     }
   };
   for (let i = 0; i < responseData.length; i++);
-
-  // const handleChangePage = (event, newPage) => {
-  //   setPage(newPage);
-  // };
-  // const handleChangeRowsPerPage = (event) => {
-  //   setRowsPerPage(+event.target.value);
-  //   setPage(0);
-  // };
 
   const onPagination = (startValue, endValue) => {
     setPagination({ start: startValue, end: endValue });
@@ -118,14 +107,6 @@ const SearchEngine = () => {
                   })}
               </tbody>
             </table>
-            {/* <TablePagination
-              component="div"
-              count={responseData.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-            /> */}
             <Pagination
               showPerPage={showPerPage}
               onPagination={onPagination}
