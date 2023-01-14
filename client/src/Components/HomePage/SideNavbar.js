@@ -94,7 +94,7 @@ const SideNavbar = () => {
                 </li>
                 <li>
                   <Link
-                    className={`nav-link ${
+                    className={`nav-link  ${
                       location.pathname === "/profile" ? "active" : ""
                     }`}
                     to="/profile"
@@ -106,7 +106,7 @@ const SideNavbar = () => {
                 </li>
                 <li>
                   <Link
-                    className={`nav-link NavbarList ${
+                    className={`nav-link text-light ${
                       location.pathname === "/translate" ? "active" : ""
                     }`}
                     to="/translate"

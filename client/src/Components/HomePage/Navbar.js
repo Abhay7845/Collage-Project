@@ -122,7 +122,7 @@ const Navbar = () => {
               ) : (
                 <>
                   <Link
-                    className={`nav-link mx-1 ${
+                    className={`nav-link mx-1 NavbarList ${
                       location.pathname === "/profile" ? "active" : ""
                     }`}
                     to="/profile"
