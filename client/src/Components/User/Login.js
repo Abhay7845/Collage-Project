@@ -73,7 +73,7 @@ const Login = (props) => {
 
               <div className="my-2">
                 <b>
-                  Set Password <span className="text-danger"> *</span>
+                  Password <span className="text-danger"> *</span>
                 </b>
                 <Field
                   type={passwordShown ? "text" : "password"}

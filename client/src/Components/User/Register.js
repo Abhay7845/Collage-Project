@@ -32,7 +32,7 @@ const Register = (props) => {
     result = await result.json();
     if (result.success) {
       localStorage.setItem("token", result.token);
-      props.showAlert("Your Account Successfully created", "success");
+      props.showAlert("Your Account created Successfully", "success");
       navigate("/home");
       setLoading(false);
     }
