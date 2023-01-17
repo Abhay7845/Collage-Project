@@ -4,20 +4,24 @@ import { FaUserAlt } from "react-icons/fa";
 import "../../Components/User/CssStyle/RegisterLogin.css";
 import "../../App.css";
 import Footer from "../HomePage/Footer";
+import { Field, Form, Formik } from "formik";
+import ShowError from "../Common/ShowError";
+import {
+  RegisterInitialValue,
+  RegisterSchema,
+} from "../ValidationSchema/RegisterSchema";
 
 const Register = (props) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
+
   const navigate = useNavigate();
-  const onSubmit = async () => {
+  const onSubmit = async (payload) => {
+    console.log("payload==>", payload);
+    const { name, email, phone, password } = payload;
     setLoading(true);
     let result = await fetch("http://localhost:5000/api/user/register", {
       method: "POST",
@@ -59,76 +63,77 @@ const Register = (props) => {
             <FaUserAlt size={30} />
             <h4>REGISTER</h4>
           </div>
-          <div className="my-2">
-            <b>
-              Full Name <span className="text-danger"> *</span>
-            </b>
-            <input
-              type="text"
-              placeholder="Full Name"
-              className="GInput"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <span className="text-danger"></span>
-          </div>
-          <div className="my-2">
-            <b>
-              Email Address <span className="text-danger"> *</span>
-            </b>
-            <input
-              type="text"
-              placeholder="Email Address"
-              className="GInput"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="my-2">
-            <b>
-              Phone Number <span className="text-danger"> *</span>
-            </b>
-            <input
-              type="text"
-              placeholder="Phone Number"
-              className="GInput"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-          </div>
-          <div className="my-2">
-            <b>
-              Set Password <span className="text-danger"> *</span>
-            </b>
-            <input
-              type={passwordShown ? "text" : "password"}
-              placeholder="Set Password"
-              className="GInput"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              onClick={togglePassword}
-            />
-            <span className="text-info">Show Password</span>
-          </div>
-          <div className="d-flex justify-content-end my-4">
-            <button onClick={(e) => onSubmit()} className="CButton">
-              {loading ? (
-                <span
-                  className="spinner-border spinner-border-sm"
-                  role="status"
-                  aria-hidden="true"
+          <Formik
+            initialValues={RegisterInitialValue}
+            validationSchema={RegisterSchema}
+            onSubmit={(payload) => onSubmit(payload)}
+          >
+            <Form>
+              <div>
+                <b>
+                  Full Name<span className="text-danger"> *</span>
+                </b>
+                <Field placeholder="Full NAME" name="name" className="GInput" />
+                <ShowError name="name" />
+              </div>
+              <div className="my-2">
+                <b>
+                  Email Address <span className="text-danger"> *</span>
+                </b>
+                <Field
+                  placeholder="Email Address"
+                  name="email"
+                  className="GInput"
                 />
-              ) : (
-                <span className="sr-only">REGISTER</span>
-              )}
-            </button>
-          </div>
+                <ShowError name="email" />
+              </div>
+              <div className="my-2">
+                <b>
+                  Phone Number<span className="text-danger"> *</span>
+                </b>
+                <Field
+                  placeholder="Phone Number"
+                  name="phone"
+                  className="GInput"
+                />
+                <ShowError name="phone" />
+              </div>
+              <div className="my-2">
+                <b>
+                  Set Password <span className="text-danger"> *</span>
+                </b>
+                <Field
+                  type={passwordShown ? "text" : "password"}
+                  placeholder="Password"
+                  className="GInput"
+                  name="password"
+                />
+                <ShowError name="password" />
+              </div>
+
+              <div className="d-flex justify-content-between mx-2">
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    onClick={togglePassword}
+                  />
+                  <span className="text-info">Show Password</span>
+                </div>
+                <button type="submit" className="CButton">
+                  {loading ? (
+                    <span
+                      className="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <span className="sr-only">REGISTER</span>
+                  )}
+                </button>
+              </div>
+            </Form>
+          </Formik>
         </div>
       </div>
       <div className="footerStyle">
