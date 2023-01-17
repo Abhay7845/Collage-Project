@@ -4,20 +4,26 @@ import "../../Components/User/CssStyle/RegisterLogin.css";
 import "../../App.css";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../HomePage/Footer";
+import { Form, Formik, Field } from "formik";
+import {
+  LoginInitialValue,
+  LoginSchema,
+} from "../ValidationSchema/LoginSchema";
+import ShowError from "../Common/ShowError";
 
 const Login = (props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
+
   const navigate = useNavigate();
 
-  const login = async (e) => {
+  const onLogin = async (payload) => {
     setLoading(true);
+    const { email, password } = payload;
     const response = await fetch("http://localhost:5000/api/user/login", {
       method: "POST",
       headers: {
@@ -47,52 +53,60 @@ const Login = (props) => {
             <FaLock size={30} />
             <h4>LOGIN</h4>
           </div>
-          <div className="my-2">
-            <b>
-              Email Address <span className="text-danger"> *</span>
-            </b>
-            <input
-              placeholder="Email Address"
-              name="email"
-              className="GInput"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="my-2">
-            <b>
-              Password <span className="text-danger"> *</span>
-            </b>
-            <input
-              type={passwordShown ? "text" : "password"}
-              placeholder="Password"
-              name="password"
-              className="GInput"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              onClick={togglePassword}
-            />
-            <span className="text-info">Show Password</span>
-          </div>
-          <div className="d-flex justify-content-end my-4">
-            <button onClick={(e) => login()} className="CButton">
-              {loading ? (
-                <span
-                  className="spinner-border spinner-border-sm"
-                  role="status"
-                  aria-hidden="true"
+          <Formik
+            initialValues={LoginInitialValue}
+            validationSchema={LoginSchema}
+            onSubmit={(payload) => onLogin(payload)}
+          >
+            <Form>
+              <div className="my-2">
+                <b>
+                  Email Address <span className="text-danger"> *</span>
+                </b>
+                <Field
+                  placeholder="Email Address"
+                  name="email"
+                  className="GInput"
                 />
-              ) : (
-                <span className="sr-only">LOGIN</span>
-              )}
-            </button>
-          </div>
+                <ShowError name="email" />
+              </div>
+
+              <div className="my-2">
+                <b>
+                  Set Password <span className="text-danger"> *</span>
+                </b>
+                <Field
+                  type={passwordShown ? "text" : "password"}
+                  placeholder="Password"
+                  className="GInput"
+                  name="password"
+                />
+                <ShowError name="password" />
+              </div>
+
+              <div className="d-flex justify-content-between mx-2">
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    onClick={togglePassword}
+                  />
+                  <span className="text-info">Show Password</span>
+                </div>
+                <button type="submit" className="CButton">
+                  {loading ? (
+                    <span
+                      className="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <span className="sr-only">LOGIN</span>
+                  )}
+                </button>
+              </div>
+            </Form>
+          </Formik>
           <hr className="mx-4" />
           <div className="text-center">
             <Link to="/forget/password" className="forgotPassStyle">

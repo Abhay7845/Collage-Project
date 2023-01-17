@@ -20,9 +20,8 @@ const Register = (props) => {
 
   const navigate = useNavigate();
   const onSubmit = async (payload) => {
-    console.log("payload==>", payload);
-    const { name, email, phone, password } = payload;
     setLoading(true);
+    const { name, email, phone, password } = payload;
     let result = await fetch("http://localhost:5000/api/user/register", {
       method: "POST",
       body: JSON.stringify({ name, email, phone, password }),
