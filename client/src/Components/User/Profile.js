@@ -3,6 +3,7 @@ import moment from "moment";
 import axios from "axios";
 import Footer from "../HomePage/Footer";
 import "../../Components/Style/Profile.css";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
   const [userInfo, setUserinfo] = useState("");
@@ -20,6 +21,9 @@ const Profile = () => {
         setUserinfo(response);
       });
   }, [userAccessToken]);
+
+  const profileData = useSelector((state) => state);
+  console.log("profileData", profileData.LoginReducer);
 
   return (
     <>
