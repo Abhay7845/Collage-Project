@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Footer from "../HomePage/Footer";
 import Pagination from "./Pagination";
-import Loading from "react-fullscreen-loading";
+import gifLoading from "../../Asset/img/loading.gif";
 
 const Products = () => {
   const [image, setImage] = useState([]);
@@ -26,7 +26,7 @@ const Products = () => {
           headers: {
             "Content-Type": "application/json",
           },
-        },
+        }
       );
       const imageList = await response.json();
       setImage(imageList);
@@ -37,9 +37,6 @@ const Products = () => {
 
   return (
     <>
-      {loading && (
-        <Loading loading={true} background="#fff" loaderColor="#1890ff" />
-      )}
       <div className="container">
         <div className="pricing-header p-3 pb-md-4 mx-auto text-center my-4">
           <h3 className="fw-bold text-info">Our Products</h3>
@@ -48,6 +45,9 @@ const Products = () => {
             customers with this Bootstrap example. It’s built with default
             Bootstrap components and utilities with little customization.
           </p>
+        </div>
+        <div className="text-center">
+          {loading && <img src={gifLoading} alt="loading" />}
         </div>
         <div className="row mx-0">
           {image.slice(pagination.start, pagination.end).map((item, i) => {
@@ -71,12 +71,12 @@ const Products = () => {
               </div>
             );
           })}
+          <Pagination
+            showPerPage={showPerPage}
+            onPagination={onPagination}
+            setShowPerPage
+          />
         </div>
-        <Pagination
-          showPerPage={showPerPage}
-          onPagination={onPagination}
-          setShowPerPage
-        />
       </div>
       <div>
         <Footer />
