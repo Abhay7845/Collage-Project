@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Footer from "../HomePage/Footer";
 import Pagination from "./Pagination";
-import gifLoading from "../../Asset/img/loading.gif";
+import gifLoading from "../../Asset/img/Loading.svg";
 
 const Products = () => {
   const [image, setImage] = useState([]);
