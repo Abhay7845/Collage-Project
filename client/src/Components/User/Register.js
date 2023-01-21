@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import "../../Components/User/CssStyle/RegisterLogin.css";
@@ -45,12 +45,7 @@ const Register = (props) => {
       setLoading(false);
     }
   };
-  useEffect(() => {
-    const AuthToken = localStorage.getItem("token");
-    if (AuthToken) {
-      navigate("/user");
-    }
-  });
+
   return (
     <>
       <div className="row mx-0">
