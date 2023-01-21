@@ -6,7 +6,7 @@ import "../../Components/Style/Profile.css";
 import { useSelector } from "react-redux";
 
 const Profile = () => {
-  const [userInfo, setUserinfo] = useState("");
+  const [userInfo, setUserinfo] = useState([]);
   const userAccessToken = localStorage.getItem("token");
   useEffect(() => {
     axios
