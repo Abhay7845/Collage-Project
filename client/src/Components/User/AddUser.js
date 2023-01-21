@@ -37,8 +37,8 @@ const AddUser = (props) => {
     setSelectedCity(getCity);
   };
   const addUserInfo = async (payload) => {
-    const { name, occupation, email, phone, postalCode, address } = payload;
     setLoading(true);
+    const { name, occupation, email, phone, postalCode, address } = payload;
     const response = await fetch("http://localhost:5000/api/user/addUser", {
       method: "POST",
       headers: {

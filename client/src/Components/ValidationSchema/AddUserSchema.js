@@ -6,9 +6,6 @@ export const addUserInitialValue = {
   occupation: "",
   email: "",
   phone: "",
-  //   country: "",
-  //   state: "",
-  //   city: "",
   postalCode: "",
   address: "",
 };
@@ -30,9 +27,6 @@ export const addUserSchema = yup.object({
       /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
       "Not Valid Number"
     ),
-  //   country: yup.string().required("Country is required"),
-  //   state: yup.string().required("State is required"),
-  //   city: yup.string().required("City is required"),
   postalCode: yup
     .string()
     .required("Pine Code is required")
