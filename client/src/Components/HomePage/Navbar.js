@@ -5,6 +5,7 @@ import { FaUser } from "react-icons/fa";
 import image from "../../Asset/img/a_logo.png";
 
 import "../Style/HomePage.css";
+import { ProfileAPI } from "../../Redux/APICall/ProfileAPI";
 
 const Navbar = () => {
   const [theme, setTheme] = useState("light-theme");
@@ -27,6 +28,11 @@ const Navbar = () => {
     document.body.className = theme;
   }, [theme]);
 
+  const [userInfo, setUserinfo] = useState([]);
+  const userAccessToken = localStorage.getItem("token");
+  useEffect(() => {
+    ProfileAPI().then((res) => setUserinfo(res.data.data));
+  }, [userAccessToken]);
   return (
     <>
       <nav
@@ -44,7 +50,7 @@ const Navbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -124,18 +130,26 @@ const Navbar = () => {
               ) : (
                 <>
                   <Link
-                    className={`nav-link mx-1 NavbarList ${
+                    className={`nav-link NavbarList ${
                       location.pathname === "/profile" ? "active" : ""
                     }`}
                     to="/profile"
                   >
                     <FaUser
-                      size={25}
+                      size={20}
                       color={`${
                         location.pathname === "/profile" ? "black" : "white"
                       }`}
-                      className="mx-1"
+                      className="mx-4"
                     />
+                    <p
+                      style={{ fontSize: "10px" }}
+                      color={`${
+                        location.pathname === "/profile" ? "black" : "white"
+                      }`}
+                    >
+                      {userInfo.name}
+                    </p>
                   </Link>
                   <b className="logoutBtn" onClick={LogOut}>
                     LOGOUT

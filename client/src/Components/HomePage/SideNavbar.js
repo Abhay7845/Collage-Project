@@ -5,10 +5,10 @@ import { FaUser } from "react-icons/fa";
 import image from "../../Asset/img/a_logo.png";
 
 import "../Style/SideBar.css";
+import { ProfileAPI } from "../../Redux/APICall/ProfileAPI";
 
-const SideNavbar = (props) => {
+const SideNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const ToggleSidebar = () => {
     isOpen === true ? setIsOpen(false) : setIsOpen(true);
   };
@@ -33,6 +33,11 @@ const SideNavbar = (props) => {
     document.body.className = theme;
   }, [theme]);
 
+  const [userInfo, setUserinfo] = useState({});
+  const userAccessToken = localStorage.getItem("token");
+  useEffect(() => {
+    ProfileAPI().then((res) => setUserinfo(res.data.data));
+  }, [userAccessToken]);
   return (
     <>
       <nav
@@ -60,7 +65,11 @@ const SideNavbar = (props) => {
       ${isOpen === true ? "active" : ""}`}
       >
         <div className="sd-header">
-          <img src={image} alt="aryan" className="mx-5" width={25} />
+          {!userAccessToken ? (
+            <img src={image} alt="img" className="mx-5" width={33} />
+          ) : (
+            <b className="my-1 mx-2 text-light">{userInfo.name}</b>
+          )}
           <Icon.ArrowLeft
             onClick={ToggleSidebar}
             size={25}

@@ -1,24 +1,14 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import axios from "axios";
 import Footer from "../HomePage/Footer";
 import "../../Components/Style/Profile.css";
+import { ProfileAPI } from "../../Redux/APICall/ProfileAPI";
 
 const Profile = () => {
   const [userInfo, setUserinfo] = useState([]);
   const userAccessToken = localStorage.getItem("token");
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/user/fetchUser", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: userAccessToken,
-        },
-      })
-      .then(async (res) => {
-        const response = await res.data.data;
-        setUserinfo(response);
-      });
+    ProfileAPI().then((res) => setUserinfo(res.data.data));
   }, [userAccessToken]);
 
   return (
