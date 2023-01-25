@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaLock } from "react-icons/fa";
-import "../../Components/User/CssStyle/RegisterLogin.css";
+import "../Style/CssStyle/RegisterLogin.css";
 import "../../App.css";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../HomePage/Footer";

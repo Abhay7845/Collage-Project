@@ -12,6 +12,7 @@
   height: 100vh;
   z-index: -1;
 }
+
 .RegisterLeftRight {
   display: flex;
   flex-direction: column;

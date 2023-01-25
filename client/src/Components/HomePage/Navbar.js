@@ -4,7 +4,7 @@ import * as Icon from "react-bootstrap-icons";
 import { FaUser } from "react-icons/fa";
 import image from "../../Asset/img/a_logo.png";
 
-import "./HomePage.css";
+import "../Style/HomePage.css";
 
 const Navbar = () => {
   const [theme, setTheme] = useState("light-theme");
