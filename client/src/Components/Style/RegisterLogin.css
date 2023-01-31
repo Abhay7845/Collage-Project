@@ -5,7 +5,7 @@
 }
 
 .RegisterLeftStyle {
-  background-image: url("../../../../public/avatar/RegisterImage.webp");
+  background-image: url("../../../public//avatar/RegisterImage.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-color: #e4fdfd;

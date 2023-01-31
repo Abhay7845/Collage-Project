@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
-import "../Style/CssStyle/RegisterLogin.css";
+import "../Style/RegisterLogin.css";
 import "../../App.css";
 import Footer from "../HomePage/Footer";
 import { Field, Form, Formik } from "formik";

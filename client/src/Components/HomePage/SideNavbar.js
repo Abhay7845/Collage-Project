@@ -68,7 +68,13 @@ const SideNavbar = () => {
           {!userAccessToken ? (
             <img src={image} alt="img" className="mx-5" width={33} />
           ) : (
-            <b className="my-1 mx-2 text-light">{userInfo.name}</b>
+            <b className="my-1 mx-2 text-light">
+              {userInfo === undefined ? (
+                <img src={image} alt="img" className="mx-5" width={33} />
+              ) : (
+                <b>Welcome: {userInfo.name}</b>
+              )}
+            </b>
           )}
           <Icon.ArrowLeft
             onClick={ToggleSidebar}

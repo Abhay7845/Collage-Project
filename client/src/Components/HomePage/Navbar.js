@@ -27,11 +27,12 @@ const Navbar = () => {
     document.body.className = theme;
   }, [theme]);
 
-  const [userInfo, setUserinfo] = useState([]);
+  const [userInfo, setUserinfo] = useState({});
   const userAccessToken = localStorage.getItem("token");
   useEffect(() => {
     ProfileAPI().then((res) => setUserinfo(res.data.data));
   }, [userAccessToken]);
+
   return (
     <>
       <nav
@@ -123,7 +124,7 @@ const Navbar = () => {
                     }`}
                     to="/profile"
                   >
-                    {userInfo.name}
+                    {userInfo === undefined ? "" : userInfo.name}
                   </Link>
                   <b className="logoutBtn mx-3" onClick={LogOut}>
                     LOGOUT
