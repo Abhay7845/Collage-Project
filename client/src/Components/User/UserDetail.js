@@ -6,7 +6,6 @@ import axios from "axios";
 
 const UserDetail = (props) => {
   const [addUserInfo, setAddUserInfo] = useState([]);
-  const [deleteId, setDeleteId] = useState("");
   const userAccessToken = localStorage.getItem("token");
 
   useEffect(() => {
@@ -21,28 +20,21 @@ const UserDetail = (props) => {
         const response = await res.data.addUserData;
         setAddUserInfo(response);
       });
-  }, [userAccessToken, deleteId]);
+  }, [userAccessToken]);
   // table serial number counter
   for (let i = 0; i < addUserInfo.length; i++);
   console.log(addUserInfo.length < 0 ? "" : "");
-  const DeleteData = (value) => {
-    console.log("value==>", value);
-    const id = addUserInfo.filter((item) => item._id === value);
-    console.log("id==>", id);
-  };
-  console.log("deleteId==>", deleteId);
-  //DELETE USER DATA API
-  useEffect(() => {
+
+  const DeleteData = (id) => {
     axios
-      .delete(`http://localhost:5000/api/user/delete/add/user/${deleteId}`)
+      .delete(`http://localhost:5000/api/user/delete/add/user/${id}`)
       .then((res) => res)
       .then((result) => {
         if (result.data.success === true) {
           props.showAlert("Data has been deleted successfully", "success");
         }
       });
-    // .catch((error) => console.log("error==>", error));
-  }, [deleteId, props]);
+  };
 
   return (
     <>
@@ -81,8 +73,7 @@ const UserDetail = (props) => {
                     <td className="text-danger text-center">
                       <Icon.Trash
                         style={{ cursor: "pointer" }}
-                        onClick={DeleteData}
-                        value={addUserInfo._id}
+                        onClick={() => DeleteData(item._id)}
                       />
                     </td>
                   </tr>
