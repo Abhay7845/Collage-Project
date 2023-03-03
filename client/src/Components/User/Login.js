@@ -14,13 +14,11 @@ import ShowError from "../Common/ShowError";
 const Login = (props) => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
-
-  const navigate = useNavigate();
-
   const onLogin = async (payload) => {
     setLoading(true);
     const { email, password } = payload;
@@ -70,7 +68,6 @@ const Login = (props) => {
                 />
                 <ShowError name="email" />
               </div>
-
               <div className="my-2">
                 <b>
                   Password <span className="text-danger"> *</span>
@@ -83,7 +80,6 @@ const Login = (props) => {
                 />
                 <ShowError name="password" />
               </div>
-
               <div className="d-flex justify-content-between mx-2">
                 <div className="form-check">
                   <input

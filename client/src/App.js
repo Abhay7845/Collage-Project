@@ -53,7 +53,10 @@ const App = () => {
               <Route path="/forget/password" element={<ForgetPassword />} />
               <Route path="/translate" element={<Translate />} />
               <Route element={<PrivateComponent />}>
-                <Route path="/user" element={<UserDetail />} />
+                <Route
+                  path="/user"
+                  element={<UserDetail showAlert={showAlert} />}
+                />
                 <Route path="/profile" element={<Profile />} />
                 <Route
                   path="/about"

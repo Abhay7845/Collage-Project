@@ -14,11 +14,11 @@ import {
 const Register = (props) => {
   const [loading, setLoading] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
+  const navigate = useNavigate();
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
 
-  const navigate = useNavigate();
   const onSubmit = async (payload) => {
     setLoading(true);
     const { name, email, phone, password } = payload;
@@ -104,7 +104,6 @@ const Register = (props) => {
                 />
                 <ShowError name="password" />
               </div>
-
               <div className="d-flex justify-content-between mx-2">
                 <div className="form-check">
                   <input
