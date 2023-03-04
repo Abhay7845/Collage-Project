@@ -7,6 +7,7 @@ import axios from "axios";
 const UserDetail = (props) => {
   const [addUserInfo, setAddUserInfo] = useState([]);
   const userAccessToken = localStorage.getItem("token");
+  const { showAlert } = props;
 
   useEffect(() => {
     axios
@@ -21,17 +22,19 @@ const UserDetail = (props) => {
         setAddUserInfo(response);
       });
   }, [userAccessToken]);
+
   // table serial number counter
   for (let i = 0; i < addUserInfo.length; i++);
   console.log(addUserInfo.length < 0 ? "" : "");
 
-  const DeleteData = (id) => {
+  const DeleteUer = (id) => {
     axios
-      .delete(`http://localhost:5000/api/user/delete/add/user/${id}`)
+      .delete(`http://localhost:5000/api/user/delete/user/${id}`)
       .then((res) => res)
       .then((result) => {
         if (result.data.success === true) {
-          props.showAlert("Data has been deleted successfully", "success");
+          showAlert("Data has been deleted successfully", "success");
+          window.location.reload(true);
         }
       });
   };
@@ -40,7 +43,7 @@ const UserDetail = (props) => {
     <>
       <div className="container">
         <div className="table-responsive my-3">
-          <h3 className="text-center text-info my-3"> ADD USER DETAILS</h3>
+          <h3 className="text-center text-info my-3">ADD USER DETAILS</h3>
           <table className="table table-hover table-bordered table-pointer">
             <thead className="bg-secondary text-white">
               <tr>
@@ -73,7 +76,7 @@ const UserDetail = (props) => {
                     <td className="text-danger text-center">
                       <Icon.Trash
                         style={{ cursor: "pointer" }}
-                        onClick={() => DeleteData(item._id)}
+                        onClick={() => DeleteUer(item._id)}
                       />
                     </td>
                   </tr>
