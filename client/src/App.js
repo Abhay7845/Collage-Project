@@ -17,6 +17,7 @@ import Products from "./Components/Products/Products";
 import Translate from "./Components/Translate/Translate";
 import { Provider } from "react-redux";
 import { store } from "./Redux/Store";
+import UpdateUser from "./Components/User/UpdateUser";
 
 const App = () => {
   const [alert, setAlert] = useState(null);
@@ -66,6 +67,10 @@ const App = () => {
                 <Route
                   path="/add-user"
                   element={<AddUser showAlert={showAlert} />}
+                />
+                <Route
+                  path="/update/user/:id"
+                  element={<UpdateUser showAlert={showAlert} />}
                 />
               </Route>
             </Route>

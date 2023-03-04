@@ -22,11 +22,7 @@ const UserDetail = (props) => {
         setAddUserInfo(response);
       });
   }, [userAccessToken]);
-
-  // table serial number counter
-  // for (let i = 0; i < addUserInfo.length; i++);
   console.log(addUserInfo.length < 0 ? "" : "");
-
   const DeleteUer = (id) => {
     axios
       .delete(`http://localhost:5000/api/user/delete/user/${id}`)
@@ -74,7 +70,7 @@ const UserDetail = (props) => {
                       {moment(item.date).format("ll")}
                     </td>
                     <td className="text-center">
-                      <Link to="/add-user">
+                      <Link to={`/update/user/${item._id}`}>
                         <Icon.PencilSquare className="EditIcon" size={19} />
                       </Link>
                       <Icon.Trash

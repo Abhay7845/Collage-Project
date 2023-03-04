@@ -34,5 +34,5 @@ export const addUserSchema = yup.object({
   address: yup
     .string()
     .required("Address is required")
-    .min(15, "Enter Full Address"),
+    .min(5, "Enter Full Address"),
 });

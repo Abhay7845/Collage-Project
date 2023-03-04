@@ -1,25 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Country, State, City } from "country-state-city";
 import { occupationData } from "./UserListData";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
 import {
   addUserInitialValue,
   addUserSchema,
 } from "../ValidationSchema/AddUserSchema";
 import ShowError from "../Common/ShowError";
-export const EditUser = (id) => {
-  console.log(id);
-};
+import axios from "axios";
 
-const AddUser = (props) => {
+const UpdateUser = (props) => {
   const { showAlert } = props;
+  const { id } = useParams();
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedState, setSelectedState] = useState([]);
   const [selectedCity, setSelectedCity] = useState([]);
+  const [addedUser, setAddedUser] = useState([]);
   const navigate = useNavigate();
 
   const countryName = Country.getAllCountries();
@@ -40,46 +40,60 @@ const AddUser = (props) => {
     );
     setSelectedCity(getCity);
   };
-  const addUserInfo = async (payload) => {
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/user/fetch/AddUser/${id}`)
+      .then((res) => res)
+      .then((result) => setAddedUser(result.data.AddedUser))
+      .catch((error) => console.log("error==>", error));
+  }, [id]);
+
+  const UpdateUserDetails = async (payload) => {
     setLoading(true);
     const { name, occupation, email, phone, postalCode, address } = payload;
-    const response = await fetch("http://localhost:5000/api/user/addUser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: userAccessToken,
-      },
-      body: JSON.stringify({
-        name,
-        occupation,
-        email,
-        phone,
-        country,
-        state,
-        city,
-        postalCode,
-        address,
-      }),
-    });
+    console.log("payload==>", payload);
+    const response = await fetch(
+      `http://localhost:5000/api/user/update/user/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: userAccessToken,
+        },
+        body: JSON.stringify({
+          name,
+          occupation,
+          email,
+          phone,
+          country,
+          state,
+          city,
+          postalCode,
+          address,
+        }),
+      }
+    );
     const data = await response.json();
     setLoading(false);
     if (data.success === false) {
-      showAlert("Select Country, State, District", "danger");
+      props.showAlert("Select Country, State, District", "danger");
     }
     if (data.success === true) {
-      showAlert("User Added Successfully", "success");
+      showAlert("Data has been Updated successfully", "success");
       navigate("/user");
     }
   };
 
+  console.log("addedUser==>", addedUser.name);
+
   return (
     <>
       <div className="container my-5">
-        <h4 className="text-center text-info"> ADD USER</h4>
+        <h4 className="text-center text-info">UPDATE USER</h4>
         <Formik
           initialValues={addUserInitialValue}
           validationSchema={addUserSchema}
-          onSubmit={(payload) => addUserInfo(payload)}
+          onSubmit={(payload) => UpdateUserDetails(payload)}
         >
           <Form>
             <div className="row">
@@ -239,7 +253,7 @@ const AddUser = (props) => {
                     aria-hidden="true"
                   />
                 ) : (
-                  <span className="sr-only">SUBMIT</span>
+                  <span className="sr-only">UPDATE</span>
                 )}
               </button>
             </div>
@@ -250,4 +264,4 @@ const AddUser = (props) => {
   );
 };
 
-export default AddUser;
+export default UpdateUser;
