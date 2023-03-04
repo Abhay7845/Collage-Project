@@ -4,3 +4,24 @@
   padding-left: 2%;
   padding-right: 2%;
 }
+
+.DeleteIcon {
+  cursor: pointer;
+  margin-top: 13px;
+  color: #ed5c5c;
+  margin-left: 18px;
+}
+
+.DeleteIcon:hover {
+  color: #ff0000;
+}
+
+.EditIcon {
+  cursor: pointer;
+  margin-top: 13px;
+  color: #0000ff;
+}
+
+.EditIcon:hover {
+  color: #008000;
+}

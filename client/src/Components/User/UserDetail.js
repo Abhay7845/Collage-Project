@@ -24,7 +24,7 @@ const UserDetail = (props) => {
   }, [userAccessToken]);
 
   // table serial number counter
-  for (let i = 0; i < addUserInfo.length; i++);
+  // for (let i = 0; i < addUserInfo.length; i++);
   console.log(addUserInfo.length < 0 ? "" : "");
 
   const DeleteUer = (id) => {
@@ -54,7 +54,7 @@ const UserDetail = (props) => {
                 <th>Phone Number</th>
                 <th>Address</th>
                 <th className="text-center">Date</th>
-                <th>Action</th>
+                <th className="text-center">Edit/Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -73,9 +73,13 @@ const UserDetail = (props) => {
                     <td className="text-center">
                       {moment(item.date).format("ll")}
                     </td>
-                    <td className="text-danger text-center">
+                    <td className="text-center">
+                      <Link to="/add-user">
+                        <Icon.PencilSquare className="EditIcon" size={19} />
+                      </Link>
                       <Icon.Trash
-                        style={{ cursor: "pointer" }}
+                        className="DeleteIcon"
+                        size={20}
                         onClick={() => DeleteUer(item._id)}
                       />
                     </td>
