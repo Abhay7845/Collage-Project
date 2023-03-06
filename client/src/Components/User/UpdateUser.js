@@ -3,12 +3,12 @@ import { Country, State, City } from "country-state-city";
 import { occupationData } from "./UserListData";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
-import {
-  addUserSchema,
-  addUserInitialValue,
-} from "../ValidationSchema/AddUserSchema";
 import ShowError from "../Common/ShowError";
 import axios from "axios";
+import {
+  updateUserInitialValue,
+  updateUserSchema,
+} from "../ValidationSchema/UpdateUserSchema";
 
 const UpdateUser = (props) => {
   const { showAlert } = props;
@@ -91,8 +91,8 @@ const UpdateUser = (props) => {
       <div className="container my-5">
         <h4 className="text-center text-info">UPDATE YOUR DETAILS</h4>
         <Formik
-          initialValues={addUserInitialValue}
-          validationSchema={addUserSchema}
+          initialValues={updateUserInitialValue}
+          validationSchema={updateUserSchema}
           onSubmit={(payload) => UpdateUserDetails(payload)}
         >
           <Form>
