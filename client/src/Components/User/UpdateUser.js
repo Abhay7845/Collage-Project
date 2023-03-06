@@ -4,8 +4,8 @@ import { occupationData } from "./UserListData";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
 import {
-  addUserInitialValue,
   addUserSchema,
+  addUserInitialValue,
 } from "../ValidationSchema/AddUserSchema";
 import ShowError from "../Common/ShowError";
 import axios from "axios";
@@ -40,18 +40,10 @@ const UpdateUser = (props) => {
     );
     setSelectedCity(getCity);
   };
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/user/fetch/AddUser/${id}`)
-      .then((res) => res)
-      .then((result) => setAddedUser(result.data.AddedUser))
-      .catch((error) => console.log("error==>", error));
-  }, [id]);
 
   const UpdateUserDetails = async (payload) => {
     setLoading(true);
     const { name, occupation, email, phone, postalCode, address } = payload;
-    console.log("payload==>", payload);
     const response = await fetch(
       `http://localhost:5000/api/user/update/user/${id}`,
       {
@@ -84,12 +76,20 @@ const UpdateUser = (props) => {
     }
   };
 
-  console.log("addedUser==>", addedUser.name);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/user/fetch/AddUser/${id}`)
+      .then((res) => res)
+      .then((result) => setAddedUser(result.data.AddedUser))
+      .catch((error) => console.log("error==>", error));
+  }, [id]);
+
+  console.log("addedUser==>", addedUser);
 
   return (
     <>
       <div className="container my-5">
-        <h4 className="text-center text-info">UPDATE USER</h4>
+        <h4 className="text-center text-info">UPDATE YOUR DETAILS</h4>
         <Formik
           initialValues={addUserInitialValue}
           validationSchema={addUserSchema}

@@ -8,9 +8,6 @@ import {
   addUserSchema,
 } from "../ValidationSchema/AddUserSchema";
 import ShowError from "../Common/ShowError";
-export const EditUser = (id) => {
-  console.log(id);
-};
 
 const AddUser = (props) => {
   const { showAlert } = props;
