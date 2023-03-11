@@ -1,15 +1,6 @@
 /* eslint-disable no-useless-escape */
 import * as yup from "yup";
 
-export const updateUserInitialValue = {
-  name: "",
-  occupation: "",
-  email: "",
-  phone: "",
-  postalCode: "",
-  address: "",
-};
-
 export const updateUserSchema = yup.object({
   name: yup
     .string()

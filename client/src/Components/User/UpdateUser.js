@@ -5,10 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
 import ShowError from "../Common/ShowError";
 import axios from "axios";
-import {
-  updateUserInitialValue,
-  updateUserSchema,
-} from "../ValidationSchema/UpdateUserSchema";
+import { updateUserSchema } from "../ValidationSchema/UpdateUserSchema";
 
 const UpdateUser = (props) => {
   const { showAlert } = props;
@@ -84,8 +81,16 @@ const UpdateUser = (props) => {
       .catch((error) => console.log("error==>", error));
   }, [id]);
 
-  console.log("addedUser==>", addedUser);
+  const updateUserInitialValue = {
+    name: `${addedUser.name}`,
+    occupation: `${addedUser.occupation}`,
+    email: `${addedUser.email}`,
+    phone: `${addedUser.phone}`,
+    postalCode: `${addedUser.postalCode}`,
+    address: `${addedUser.address}`,
+  };
 
+  console.log(updateUserInitialValue);
   return (
     <>
       <div className="container my-5">
