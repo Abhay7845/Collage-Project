@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Country, State, City } from "country-state-city";
 import { occupationData } from "./UserListData";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Field, Form, Formik } from "formik";
-import ShowError from "../Common/ShowError";
+import { Form, Formik } from "formik";
 import axios from "axios";
-import { updateUserSchema } from "../ValidationSchema/UpdateUserSchema";
 
 const UpdateUser = (props) => {
   const { showAlert } = props;
@@ -67,9 +65,13 @@ const UpdateUser = (props) => {
     if (data.success === false) {
       props.showAlert("Select Country, State, District", "danger");
     }
+
     if (data.success === true) {
       showAlert("Data has been Updated successfully", "success");
-      navigate("/user");
+      navigate("/theAryan/group/user");
+    }
+    if (data.success === false) {
+      showAlert("Select Country, State, District", "danger");
     }
   };
 
@@ -81,23 +83,13 @@ const UpdateUser = (props) => {
       .catch((error) => console.log("error==>", error));
   }, [id]);
 
-  const updateUserInitialValue = {
-    name: `${addedUser.name}`,
-    occupation: `${addedUser.occupation}`,
-    email: `${addedUser.email}`,
-    phone: `${addedUser.phone}`,
-    postalCode: `${addedUser.postalCode}`,
-    address: `${addedUser.address}`,
-  };
-
-  console.log(updateUserInitialValue);
   return (
     <>
       <div className="container my-5">
         <h4 className="text-center text-info">UPDATE YOUR DETAILS</h4>
         <Formik
-          initialValues={updateUserInitialValue}
-          validationSchema={updateUserSchema}
+          initialValues={""}
+          validationSchema={""}
           onSubmit={(payload) => UpdateUserDetails(payload)}
         >
           <Form>
@@ -106,20 +98,19 @@ const UpdateUser = (props) => {
                 <b>
                   Name <span className="text-danger"> *</span>
                 </b>
-                <Field
+                <input
                   type="text"
                   className="GInput"
                   placeholder="Name"
-                  name="name"
+                  defaultValue={addedUser.name}
                 />
-                <ShowError name="name" />
               </div>
               <div className="col-md my-2">
                 <b>
                   Occupation <span className="text-danger"> *</span>
                 </b>
-                <Field as="select" className="GSelect" name="occupation">
-                  <option value="">Select</option>
+                <select className="GSelect">
+                  <option value={addedUser.occupation}>Select</option>
                   {occupationData.map((item, i) => {
                     return (
                       <option key={i} value={item.name}>
@@ -127,8 +118,7 @@ const UpdateUser = (props) => {
                       </option>
                     );
                   })}
-                </Field>
-                <ShowError name="occupation" />
+                </select>
               </div>
             </div>
             <div className="row">
@@ -136,25 +126,23 @@ const UpdateUser = (props) => {
                 <b>
                   Email Address <span className="text-danger"> *</span>
                 </b>
-                <Field
-                  type="text"
+                <input
+                  type="email"
                   className="GInput"
                   placeholder="Email address"
-                  name="email"
+                  defaultValue={addedUser.email}
                 />
-                <ShowError name="email" />
               </div>
               <div className="col-md my-2">
                 <b>
                   Phone Number <span className="text-danger"> *</span>
                 </b>
-                <Field
+                <input
                   type="text"
                   className="GInput"
                   placeholder="Phone Number"
-                  name="phone"
+                  defaultValue={addedUser.phone}
                 />
-                <ShowError name="phone" />
               </div>
             </div>
             <h6
@@ -224,30 +212,26 @@ const UpdateUser = (props) => {
                 <b>
                   Pin Code <span className="text-danger"> *</span>
                 </b>
-                <Field
+                <input
                   type="text"
                   className="GInput"
                   placeholder="Pin Code"
-                  name="postalCode"
+                  defaultValue={addedUser.postalCode}
                 />
-                <ShowError name="postalCode" />
               </div>
               <div className=" my-2">
                 <b>
                   Address <span className="text-danger"> *</span>
                 </b>
-                <Field
-                  component="textarea"
+                <textarea
                   className="GTextArea"
-                  rows={3}
                   placeholder="Address"
-                  name="address"
+                  defaultValue={addedUser.address}
                 />
-                <ShowError name="address" />
               </div>
             </div>
             <div className="d-flex justify-content-between my-3">
-              <Link to="/user">
+              <Link to="/theAryan/group/user">
                 <button className="CButton">GO BACK</button>
               </Link>
               <button type="submit" className="CButton">
