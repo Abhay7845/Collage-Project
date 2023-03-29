@@ -11,7 +11,7 @@ const Navbar = () => {
   let navigate = useNavigate();
   const LogOut = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/theAryan/group/login");
   };
   let location = useLocation();
   useEffect(() => {}, [location]);
@@ -45,7 +45,7 @@ const Navbar = () => {
             <ul className="navbar-nav me-auto mb-lg-0">
               {!localStorage.getItem("token") ? (
                 <li className="nav-item">
-                  <Link className="navbar-brand" to="/home">
+                  <Link className="navbar-brand" to="/theAryan/group/home">
                     <img src={image} alt="aryan" width={36} />
                   </Link>
                 </li>
@@ -53,33 +53,41 @@ const Navbar = () => {
                 <>
                   <Link
                     className={`nav-link NavbarList ${
-                      location.pathname === "/home" ? "active" : ""
+                      location.pathname === "/theAryan/group/home"
+                        ? "active"
+                        : ""
                     }`}
-                    to="/home"
+                    to="/theAryan/group/home"
                   >
                     <img src={image} alt="aryan" width={36} />
                   </Link>
                   <Link
                     className={`nav-link NavbarList ${
-                      location.pathname === "/user" ? "active" : ""
+                      location.pathname === "/theAryan/group/user"
+                        ? "active"
+                        : ""
                     }`}
-                    to="/user"
+                    to="/theAryan/group/user"
                   >
                     USER
                   </Link>
                   <Link
                     className={`nav-link NavbarList ${
-                      location.pathname === "/product" ? "active" : ""
+                      location.pathname === "/theAryan/group/product"
+                        ? "active"
+                        : ""
                     }`}
-                    to="/product"
+                    to="/theAryan/group/product"
                   >
                     PRODUCTS
                   </Link>
                   <Link
                     className={`nav-link NavbarList ${
-                      location.pathname === "/about" ? "active" : ""
+                      location.pathname === "/theAryan/group/about"
+                        ? "active"
+                        : ""
                     }`}
-                    to="/about"
+                    to="/theAryan/group/about"
                   >
                     ABOUT
                   </Link>
@@ -90,9 +98,11 @@ const Navbar = () => {
             <form className="d-flex">
               <Link
                 className={`nav-link NavbarList ${
-                  location.pathname === "/translate" ? "active" : ""
+                  location.pathname === "/theAryan/group/translate"
+                    ? "active"
+                    : ""
                 }`}
-                to="/translate"
+                to="/theAryan/group/translate"
               >
                 <Icon.Translate
                   className="my-1 mx-2"
@@ -109,10 +119,10 @@ const Navbar = () => {
               />
               {!localStorage.getItem("token") ? (
                 <>
-                  <Link className="nav-link" to="/login">
+                  <Link className="nav-link" to="/theAryan/group/login">
                     <button className="registerLoginButton mx-2">LOGIN</button>
                   </Link>
-                  <Link className="nav-link" to="/register">
+                  <Link className="nav-link" to="/theAryan/group/register">
                     <button className="registerLoginButton">REGISTER</button>
                   </Link>
                 </>
@@ -120,9 +130,11 @@ const Navbar = () => {
                 <>
                   <Link
                     className={`nav-link NavbarList ${
-                      location.pathname === "/profile" ? "active" : ""
+                      location.pathname === "/theAryan/group/profile"
+                        ? "active"
+                        : ""
                     }`}
-                    to="/profile"
+                    to="/theAryan/group/profile"
                   >
                     {userInfo === undefined ? "" : userInfo.name}
                   </Link>

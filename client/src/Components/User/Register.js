@@ -34,7 +34,7 @@ const Register = (props) => {
     if (result.success) {
       localStorage.setItem("token", result.token);
       props.showAlert("Your Account created Successfully", "success");
-      navigate("/home");
+      navigate("/theAryan/group/home");
       setLoading(false);
     }
     if (result.success === false) {
@@ -110,7 +110,9 @@ const Register = (props) => {
                         size={20}
                         cursor="pointer"
                         onClick={togglePassword}
-                        style={{ marginTop: 15 }}
+                        style={{
+                          marginTop: 15,
+                        }}
                       />
                     ) : (
                       <FaRegEyeSlash

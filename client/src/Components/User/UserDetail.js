@@ -70,7 +70,7 @@ const UserDetail = (props) => {
                       {moment(item.date).format("ll")}
                     </td>
                     <td className="text-center">
-                      <Link to={`/update/user/${item._id}`}>
+                      <Link to={`/theAryan/group/update/user/${item._id}`}>
                         <Icon.PencilSquare className="EditIcon" size={19} />
                       </Link>
                       <Icon.Trash
@@ -86,7 +86,7 @@ const UserDetail = (props) => {
           </table>
         </div>
         <div className="d-flex justify-content-end my-2">
-          <Link to="/add-user">
+          <Link to="/theAryan/group/add-user">
             <Icon.PlusCircleFill
               size={40}
               style={{

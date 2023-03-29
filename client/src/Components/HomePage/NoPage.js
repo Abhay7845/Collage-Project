@@ -12,7 +12,7 @@ const NoPage = () => {
         <h1 className="text-danger">404</h1>
         <p>Page Not Found</p>
         <div className="my-3">
-          <Link to="/home">
+          <Link to="/theAryan/group/home">
             <button className="CButton">Go Home</button>
           </Link>
         </div>

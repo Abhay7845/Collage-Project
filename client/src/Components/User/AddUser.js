@@ -65,7 +65,7 @@ const AddUser = (props) => {
     }
     if (data.success === true) {
       showAlert("User Added Successfully", "success");
-      navigate("/user");
+      navigate("/theAryan/group/user");
     }
   };
 
@@ -225,7 +225,7 @@ const AddUser = (props) => {
               </div>
             </div>
             <div className="d-flex justify-content-between my-3">
-              <Link to="/user">
+              <Link to="/theAryan/group/user">
                 <button className="CButton">GO BACK</button>
               </Link>
               <button type="submit" className="CButton">

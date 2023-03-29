@@ -33,7 +33,7 @@ const Login = (props) => {
     if (data.success === true) {
       localStorage.setItem("token", data.token);
       props.showAlert("Logged in Successfully", "success");
-      navigate("/home");
+      navigate("/theAryan/group/home");
       setLoading(true);
     } else {
       props.showAlert("Please enter your valid email and password", "danger");
@@ -116,7 +116,10 @@ const Login = (props) => {
           </Formik>
           <hr className="mx-4" />
           <div className="text-center">
-            <Link to="/forget/password" className="forgotPassStyle">
+            <Link
+              to="/theAryan/group/forget/password"
+              className="forgotPassStyle"
+            >
               Forget Password
             </Link>
           </div>

@@ -17,7 +17,7 @@ const SideNavbar = () => {
   let navigate = useNavigate();
   const LogOut = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/theAryan/group/login");
   };
   let location = useLocation();
   useEffect(() => {}, [location]);
@@ -53,7 +53,7 @@ const SideNavbar = () => {
               className="text-light mt-1 mx-2"
               cursor="pointer"
             />
-            <Link className="navbar-brand" to="/home">
+            <Link className="navbar-brand" to="/theAryan/group/home">
               <img src={image} alt="aryan" width={33} />
             </Link>
           </div>
@@ -90,7 +90,7 @@ const SideNavbar = () => {
                 <li>
                   <Link
                     className="sd-link"
-                    to="/product"
+                    to="/theAryan/group/product"
                     onClick={ToggleSidebar}
                   >
                     PRODUCTS
@@ -98,13 +98,21 @@ const SideNavbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link className="sd-link" to="/user" onClick={ToggleSidebar}>
+                  <Link
+                    className="sd-link"
+                    to="/theAryan/group/user"
+                    onClick={ToggleSidebar}
+                  >
                     USER
                     <Icon.ArrowRight className="mx-2" />
                   </Link>
                 </li>
                 <li>
-                  <Link className="sd-link" to="/about" onClick={ToggleSidebar}>
+                  <Link
+                    className="sd-link"
+                    to="/theAryan/group/about"
+                    onClick={ToggleSidebar}
+                  >
                     ABOUT
                     <Icon.ArrowRight className="mx-2" />
                   </Link>
@@ -112,9 +120,11 @@ const SideNavbar = () => {
                 <li>
                   <Link
                     className={`nav-link  ${
-                      location.pathname === "/profile" ? "active" : ""
+                      location.pathname === "/theAryan/group/profile"
+                        ? "active"
+                        : ""
                     }`}
-                    to="/profile"
+                    to="/theAryan/group/profile"
                     onClick={ToggleSidebar}
                   >
                     <FaUser size={25} className="text-light" />
@@ -124,9 +134,11 @@ const SideNavbar = () => {
                 <li>
                   <Link
                     className={`nav-link text-light ${
-                      location.pathname === "/translate" ? "active" : ""
+                      location.pathname === "/theAryan/group/translate"
+                        ? "active"
+                        : ""
                     }`}
-                    to="/translate"
+                    to="/theAryan/group/translate"
                     onClick={ToggleSidebar}
                   >
                     <Icon.Translate size={22} cursor="pointer" />
@@ -144,7 +156,7 @@ const SideNavbar = () => {
                 <li>
                   <Link
                     className="nav-link"
-                    to="/register"
+                    to="/theAryan/group/register"
                     onClick={ToggleSidebar}
                   >
                     <button className="registerLoginButton">SIGNUP</button>
@@ -153,7 +165,7 @@ const SideNavbar = () => {
                 <li>
                   <Link
                     className="nav-link"
-                    to="/login"
+                    to="/theAryan/group/login"
                     onClick={ToggleSidebar}
                   >
                     <button className="registerLoginButton">LOGIN</button>

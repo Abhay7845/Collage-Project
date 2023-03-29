@@ -46,29 +46,35 @@ const App = () => {
               <Route index path="/theAryan/group/home" element={<Home />} />
               <Route path="*" element={<NoPage />} />
               <Route
-                path="/register"
+                path="/theAryan/group/register"
                 element={<Register showAlert={showAlert} />}
               />
-              <Route path="/login" element={<Login showAlert={showAlert} />} />
-              <Route path="/forget/password" element={<ForgetPassword />} />
-              <Route path="/translate" element={<Translate />} />
+              <Route
+                path="/theAryan/group/login"
+                element={<Login showAlert={showAlert} />}
+              />
+              <Route
+                path="/theAryan/group/forget/password"
+                element={<ForgetPassword />}
+              />
+              <Route path="/theAryan/group/translate" element={<Translate />} />
               <Route element={<PrivateComponent />}>
                 <Route
-                  path="/user"
+                  path="/theAryan/group/user"
                   element={<UserDetail showAlert={showAlert} />}
                 />
-                <Route path="/profile" element={<Profile />} />
+                <Route path="/theAryan/group/profile" element={<Profile />} />
                 <Route
-                  path="/about"
+                  path="/theAryan/group/about"
                   element={<About showAlert={showAlert} />}
                 />
-                <Route path="/product" element={<Products />} />
+                <Route path="/theAryan/group/product" element={<Products />} />
                 <Route
-                  path="/add-user"
+                  path="/theAryan/group/add-user"
                   element={<AddUser showAlert={showAlert} />}
                 />
                 <Route
-                  path="/update/user/:id"
+                  path="/theAryan/group/update/user/:id"
                   element={<UpdateUser showAlert={showAlert} />}
                 />
               </Route>
