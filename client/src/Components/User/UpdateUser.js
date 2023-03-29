@@ -2,20 +2,36 @@ import React, { useState, useEffect } from "react";
 import { Country, State, City } from "country-state-city";
 import { occupationData } from "./UserListData";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Form, Formik } from "formik";
 import axios from "axios";
 
 const UpdateUser = (props) => {
   const { showAlert } = props;
   const { id } = useParams();
+  const [name, setName] = useState("");
+  const [occupation, setOccupation] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedState, setSelectedState] = useState([]);
   const [selectedCity, setSelectedCity] = useState([]);
   const [addedUser, setAddedUser] = useState([]);
   const navigate = useNavigate();
+  console.log(
+    name,
+    occupation,
+    email,
+    phone,
+    country,
+    state,
+    city,
+    postalCode,
+    address
+  );
 
   const countryName = Country.getAllCountries();
   const handleCountryCode = (e) => {
@@ -36,9 +52,8 @@ const UpdateUser = (props) => {
     setSelectedCity(getCity);
   };
 
-  const UpdateUserDetails = async (payload) => {
+  const UpdateUserDetails = async () => {
     setLoading(true);
-    const { name, occupation, email, phone, postalCode, address } = payload;
     const response = await fetch(
       `http://localhost:5000/api/user/update/user/${id}`,
       {
@@ -62,10 +77,6 @@ const UpdateUser = (props) => {
     );
     const data = await response.json();
     setLoading(false);
-    if (data.success === false) {
-      props.showAlert("Select Country, State, District", "danger");
-    }
-
     if (data.success === true) {
       showAlert("Data has been Updated successfully", "success");
       navigate("/theAryan/group/user");
@@ -87,167 +98,161 @@ const UpdateUser = (props) => {
     <>
       <div className="container my-5">
         <h4 className="text-center text-info">UPDATE YOUR DETAILS</h4>
-        <Formik
-          initialValues={""}
-          validationSchema={""}
-          onSubmit={(payload) => UpdateUserDetails(payload)}
-        >
-          <Form>
-            <div className="row">
-              <div className="col-md my-2">
-                <b>
-                  Name <span className="text-danger"> *</span>
-                </b>
-                <input
-                  type="text"
-                  className="GInput"
-                  placeholder="Name"
-                  defaultValue={addedUser.name}
-                />
-              </div>
-              <div className="col-md my-2">
-                <b>
-                  Occupation <span className="text-danger"> *</span>
-                </b>
-                <select className="GSelect">
-                  <option value={addedUser.occupation}>Select</option>
-                  {occupationData.map((item, i) => {
-                    return (
-                      <option key={i} value={item.name}>
-                        {item.name}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md my-2">
-                <b>
-                  Email Address <span className="text-danger"> *</span>
-                </b>
-                <input
-                  type="email"
-                  className="GInput"
-                  placeholder="Email address"
-                  defaultValue={addedUser.email}
-                />
-              </div>
-              <div className="col-md my-2">
-                <b>
-                  Phone Number <span className="text-danger"> *</span>
-                </b>
-                <input
-                  type="text"
-                  className="GInput"
-                  placeholder="Phone Number"
-                  defaultValue={addedUser.phone}
-                />
-              </div>
-            </div>
-            <h6
-              className="bg-info text-white text-center my-3"
-              style={{ padding: "8px" }}
+        <div className="row">
+          <div className="col-md my-2">
+            <b>
+              Name <span className="text-danger"> *</span>
+            </b>
+            <input
+              type="text"
+              className="GInput"
+              placeholder="Name"
+              defaultValue={addedUser.name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="col-md my-2">
+            <b>
+              Occupation <span className="text-danger"> *</span>
+            </b>
+            <select
+              className="GSelect"
+              onChange={(e) => setOccupation(e.target.value)}
             >
-              ADDRESS DETAILS
-            </h6>
-            <div className="row">
-              <div className="col-md my-2">
-                <b>
-                  Country <span className="text-danger"> *</span>
-                </b>
-                <select
-                  className="GSelect"
-                  onChange={(e) => handleCountryCode(e)}
-                >
-                  <option value="">Select Country</option>
-                  {countryName.map((item, i) => {
-                    return (
-                      <option key={i} value={item.isoCode}>
-                        {item.name}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
-              <div className="col-md my-2">
-                <b>
-                  State <span className="text-danger"> *</span>
-                </b>
-                <select
-                  className="GSelect"
-                  onChange={(e) => handleStateCode(e)}
-                >
-                  <option value="">Select State</option>
-                  {selectedState.map((item, i) => {
-                    return (
-                      <option key={i} value={item.isoCode}>
-                        {item.name}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md my-2">
-                <b>
-                  City <span className="text-danger"> *</span>
-                </b>
-                <select
-                  className="GSelect"
-                  onChange={(e) => setCity(e.target.value)}
-                >
-                  <option value="">Select City</option>
-                  {selectedCity.map((item, i) => {
-                    return (
-                      <option key={i} value={item.name}>
-                        {item.name}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
-              <div className="col-md my-2">
-                <b>
-                  Pin Code <span className="text-danger"> *</span>
-                </b>
-                <input
-                  type="text"
-                  className="GInput"
-                  placeholder="Pin Code"
-                  defaultValue={addedUser.postalCode}
-                />
-              </div>
-              <div className=" my-2">
-                <b>
-                  Address <span className="text-danger"> *</span>
-                </b>
-                <textarea
-                  className="GTextArea"
-                  placeholder="Address"
-                  defaultValue={addedUser.address}
-                />
-              </div>
-            </div>
-            <div className="d-flex justify-content-between my-3">
-              <Link to="/theAryan/group/user">
-                <button className="CButton">GO BACK</button>
-              </Link>
-              <button type="submit" className="CButton">
-                {loading ? (
-                  <span
-                    className="spinner-border spinner-border-sm"
-                    role="status"
-                    aria-hidden="true"
-                  />
-                ) : (
-                  <span className="sr-only">UPDATE</span>
-                )}
-              </button>
-            </div>
-          </Form>
-        </Formik>
+              <option value="">Select</option>
+              {occupationData.map((item, i) => {
+                return (
+                  <option key={i} value={item.name}>
+                    {item.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md my-2">
+            <b>
+              Email Address <span className="text-danger"> *</span>
+            </b>
+            <input
+              type="email"
+              className="GInput"
+              placeholder="Email address"
+              defaultValue={addedUser.email}
+              onChange={(e) => setEmail(e.target.value || addedUser.email)}
+            />
+          </div>
+          <div className="col-md my-2">
+            <b>
+              Phone Number <span className="text-danger"> *</span>
+            </b>
+            <input
+              type="text"
+              className="GInput"
+              placeholder="Phone Number"
+              defaultValue={addedUser.phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+        </div>
+        <h6
+          className="bg-info text-white text-center my-3"
+          style={{ padding: "8px" }}
+        >
+          ADDRESS DETAILS
+        </h6>
+        <div className="row">
+          <div className="col-md my-2">
+            <b>
+              Country <span className="text-danger"> *</span>
+            </b>
+            <select className="GSelect" onChange={(e) => handleCountryCode(e)}>
+              <option value="">Select Country</option>
+              {countryName.map((item, i) => {
+                return (
+                  <option key={i} value={item.isoCode}>
+                    {item.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className="col-md my-2">
+            <b>
+              State <span className="text-danger"> *</span>
+            </b>
+            <select className="GSelect" onChange={(e) => handleStateCode(e)}>
+              <option value="">Select State</option>
+              {selectedState.map((item, i) => {
+                return (
+                  <option key={i} value={item.isoCode}>
+                    {item.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md my-2">
+            <b>
+              City <span className="text-danger"> *</span>
+            </b>
+            <select
+              className="GSelect"
+              onChange={(e) => setCity(e.target.value)}
+            >
+              <option value="">Select City</option>
+              {selectedCity.map((item, i) => {
+                return (
+                  <option key={i} value={item.name}>
+                    {item.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className="col-md my-2">
+            <b>
+              Pin Code <span className="text-danger"> *</span>
+            </b>
+            <input
+              type="text"
+              className="GInput"
+              placeholder="Pin Code"
+              defaultValue={addedUser.postalCode}
+              onChange={(e) => setPostalCode(e.target.value)}
+            />
+          </div>
+          <div className=" my-2">
+            <b>
+              Address <span className="text-danger"> *</span>
+            </b>
+            <textarea
+              className="GTextArea"
+              placeholder="Address"
+              defaultValue={addedUser.address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="d-flex justify-content-between my-3">
+          <Link to="/theAryan/group/user">
+            <button className="CButton">GO BACK</button>
+          </Link>
+          <button type="submit" className="CButton" onClick={UpdateUserDetails}>
+            {loading ? (
+              <span
+                className="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              />
+            ) : (
+              <span className="sr-only">UPDATE</span>
+            )}
+          </button>
+        </div>
       </div>
     </>
   );
