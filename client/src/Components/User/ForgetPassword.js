@@ -2,16 +2,20 @@ import React, { useState } from "react";
 import { Field, Form, Formik } from "formik";
 import ShowError from "../Common/ShowError";
 import "../Style/Forgot.css";
-import { FaLockOpen } from "react-icons/fa";
+import { FaLockOpen, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import {
   forgotSchema,
   ForgotInitialValue,
 } from "../ValidationSchema/ForgotSchema";
 
 const ForgetPassword = () => {
-  const [passwordShown, setPasswordShown] = useState(false);
-  const togglePassword = () => {
-    setPasswordShown(!passwordShown);
+  const [newPasswordShown, setNewPasswordShown] = useState(false);
+  const [confirmPasswordShown, setConPasswordShown] = useState(false);
+  const newPassword = () => {
+    setNewPasswordShown(!newPasswordShown);
+  };
+  const conPasswordShown = () => {
+    setConPasswordShown(!confirmPasswordShown);
   };
   const onForgot = (payload) => {
     const { email, newPassword, conPassword } = payload;
@@ -42,33 +46,63 @@ const ForgetPassword = () => {
                 <b>
                   New Password <span className="text-danger"> *</span>
                 </b>
-                <Field
-                  type={passwordShown ? "text" : "password"}
-                  placeholder="New Password"
-                  className="GInput"
-                  name="newPassword"
-                />
+                <div className="d-flex">
+                  <Field
+                    type={newPasswordShown ? "text" : "password"}
+                    placeholder="New Password"
+                    className="GInput"
+                    name="newPassword"
+                  />
+                  <span className="border-bottom">
+                    {newPasswordShown ? (
+                      <FaRegEye
+                        size={20}
+                        cursor="pointer"
+                        onClick={newPassword}
+                        style={{ marginTop: 15 }}
+                      />
+                    ) : (
+                      <FaRegEyeSlash
+                        size={20}
+                        cursor="pointer"
+                        onClick={newPassword}
+                        style={{ marginTop: 15 }}
+                      />
+                    )}
+                  </span>
+                </div>
                 <ShowError name="newPassword" />
               </div>
               <div className="my-2">
                 <b>
                   Confirm Password <span className="text-danger"> *</span>
                 </b>
-                <Field
-                  type={passwordShown ? "text" : "password"}
-                  placeholder="Confirm Password"
-                  className="GInput"
-                  name="conPassword"
-                />
+                <div className="d-flex">
+                  <Field
+                    type={confirmPasswordShown ? "text" : "password"}
+                    placeholder="Confirm Password"
+                    className="GInput"
+                    name="conPassword"
+                  />
+                  <span className="border-bottom">
+                    {confirmPasswordShown ? (
+                      <FaRegEye
+                        size={20}
+                        cursor="pointer"
+                        onClick={conPasswordShown}
+                        style={{ marginTop: 15 }}
+                      />
+                    ) : (
+                      <FaRegEyeSlash
+                        size={20}
+                        cursor="pointer"
+                        onClick={conPasswordShown}
+                        style={{ marginTop: 15 }}
+                      />
+                    )}
+                  </span>
+                </div>
                 <ShowError name="conPassword" />
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  onClick={togglePassword}
-                />
-                <span className="text-info">Show Password</span>
               </div>
               <div className="d-flex justify-content-end my-4 mx-2">
                 <button type="submit" className="CButton">

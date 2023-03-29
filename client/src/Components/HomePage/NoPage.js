@@ -10,7 +10,7 @@ const NoPage = () => {
           <FaLaptop size={150} color="gray" />
         </div>
         <h1 className="text-danger">404</h1>
-        <p>Page is Not Found</p>
+        <p>Page Not Found</p>
         <div className="my-3">
           <Link to="/home">
             <button className="CButton">Go Home</button>

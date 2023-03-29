@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaLock } from "react-icons/fa";
+import { FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import "../Style/RegisterLogin.css";
 import "../../App.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -72,23 +72,34 @@ const Login = (props) => {
                 <b>
                   Password <span className="text-danger"> *</span>
                 </b>
-                <Field
-                  type={passwordShown ? "text" : "password"}
-                  placeholder="Password"
-                  className="GInput"
-                  name="password"
-                />
+                <div className="d-flex">
+                  <Field
+                    type={passwordShown ? "text" : "password"}
+                    placeholder="Password"
+                    className="GInput"
+                    name="password"
+                  />
+                  <span className="border-bottom">
+                    {passwordShown ? (
+                      <FaRegEye
+                        size={20}
+                        cursor="pointer"
+                        onClick={togglePassword}
+                        style={{ marginTop: 15 }}
+                      />
+                    ) : (
+                      <FaRegEyeSlash
+                        size={20}
+                        cursor="pointer"
+                        onClick={togglePassword}
+                        style={{ marginTop: 15 }}
+                      />
+                    )}
+                  </span>
+                </div>
                 <ShowError name="password" />
               </div>
-              <div className="d-flex justify-content-between mx-2">
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    onClick={togglePassword}
-                  />
-                  <span className="text-info">Show Password</span>
-                </div>
+              <div className="d-flex justify-content-end mx-2 my-3">
                 <button type="submit" className="CButton">
                   {loading ? (
                     <span
