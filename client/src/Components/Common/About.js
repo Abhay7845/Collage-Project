@@ -36,10 +36,11 @@ const About = (props) => {
   //FETCH USERS COMMENTS
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/user//fetch/comment")
+      .get("http://localhost:5000/api/user/fetch/comment")
       .then((res) => res)
       .then((result) => setComments(result.data.comments));
   }, [comments]);
+  console.log("comments==>", comments);
 
   const totalComments = comments.length;
   return (
