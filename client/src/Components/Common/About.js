@@ -115,7 +115,10 @@ const About = (props) => {
         </div>
       </div>
       <p className="mx-2 text-secondary">
-        Comments Shown: <span>{totalComments}</span>
+        Comments By Peoples:
+        <span style={{ fontWeight: "bold", marginLeft: "5px" }}>
+          {totalComments}
+        </span>
       </p>
       {comments.length === 0 ? (
         ""
