@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import moment from "moment";
@@ -9,7 +9,7 @@ const UserDetail = (props) => {
   const userAccessToken = localStorage.getItem("token");
   const { showAlert } = props;
 
-  useEffect(() => {
+  const GetUserDetails = () => {
     axios
       .get("http://localhost:5000/api/user/fetchAddUser", {
         headers: {
@@ -21,16 +21,16 @@ const UserDetail = (props) => {
         const response = await res.data.addUserData;
         setAddUserInfo(response);
       });
-  }, [userAccessToken]);
-  console.log(addUserInfo.length < 0 ? "" : "");
+  };
+  GetUserDetails();
+
   const DeleteUer = (id) => {
     axios
       .delete(`http://localhost:5000/api/user/delete/user/${id}`)
       .then((res) => res)
       .then((result) => {
         if (result.data.success === true) {
-          showAlert("Data has been deleted successfully", "success");
-          window.location.reload(true);
+          showAlert("Data has been Deleted", "success");
         }
       });
   };
