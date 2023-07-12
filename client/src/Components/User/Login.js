@@ -10,6 +10,7 @@ import {
   LoginSchema,
 } from "../ValidationSchema/LoginSchema";
 import ShowError from "../Common/ShowError";
+import { HOST_URL } from "../../API/Host";
 
 const Login = (props) => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -22,7 +23,7 @@ const Login = (props) => {
   const onLogin = async (payload) => {
     setLoading(true);
     const { email, password } = payload;
-    const response = await fetch("http://localhost:5000/api/user/login", {
+    const response = await fetch(`${HOST_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

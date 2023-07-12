@@ -11,6 +11,7 @@ import {
   RegisterInitialValue,
   RegisterSchema,
 } from "../ValidationSchema/RegisterSchema";
+import { HOST_URL } from "../../API/Host";
 
 const Register = (props) => {
   const [loading, setLoading] = useState(false);
@@ -24,7 +25,7 @@ const Register = (props) => {
   const onSubmit = async (payload) => {
     setLoading(true);
     const { name, email, phone, password } = payload;
-    let result = await fetch("http://localhost:5000/api/user/register", {
+    let result = await fetch(`${HOST_URL}/register`, {
       method: "POST",
       body: JSON.stringify({ name, email, phone, password }),
       headers: {

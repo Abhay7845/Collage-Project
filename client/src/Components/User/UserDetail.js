@@ -3,6 +3,7 @@ import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import axios from "axios";
+import { HOST_URL } from "../../API/Host";
 
 const UserDetail = (props) => {
   const [addUserInfo, setAddUserInfo] = useState([]);
@@ -11,7 +12,7 @@ const UserDetail = (props) => {
 
   const GetUserDetails = () => {
     axios
-      .get("http://localhost:5000/api/user/fetchAddUser", {
+      .get(`${HOST_URL}/fetchAddUser`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: userAccessToken,
@@ -26,7 +27,7 @@ const UserDetail = (props) => {
 
   const DeleteUer = (id) => {
     axios
-      .delete(`http://localhost:5000/api/user/delete/user/${id}`)
+      .delete(`${HOST_URL}/delete/user/${id}`)
       .then((res) => res)
       .then((result) => {
         if (result.data.success === true) {

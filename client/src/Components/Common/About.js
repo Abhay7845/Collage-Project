@@ -11,6 +11,7 @@ import Footer from "../HomePage/Footer";
 import "../../Components/Style/About.css";
 import image from "../../Asset/img/laptop.png";
 import axios from "axios";
+import { HOST_URL } from "../../API/Host";
 
 const About = (props) => {
   const [loading, setLoading] = useState(false);
@@ -19,7 +20,7 @@ const About = (props) => {
   const onSendComment = async (payload) => {
     setLoading(true);
     const { email, comment } = payload;
-    let result = await fetch("http://localhost:5000/api/user/subscription", {
+    let result = await fetch(`${HOST_URL}/subscription`, {
       method: "POST",
       body: JSON.stringify({ email, comment }),
       headers: {
@@ -36,7 +37,7 @@ const About = (props) => {
   //FETCH USERS COMMENTS
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/user/fetch/comment", {
+      .get(`${HOST_URL}/fetch/comment`, {
         headers: {
           "Content-Type": "application/json",
         },

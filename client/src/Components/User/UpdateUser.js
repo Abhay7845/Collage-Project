@@ -3,6 +3,7 @@ import { Country, State, City } from "country-state-city";
 import { occupationData } from "./UserListData";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { HOST_URL } from "../../API/Host";
 
 const UpdateUser = (props) => {
   const { showAlert } = props;
@@ -43,27 +44,24 @@ const UpdateUser = (props) => {
 
   const UpdateUserDetails = async () => {
     setLoading(true);
-    const response = await fetch(
-      `http://localhost:5000/api/user/update/user/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: userAccessToken,
-        },
-        body: JSON.stringify({
-          name,
-          occupation,
-          email,
-          phone,
-          country,
-          state,
-          city,
-          postalCode,
-          address,
-        }),
-      }
-    );
+    const response = await fetch(`${HOST_URL}/update/user/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: userAccessToken,
+      },
+      body: JSON.stringify({
+        name,
+        occupation,
+        email,
+        phone,
+        country,
+        state,
+        city,
+        postalCode,
+        address,
+      }),
+    });
     const data = await response.json();
     setLoading(false);
     if (data.success === true) {
@@ -77,7 +75,7 @@ const UpdateUser = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/user/fetch/AddUser/${id}`, {
+      .get(`${HOST_URL}/fetch/AddUser/${id}`, {
         headers: {
           "Content-Type": "application/json",
         },

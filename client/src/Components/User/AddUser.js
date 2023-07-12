@@ -8,6 +8,7 @@ import {
   addUserSchema,
 } from "../ValidationSchema/AddUserSchema";
 import ShowError from "../Common/ShowError";
+import { HOST_URL } from "../../API/Host";
 
 const AddUser = (props) => {
   const { showAlert } = props;
@@ -40,7 +41,7 @@ const AddUser = (props) => {
   const addUserInfo = async (payload) => {
     setLoading(true);
     const { name, occupation, email, phone, postalCode, address } = payload;
-    const response = await fetch("http://localhost:5000/api/user/addUser", {
+    const response = await fetch(`${HOST_URL}/addUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
