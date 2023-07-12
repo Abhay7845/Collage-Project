@@ -67,3 +67,24 @@
 .commentStyle {
   margin-left: 28px;
 }
+
+.commentsStyle {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width:762px) {
+  .commentsStyle {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width:762px) {
+  .commentDate {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+}

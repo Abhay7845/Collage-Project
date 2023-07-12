@@ -130,13 +130,15 @@ const About = (props) => {
                   style={{ marginTop: "-2px" }}
                 />
                 <b className="mx-2">{item.email}</b>
-                <p className="commentStyle">
-                  <span className="text-secondary">comment: </span>
-                  {item.comment}.
-                </p>
-                <p className="d-flex justify-content-end">
-                  {moment(item.date).format("ll")}
-                </p>
+                <div className="commentsStyle">
+                  <span className="commentStyle">
+                    <span className="text-secondary">comment: </span>
+                    {item.comment}.
+                  </span>
+                  <span className="commentDate">
+                    {moment(item.date).format("ll")}
+                  </span>
+                </div>
                 <hr />
               </div>
             );
