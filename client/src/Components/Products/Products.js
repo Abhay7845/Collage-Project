@@ -1,12 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Footer from "../HomePage/Footer";
 import Pagination from "./Pagination";
 import gifLoading from "../../Asset/img/Loading.svg";
+import { Headers } from "../../API/Host";
 
 const Products = () => {
-  const [image, setImage] = useState([]);
+  const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showPerPage, setShowPerPage] = useState(16);
+  const { headers } = Headers;
+
   const [pagination, setPagination] = useState({
     start: 0,
     end: showPerPage,
@@ -23,13 +27,11 @@ const Products = () => {
         "https://jsonplaceholder.typicode.com/photos",
         {
           method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: headers,
         }
       );
       const imageList = await response.json();
-      setImage(imageList);
+      setProductList(imageList);
       setLoading(false);
     }
     productsData();
@@ -49,38 +51,40 @@ const Products = () => {
         <div className="text-center">
           {loading && <img src={gifLoading} alt="loading" />}
         </div>
-        <div className="row mx-0">
-          {image.slice(pagination.start, pagination.end).map((item, i) => {
-            const { title, url, id } = item;
-            return (
-              <div key={i} className="col-md-3 my-2">
-                <div className="card">
-                  <div className="card-body">
-                    <h6 className="card-title">
-                      {id}. {title.charAt(0).toUpperCase() + title.slice(1)}
-                    </h6>
-                    <div className="my-2">
-                      <img src={url} alt="" width="100%" height="150px" />
+        {productList.length > 0 && (
+          <div className="row mx-0">
+            {productList
+              .slice(pagination.start, pagination.end)
+              .map((item, i) => {
+                const { title, url, id } = item;
+                return (
+                  <div key={i} className="col-md-3 my-2">
+                    <div className="card">
+                      <div className="card-body">
+                        <h6 className="card-title">
+                          {id}. {title.charAt(0).toUpperCase() + title.slice(1)}
+                        </h6>
+                        <div className="my-2">
+                          <img src={url} alt="" width="100%" height="150px" />
+                        </div>
+                        <p className="card-text">
+                          With supporting text below as a natural lead-in to
+                          additional content.
+                        </p>
+                      </div>
                     </div>
-                    <p className="card-text">
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </p>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-          <Pagination
-            showPerPage={showPerPage}
-            onPagination={onPagination}
-            setShowPerPage
-          />
-        </div>
+                );
+              })}
+            <Pagination
+              showPerPage={showPerPage}
+              onPagination={onPagination}
+              setShowPerPage
+            />
+          </div>
+        )}
       </div>
-      <div>
-        <Footer />
-      </div>
+      {productList.length > 0 && <Footer />}
     </>
   );
 };

@@ -10,11 +10,13 @@ import {
   LoginSchema,
 } from "../ValidationSchema/LoginSchema";
 import ShowError from "../Common/ShowError";
+import { Headers } from "../../API/Host";
 
 const Login = (props) => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { headers } = Headers;
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -24,9 +26,7 @@ const Login = (props) => {
     const { email, password } = payload;
     const response = await fetch("http://localhost:5000/api/user/login", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: headers,
       body: JSON.stringify({ email, password }),
     });
     const data = await response.json();

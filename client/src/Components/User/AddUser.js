@@ -8,6 +8,7 @@ import {
   addUserSchema,
 } from "../ValidationSchema/AddUserSchema";
 import ShowError from "../Common/ShowError";
+import { Headers } from "../../API/Host";
 
 const AddUser = (props) => {
   const { showAlert } = props;
@@ -18,6 +19,7 @@ const AddUser = (props) => {
   const [selectedState, setSelectedState] = useState([]);
   const [selectedCity, setSelectedCity] = useState([]);
   const navigate = useNavigate();
+  const { headers } = Headers;
 
   const countryName = Country.getAllCountries();
   const handleCountryCode = (e) => {
@@ -42,10 +44,8 @@ const AddUser = (props) => {
     const { name, occupation, email, phone, postalCode, address } = payload;
     const response = await fetch("http://localhost:5000/api/user/addUser", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: userAccessToken,
-      },
+      headers: headers,
+      Authorization: userAccessToken,
       body: JSON.stringify({
         name,
         occupation,
