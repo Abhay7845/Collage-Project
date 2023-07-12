@@ -1,15 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Footer from "../HomePage/Footer";
 import Pagination from "./Pagination";
 import gifLoading from "../../Asset/img/Loading.svg";
-import { Headers } from "../../API/Host";
 
 const Products = () => {
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showPerPage, setShowPerPage] = useState(16);
-  const { headers } = Headers;
 
   const [pagination, setPagination] = useState({
     start: 0,
@@ -27,7 +24,9 @@ const Products = () => {
         "https://jsonplaceholder.typicode.com/photos",
         {
           method: "GET",
-          headers: headers,
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
       const imageList = await response.json();

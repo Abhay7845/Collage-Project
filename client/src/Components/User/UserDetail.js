@@ -1,22 +1,21 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import axios from "axios";
-import { Headers } from "../../API/Host";
 
 const UserDetail = (props) => {
   const [addUserInfo, setAddUserInfo] = useState([]);
   const userAccessToken = localStorage.getItem("token");
   const { showAlert } = props;
-  const { headers } = Headers;
 
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/user/fetchAddUser", {
-        headers: headers,
-        Authorization: userAccessToken,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: userAccessToken,
+        },
       })
       .then(async (res) => {
         const response = await res.data.addUserData;
@@ -26,9 +25,7 @@ const UserDetail = (props) => {
   console.log(addUserInfo.length < 0 ? "" : "");
   const DeleteUer = (id) => {
     axios
-      .delete(`http://localhost:5000/api/user/delete/user/${id}`, {
-        headers: headers,
-      })
+      .delete(`http://localhost:5000/api/user/delete/user/${id}`)
       .then((res) => res)
       .then((result) => {
         if (result.data.success === true) {

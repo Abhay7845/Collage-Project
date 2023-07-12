@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { Field, Form, Formik } from "formik";
 import moment from "moment";
@@ -12,12 +11,10 @@ import Footer from "../HomePage/Footer";
 import "../../Components/Style/About.css";
 import image from "../../Asset/img/laptop.png";
 import axios from "axios";
-import { Headers } from "../../API/Host";
 
 const About = (props) => {
   const [loading, setLoading] = useState(false);
   const [comments, setComments] = useState([]);
-  const { headers } = Headers;
 
   const onSendComment = async (payload) => {
     setLoading(true);
@@ -25,7 +22,9 @@ const About = (props) => {
     let result = await fetch("http://localhost:5000/api/user/subscription", {
       method: "POST",
       body: JSON.stringify({ email, comment }),
-      headers: headers,
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     result = await result.json();
     if (result.success) {
@@ -38,7 +37,9 @@ const About = (props) => {
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/user/fetch/comment", {
-        headers: headers,
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
       .then((res) => res)
       .then((result) => setComments(result.data.comments));

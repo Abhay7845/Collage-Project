@@ -11,13 +11,11 @@ import {
   RegisterInitialValue,
   RegisterSchema,
 } from "../ValidationSchema/RegisterSchema";
-import { Headers } from "../../API/Host";
 
 const Register = (props) => {
   const [loading, setLoading] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
   const navigate = useNavigate();
-  const { headers } = Headers;
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -29,7 +27,9 @@ const Register = (props) => {
     let result = await fetch("http://localhost:5000/api/user/register", {
       method: "POST",
       body: JSON.stringify({ name, email, phone, password }),
-      headers: headers,
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     result = await result.json();
     if (result.success) {

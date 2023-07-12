@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import Pagination from "../Products/Pagination";
-import { Headers } from "../../API/Host";
 
 const SearchEngine = () => {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [responseData, setResponseData] = useState([]);
   const [showPerPage, setShowPerPage] = useState(50);
-  const { headers } = Headers;
   const [pagination, setPagination] = useState({
     start: 0,
     end: showPerPage,
@@ -22,7 +20,9 @@ const SearchEngine = () => {
         `https://jsonplaceholder.typicode.com/comments?q=${search}`,
         {
           method: "GET",
-          headers: headers,
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
       const response = await BusinessList.json();

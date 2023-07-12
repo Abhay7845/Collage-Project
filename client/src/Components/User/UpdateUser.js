@@ -1,10 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { Country, State, City } from "country-state-city";
 import { occupationData } from "./UserListData";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { Headers } from "../../API/Host";
 
 const UpdateUser = (props) => {
   const { showAlert } = props;
@@ -23,7 +21,6 @@ const UpdateUser = (props) => {
   const [selectedCity, setSelectedCity] = useState([]);
   const [addedUser, setAddedUser] = useState([]);
   const navigate = useNavigate();
-  const { headers } = Headers;
 
   const countryName = Country.getAllCountries();
   const handleCountryCode = (e) => {
@@ -50,8 +47,10 @@ const UpdateUser = (props) => {
       `http://localhost:5000/api/user/update/user/${id}`,
       {
         method: "PUT",
-        headers: headers,
-        Authorization: userAccessToken,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: userAccessToken,
+        },
         body: JSON.stringify({
           name,
           occupation,
@@ -79,7 +78,9 @@ const UpdateUser = (props) => {
   useEffect(() => {
     axios
       .get(`http://localhost:5000/api/user/fetch/AddUser/${id}`, {
-        headers: headers,
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
       .then((res) => res)
       .then((result) => setAddedUser(result.data.AddedUser))
