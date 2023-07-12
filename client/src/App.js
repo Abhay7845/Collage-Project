@@ -30,6 +30,7 @@ const App = () => {
       setAlert(null);
     }, 4000);
   };
+
   return (
     <>
       <Provider store={store}>
@@ -43,6 +44,7 @@ const App = () => {
           <Alert alert={alert} />
           <Routes>
             <Route>
+              <Route index element={<Home />} />
               <Route index path="/theAryan/group/home" element={<Home />} />
               <Route path="*" element={<NoPage />} />
               <Route
