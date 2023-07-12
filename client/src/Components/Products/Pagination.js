@@ -17,7 +17,7 @@ const Pagination = ({ showPerPage, onPagination }) => {
   }, [counter]);
   return (
     <>
-      <div className="d-flex justify-content-between mx-3 my-4">
+      <div className="d-flex justify-content-between mx-3 mt-4">
         <button
           className={`btn btn-info text-white btn-sm ${
             previousMute === 0 ? "disabled" : ""

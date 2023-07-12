@@ -15,42 +15,24 @@ const Services = () => {
         </h4>
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <div className="col">
-            <div className="card shadow">
-              <img src={img} className="img-fluid" alt="..." />
-              {/* <div className="card-body">
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-              </div> */}
+            <div className="">
+              <img src={img} className="img-fluid rounded" alt="..." />
             </div>
           </div>
           <div className="col">
-            <div className="card shadow">
-              <img src={img1} className="img-fluid rounded" alt="..." />
-            </div>
+            <img src={img1} className="img-fluid rounded" alt="..." />
           </div>
           <div className="col">
-            <div className="card shadow">
-              <img src={img2} className="img-fluid rounded" alt="..." />
-            </div>
-          </div>
-
-          <div className="col">
-            <div className="card shadow">
-              <img src={img3} className="img-fluid rounded" alt="..." />
-            </div>
+            <img src={img2} className="img-fluid rounded" alt="..." />
           </div>
           <div className="col">
-            <div className="card shadow">
-              <img src={img4} className="img-fluid rounded" alt="..." />
-            </div>
+            <img src={img3} className="img-fluid rounded" alt="..." />
           </div>
           <div className="col">
-            <div className="card shadow">
-              <img src={owner} className="img-fluid rounded" alt="..." />
-            </div>
+            <img src={img4} className="img-fluid rounded" alt="..." />
+          </div>
+          <div className="col">
+            <img src={owner} className="img-fluid rounded" alt="..." />
           </div>
         </div>
       </div>
