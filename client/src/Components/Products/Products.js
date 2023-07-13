@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Footer from "../HomePage/Footer";
 import Pagination from "./Pagination";
-import gifLoading from "../../Asset/img/Loading.svg";
+import AppLoader from "../Common/AppLoader";
 
 const Products = () => {
   const [productList, setProductList] = useState([]);
@@ -38,9 +38,7 @@ const Products = () => {
 
   return (
     <>
-      <div className="text-center mt-3">
-        {loading && <img src={gifLoading} alt="loading" />}
-      </div>
+      {loading === true && <AppLoader />}
       {productList.length > 0 && (
         <div className="container">
           <div className="pricing-header p-3 pb-md-4 mx-auto text-center my-3">
