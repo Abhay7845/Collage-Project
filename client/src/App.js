@@ -18,6 +18,7 @@ import Translate from "./Components/Translate/Translate";
 import { Provider } from "react-redux";
 import { store } from "./Redux/Store";
 import UpdateUser from "./Components/User/UpdateUser";
+import 'tippy.js/dist/tippy.css';
 
 const App = () => {
   const [alert, setAlert] = useState(null);
