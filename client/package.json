@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homepage": "https://thearyagroup.netlify.app/",
+  "homepage": "https://thearyagroup.netlify.app/theAryan/group/home",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",

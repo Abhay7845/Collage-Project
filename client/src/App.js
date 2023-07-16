@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState } from "react";
 import Register from "./Components/User/Register";
 import Login from "./Components/User/Login";
@@ -18,7 +20,7 @@ import Translate from "./Components/Translate/Translate";
 import { Provider } from "react-redux";
 import { store } from "./Redux/Store";
 import UpdateUser from "./Components/User/UpdateUser";
-import 'tippy.js/dist/tippy.css';
+import "tippy.js/dist/tippy.css";
 
 const App = () => {
   const [alert, setAlert] = useState(null);
@@ -36,48 +38,47 @@ const App = () => {
     <>
       <Provider store={store}>
         <BrowserRouter>
-          <div className="NavbarShowStyle">
+          <div className='NavbarShowStyle'>
             <Navbar />
           </div>
-          <div className="SideNavbarSwoStyle">
+          <div className='SideNavbarSwoStyle'>
             <SideNavbar />
           </div>
           <Alert alert={alert} />
           <Routes>
             <Route>
-              <Route index element={<Home />} />
-              <Route index path="/theAryan/group/home" element={<Home />} />
-              <Route path="*" element={<NoPage />} />
+              <Route path='/theAryan/group/home' element={<Home />} />
+              <Route path='*' element={<NoPage />} />
               <Route
-                path="/theAryan/group/register"
+                path='/theAryan/group/register'
                 element={<Register showAlert={showAlert} />}
               />
               <Route
-                path="/theAryan/group/login"
+                path='/theAryan/group/login'
                 element={<Login showAlert={showAlert} />}
               />
               <Route
-                path="/theAryan/group/forget/password"
+                path='/theAryan/group/forget/password'
                 element={<ForgetPassword />}
               />
-              <Route path="/theAryan/group/translate" element={<Translate />} />
+              <Route path='/theAryan/group/translate' element={<Translate />} />
               <Route element={<PrivateComponent />}>
                 <Route
-                  path="/theAryan/group/user"
+                  path='/theAryan/group/user'
                   element={<UserDetail showAlert={showAlert} />}
                 />
-                <Route path="/theAryan/group/profile" element={<Profile />} />
+                <Route path='/theAryan/group/profile' element={<Profile />} />
                 <Route
-                  path="/theAryan/group/about"
+                  path='/theAryan/group/about'
                   element={<About showAlert={showAlert} />}
                 />
-                <Route path="/theAryan/group/product" element={<Products />} />
+                <Route path='/theAryan/group/product' element={<Products />} />
                 <Route
-                  path="/theAryan/group/add-user"
+                  path='/theAryan/group/add-user'
                   element={<AddUser showAlert={showAlert} />}
                 />
                 <Route
-                  path="/theAryan/group/update/user/:id"
+                  path='/theAryan/group/update/user/:id'
                   element={<UpdateUser showAlert={showAlert} />}
                 />
               </Route>
