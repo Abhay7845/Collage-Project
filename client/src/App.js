@@ -48,7 +48,10 @@ const App = () => {
           <Routes>
             <Route>
               <Route index element={<Home />} />
-              <Route path='/theAryan/group/home' element={<Home />} />
+              <Route
+                path='https://thearyangroup.netlify.app/'
+                element={<Home />}
+              />
               <Route path='*' element={<NoPage />} />
               <Route
                 path='/theAryan/group/register'
