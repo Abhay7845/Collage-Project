@@ -50,6 +50,7 @@
   border: none;
   background-color: #7fe40d;
   color: #fff;
+  border-radius:2px;
 }
 
 .subscribe-button:hover {
