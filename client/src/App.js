@@ -47,6 +47,7 @@ const App = () => {
           <Alert alert={alert} />
           <Routes>
             <Route>
+              <Route index element={<Home />} />
               <Route path='/theAryan/group/home' element={<Home />} />
               <Route path='*' element={<NoPage />} />
               <Route
