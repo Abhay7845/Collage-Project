@@ -1,5 +1,4 @@
 /** @format */
-
 import React, { useState, useEffect } from "react";
 import { FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import "../Style/RegisterLogin.css";
