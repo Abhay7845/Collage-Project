@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+/** @format */
+
+import React, { useState, useEffect } from "react";
 import { FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import "../Style/RegisterLogin.css";
 import "../../App.css";
@@ -13,13 +15,25 @@ import ShowError from "../Common/ShowError";
 import { HOST_URL } from "../../API/Host";
 
 const Login = (props) => {
+  const { showAlert } = props;
   const [passwordShown, setPasswordShown] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const LoginTime = localStorage.getItem("loginTime");
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
+
+  useEffect(() => {
+    const currentTime = new Date().getTime();
+    if (currentTime < LoginTime) {
+      navigate("/theAryan/group/home");
+    } else {
+      navigate("/theAryan/group/login");
+    }
+  }, [LoginTime, navigate]);
+
   const onLogin = async (payload) => {
     setLoading(true);
     const { email, password } = payload;
@@ -32,104 +46,103 @@ const Login = (props) => {
     });
     const data = await response.json();
     if (data.success === true) {
+      const loginTime = new Date(data.loginTime).getTime();
       localStorage.setItem("token", data.token);
-      props.showAlert("Logged in Successfully", "success");
+      localStorage.setItem("loginTime", loginTime);
       navigate("/theAryan/group/home");
-      setLoading(true);
+      setLoading(false);
     } else {
-      props.showAlert("Please enter your valid email and password", "danger");
+      showAlert("Please enter your valid email and password", "danger");
       setLoading(false);
     }
   };
   return (
-    <>
-      <div className="row mx-0">
-        <div className="col RegisterLeftStyle">
-          <h5 className="text-center my-5 text-info">LOGIN WITH US</h5>
+    <div>
+      <div className='row mx-0'>
+        <div className='col RegisterLeftStyle'>
+          <h5 className='text-center my-5 text-info'>LOGIN WITH US</h5>
         </div>
-        <div className="col RegisterLeftRight">
-          <div className="text-center text-info my-4">
+        <div className='col RegisterLeftRight'>
+          <div className='text-center text-info my-4'>
             <FaLock size={30} />
             <h4>LOGIN</h4>
           </div>
           <Formik
             initialValues={LoginInitialValue}
             validationSchema={LoginSchema}
-            onSubmit={(payload) => onLogin(payload)}
-          >
+            onSubmit={(payload) => onLogin(payload)}>
             <Form>
-              <div className="my-2">
+              <div className='my-2'>
                 <b>
-                  Email Address <span className="text-danger"> *</span>
+                  Email Address <span className='text-danger'> *</span>
                 </b>
                 <Field
-                  placeholder="Email Address"
-                  name="email"
-                  className="GInput"
+                  placeholder='Email Address'
+                  name='email'
+                  className='GInput'
                 />
-                <ShowError name="email" />
+                <ShowError name='email' />
               </div>
-              <div className="my-2">
+              <div className='my-2'>
                 <b>
-                  Password <span className="text-danger"> *</span>
+                  Password <span className='text-danger'> *</span>
                 </b>
-                <div className="d-flex">
+                <div className='d-flex'>
                   <Field
                     type={passwordShown ? "text" : "password"}
-                    placeholder="Password"
-                    className="GInput"
-                    name="password"
+                    placeholder='Password'
+                    className='GInput'
+                    name='password'
                   />
-                  <span className="border-bottom">
+                  <span className='border-bottom'>
                     {passwordShown ? (
                       <FaRegEye
                         size={20}
-                        cursor="pointer"
+                        cursor='pointer'
                         onClick={togglePassword}
                         style={{ marginTop: 15 }}
                       />
                     ) : (
                       <FaRegEyeSlash
                         size={20}
-                        cursor="pointer"
+                        cursor='pointer'
                         onClick={togglePassword}
                         style={{ marginTop: 15 }}
                       />
                     )}
                   </span>
                 </div>
-                <ShowError name="password" />
+                <ShowError name='password' />
               </div>
-              <div className="d-flex justify-content-end mx-2 my-3">
-                <button type="submit" className="CButton">
+              <div className='d-flex justify-content-end mx-2 my-3'>
+                <button type='submit' className='CButton'>
                   {loading ? (
                     <span
-                      className="spinner-border spinner-border-sm"
-                      role="status"
-                      aria-hidden="true"
+                      className='spinner-border spinner-border-sm'
+                      role='status'
+                      aria-hidden='true'
                     />
                   ) : (
-                    <span className="sr-only">LOGIN</span>
+                    <span className='sr-only'>LOGIN</span>
                   )}
                 </button>
               </div>
             </Form>
           </Formik>
-          <hr className="mx-4" />
-          <div className="text-center">
+          <hr className='mx-4' />
+          <div className='text-center'>
             <Link
-              to="/theAryan/group/forget/password"
-              className="forgotPassStyle"
-            >
+              to='/theAryan/group/forget/password'
+              className='forgotPassStyle'>
               Forget Password
             </Link>
           </div>
         </div>
       </div>
-      <div className="footerStyle">
+      <div className='footerStyle'>
         <Footer />
       </div>
-    </>
+    </div>
   );
 };
 

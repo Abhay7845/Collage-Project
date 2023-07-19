@@ -34,8 +34,11 @@ const App = () => {
     }, 4000);
   };
 
+  document.addEventListener("blockInspect", function (e) {
+    e.preventDefault();
+  });
   return (
-    <>
+    <div>
       <Provider store={store}>
         <BrowserRouter>
           <div className='NavbarShowStyle'>
@@ -87,7 +90,7 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       </Provider>
-    </>
+    </div>
   );
 };
 
