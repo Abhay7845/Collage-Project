@@ -51,7 +51,7 @@ const Navbar = () => {
                   </Link>
                 </li>
               ) : (
-                <div>
+                <>
                   <Link
                     className={`nav-link NavbarList ${
                       location.pathname === "/theAryan/group/home"
@@ -88,7 +88,7 @@ const Navbar = () => {
                     to='/theAryan/group/about'>
                     ABOUT
                   </Link>
-                </div>
+                </>
               )}
             </ul>
             <form className='d-flex'>
@@ -113,16 +113,16 @@ const Navbar = () => {
                 color={theme === "light-theme" ? "#ffff" : "#000"}
               />
               {!localStorage.getItem("token") ? (
-                <div>
+                <>
                   <Link className='nav-link' to='/theAryan/group/login'>
                     <button className='registerLoginButton mx-2'>LOGIN</button>
                   </Link>
                   <Link className='nav-link' to='/theAryan/group/register'>
                     <button className='registerLoginButton'>REGISTER</button>
                   </Link>
-                </div>
+                </>
               ) : (
-                <div>
+                <>
                   <Link to='/theAryan/group/profile'>
                     <Tippy
                       content={userInfo === undefined ? "" : userInfo.name}>
@@ -138,7 +138,7 @@ const Navbar = () => {
                       <Icon.ArrowRightCircleFill size={20} />
                     </Tippy>
                   </b>
-                </div>
+                </>
               )}
             </form>
           </div>
