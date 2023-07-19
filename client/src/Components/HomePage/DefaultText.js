@@ -1,3 +1,5 @@
+/** @format */
+
 export const text1 =
   "Grammarly’s plagiarism checker can detect plagiarism from billions of web pages as well as from ProQuest’s academic... databases. Our free plagiarism check will tell you whether or not your text contains duplicate content. Our Premium plagiarism check highlights passages that require citations and gives you the resources you need to properly credit your sources.";
 export const text2 =

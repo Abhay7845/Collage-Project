@@ -6,7 +6,7 @@ import { FaFacebook, FaGithub, FaInstagram, FaYoutube } from "react-icons/fa";
 const Footer = () => {
   const CurrentYear = new Date().getFullYear();
   return (
-    <>
+    <div>
       <hr className='mx-2' />
       <div className='row my-3 mx-0'>
         <div className='col'>
@@ -45,7 +45,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

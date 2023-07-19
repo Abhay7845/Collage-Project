@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState, useEffect } from "react";
 import Footer from "../HomePage/Footer";
 import Pagination from "./Pagination";
@@ -37,42 +39,42 @@ const Products = () => {
   }, [setShowPerPage]);
 
   return (
-    <>
+    <div>
       {loading === true && <AppLoader />}
       {productList.length > 0 && (
-        <div className="container">
-          <div className="pricing-header p-3 pb-md-4 mx-auto text-center my-3">
-            <h3 className="fw-bold text-info">Our Products</h3>
-            <p className="fs-5 ">
+        <div className='container'>
+          <div className='pricing-header p-3 pb-md-4 mx-auto text-center my-3'>
+            <h3 className='fw-bold text-info'>Our Products</h3>
+            <p className='fs-5 '>
               Quickly build an effective pricing table for your potential
               customers with this Bootstrap example. It’s built with default
               Bootstrap components and utilities with little customization.
             </p>
           </div>
           <div>
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+            <div className='row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3'>
               {productList
                 .slice(pagination.start, pagination.end)
                 .map((item, i) => {
                   const { title, url, id } = item;
                   return (
                     <div key={i}>
-                      <div className="border p-3 rounded">
-                        <div className="card-body">
-                          <h6 className="card-title">
+                      <div className='border p-3 rounded'>
+                        <div className='card-body'>
+                          <h6 className='card-title'>
                             {id}.
                             {title.charAt(0).toUpperCase() + title.slice(1)}
                           </h6>
-                          <div className="my-2">
+                          <div className='my-2'>
                             <img
                               src={url}
-                              className="rounded"
-                              alt=""
-                              width="100%"
-                              height="150px"
+                              className='rounded'
+                              alt=''
+                              width='100%'
+                              height='150px'
                             />
                           </div>
-                          <p className="card-text">
+                          <p className='card-text'>
                             With supporting text below as a natural lead-in to
                             additional content.
                           </p>
@@ -91,7 +93,7 @@ const Products = () => {
         </div>
       )}
       {productList.length > 0 && <Footer />}
-    </>
+    </div>
   );
 };
 

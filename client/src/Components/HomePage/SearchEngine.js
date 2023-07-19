@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState } from "react";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import Pagination from "../Products/Pagination";
@@ -41,56 +43,55 @@ const SearchEngine = () => {
     setPagination({ start: startValue, end: endValue });
   };
   return (
-    <>
-      <div className="row mx-0" style={{ marginTop: "-10px" }}>
-        <div className="col HomeTextStyle">
-          <h5 className="text-center textH4Style">
+    <div>
+      <div className='row mx-0' style={{ marginTop: "-10px" }}>
+        <div className='col HomeTextStyle'>
+          <h5 className='text-center textH4Style'>
             Find The Perfect Freelance Service <br />
             For Your Business
           </h5>
-          <div className="col searchField my-3">
+          <div className='col searchField my-3'>
             <input
-              type="text"
-              className="searchStyle"
-              placeholder="Search"
+              type='text'
+              className='searchStyle'
+              placeholder='Search'
               onChange={(e) => setSearch(e.target.value)}
             />
-            <span className="searchButton" onClick={searchData}>
+            <span className='searchButton' onClick={searchData}>
               {loading ? (
                 <span
-                  className="spinner-border spinner-border-sm"
-                  role="status"
-                  aria-hidden="true"
+                  className='spinner-border spinner-border-sm'
+                  role='status'
+                  aria-hidden='true'
                 />
               ) : (
-                <span className="sr-only">Search</span>
+                <span className='sr-only'>Search</span>
               )}
             </span>
           </div>
         </div>
       </div>
       {responseData.length > 0 && (
-        <div className="container my-3">
-          <div className="d-flex justify-content-end my-2">
-            <b className="mx-2 my-1">DOWNLOAD YOUR LIST :-</b>
+        <div className='container my-3'>
+          <div className='d-flex justify-content-end my-2'>
+            <b className='mx-2 my-1'>DOWNLOAD YOUR LIST :-</b>
             <ReactHTMLTableToExcel
-              id="test-table-xls-button"
-              className="downloadexcel"
-              table="table-to-xls"
-              filename="Freelancing List"
-              sheet="tablexls"
-              buttonText="DOWNLOAD"
+              id='test-table-xls-button'
+              className='downloadexcel'
+              table='table-to-xls'
+              filename='Freelancing List'
+              sheet='tablexls'
+              buttonText='DOWNLOAD'
             />
           </div>
-          <div className="table-responsive">
+          <div className='table-responsive'>
             <table
-              id="table-to-xls"
-              className="table table-hover table-bordered table-pointer"
-            >
+              id='table-to-xls'
+              className='table table-hover table-bordered table-pointer'>
               <thead>
                 <tr>
                   <th>No.</th>
-                  <th className="text-center">Description</th>
+                  <th className='text-center'>Description</th>
                 </tr>
               </thead>
               <tbody>
@@ -98,7 +99,7 @@ const SearchEngine = () => {
                   .slice(pagination.start, pagination.end)
                   .map((item, i) => {
                     return (
-                      <tr key={i} className="textJustify">
+                      <tr key={i} className='textJustify'>
                         <td>{i + 1}</td>
                         <td>{item.body}</td>
                       </tr>
@@ -115,7 +116,7 @@ const SearchEngine = () => {
         </div>
       )}
       {!responseData === null && <p>Data Not Found</p>}
-    </>
+    </div>
   );
 };
 

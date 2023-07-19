@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState } from "react";
 import { Country, State, City } from "country-state-city";
 import { occupationData } from "./UserListData";
@@ -71,34 +73,33 @@ const AddUser = (props) => {
   };
 
   return (
-    <>
-      <div className="container my-5">
-        <h4 className="text-center text-info"> ADD USER</h4>
+    <div>
+      <div className='container my-5'>
+        <h4 className='text-center text-info'> ADD USER</h4>
         <Formik
           initialValues={addUserInitialValue}
           validationSchema={addUserSchema}
-          onSubmit={(payload) => addUserInfo(payload)}
-        >
+          onSubmit={(payload) => addUserInfo(payload)}>
           <Form>
-            <div className="row">
-              <div className="col-md my-2">
+            <div className='row'>
+              <div className='col-md my-2'>
                 <b>
-                  Name <span className="text-danger"> *</span>
+                  Name <span className='text-danger'> *</span>
                 </b>
                 <Field
-                  type="text"
-                  className="GInput"
-                  placeholder="Name"
-                  name="name"
+                  type='text'
+                  className='GInput'
+                  placeholder='Name'
+                  name='name'
                 />
-                <ShowError name="name" />
+                <ShowError name='name' />
               </div>
-              <div className="col-md my-2">
+              <div className='col-md my-2'>
                 <b>
-                  Occupation <span className="text-danger"> *</span>
+                  Occupation <span className='text-danger'> *</span>
                 </b>
-                <Field as="select" className="GSelect" name="occupation">
-                  <option value="">Select</option>
+                <Field as='select' className='GSelect' name='occupation'>
+                  <option value=''>Select</option>
                   {occupationData.map((item, i) => {
                     return (
                       <option key={i} value={item.name}>
@@ -107,51 +108,49 @@ const AddUser = (props) => {
                     );
                   })}
                 </Field>
-                <ShowError name="occupation" />
+                <ShowError name='occupation' />
               </div>
             </div>
-            <div className="row">
-              <div className="col-md my-2">
+            <div className='row'>
+              <div className='col-md my-2'>
                 <b>
-                  Email Address <span className="text-danger"> *</span>
+                  Email Address <span className='text-danger'> *</span>
                 </b>
                 <Field
-                  type="text"
-                  className="GInput"
-                  placeholder="Email address"
-                  name="email"
+                  type='text'
+                  className='GInput'
+                  placeholder='Email address'
+                  name='email'
                 />
-                <ShowError name="email" />
+                <ShowError name='email' />
               </div>
-              <div className="col-md my-2">
+              <div className='col-md my-2'>
                 <b>
-                  Phone Number <span className="text-danger"> *</span>
+                  Phone Number <span className='text-danger'> *</span>
                 </b>
                 <Field
-                  type="text"
-                  className="GInput"
-                  placeholder="Phone Number"
-                  name="phone"
+                  type='text'
+                  className='GInput'
+                  placeholder='Phone Number'
+                  name='phone'
                 />
-                <ShowError name="phone" />
+                <ShowError name='phone' />
               </div>
             </div>
             <h6
-              className="bg-info text-white text-center my-3"
-              style={{ padding: "8px" }}
-            >
+              className='bg-info text-white text-center my-3'
+              style={{ padding: "8px" }}>
               ADDRESS DETAILS
             </h6>
-            <div className="row">
-              <div className="col-md my-2">
+            <div className='row'>
+              <div className='col-md my-2'>
                 <b>
-                  Country <span className="text-danger"> *</span>
+                  Country <span className='text-danger'> *</span>
                 </b>
                 <select
-                  className="GSelect"
-                  onChange={(e) => handleCountryCode(e)}
-                >
-                  <option value="">Select Country</option>
+                  className='GSelect'
+                  onChange={(e) => handleCountryCode(e)}>
+                  <option value=''>Select Country</option>
                   {countryName.map((item, i) => {
                     return (
                       <option key={i} value={item.isoCode}>
@@ -161,15 +160,14 @@ const AddUser = (props) => {
                   })}
                 </select>
               </div>
-              <div className="col-md my-2">
+              <div className='col-md my-2'>
                 <b>
-                  State <span className="text-danger"> *</span>
+                  State <span className='text-danger'> *</span>
                 </b>
                 <select
-                  className="GSelect"
-                  onChange={(e) => handleStateCode(e)}
-                >
-                  <option value="">Select State</option>
+                  className='GSelect'
+                  onChange={(e) => handleStateCode(e)}>
+                  <option value=''>Select State</option>
                   {selectedState.map((item, i) => {
                     return (
                       <option key={i} value={item.isoCode}>
@@ -180,16 +178,15 @@ const AddUser = (props) => {
                 </select>
               </div>
             </div>
-            <div className="row">
-              <div className="col-md my-2">
+            <div className='row'>
+              <div className='col-md my-2'>
                 <b>
-                  City <span className="text-danger"> *</span>
+                  City <span className='text-danger'> *</span>
                 </b>
                 <select
-                  className="GSelect"
-                  onChange={(e) => setCity(e.target.value)}
-                >
-                  <option value="">Select City</option>
+                  className='GSelect'
+                  onChange={(e) => setCity(e.target.value)}>
+                  <option value=''>Select City</option>
                   {selectedCity.map((item, i) => {
                     return (
                       <option key={i} value={item.name}>
@@ -199,52 +196,52 @@ const AddUser = (props) => {
                   })}
                 </select>
               </div>
-              <div className="col-md my-2">
+              <div className='col-md my-2'>
                 <b>
-                  Pin Code <span className="text-danger"> *</span>
+                  Pin Code <span className='text-danger'> *</span>
                 </b>
                 <Field
-                  type="text"
-                  className="GInput"
-                  placeholder="Pin Code"
-                  name="postalCode"
+                  type='text'
+                  className='GInput'
+                  placeholder='Pin Code'
+                  name='postalCode'
                 />
-                <ShowError name="postalCode" />
+                <ShowError name='postalCode' />
               </div>
-              <div className=" my-2">
+              <div className=' my-2'>
                 <b>
-                  Address <span className="text-danger"> *</span>
+                  Address <span className='text-danger'> *</span>
                 </b>
                 <Field
-                  component="textarea"
-                  className="GTextArea"
+                  component='textarea'
+                  className='GTextArea'
                   rows={3}
-                  placeholder="Address"
-                  name="address"
+                  placeholder='Address'
+                  name='address'
                 />
-                <ShowError name="address" />
+                <ShowError name='address' />
               </div>
             </div>
-            <div className="d-flex justify-content-between my-3">
-              <Link to="/theAryan/group/user">
-                <button className="CButton">GO BACK</button>
+            <div className='d-flex justify-content-between my-3'>
+              <Link to='/theAryan/group/user'>
+                <button className='CButton'>GO BACK</button>
               </Link>
-              <button type="submit" className="CButton">
+              <button type='submit' className='CButton'>
                 {loading ? (
                   <span
-                    className="spinner-border spinner-border-sm"
-                    role="status"
-                    aria-hidden="true"
+                    className='spinner-border spinner-border-sm'
+                    role='status'
+                    aria-hidden='true'
                   />
                 ) : (
-                  <span className="sr-only">SUBMIT</span>
+                  <span className='sr-only'>SUBMIT</span>
                 )}
               </button>
             </div>
           </Form>
         </Formik>
       </div>
-    </>
+    </div>
   );
 };
 

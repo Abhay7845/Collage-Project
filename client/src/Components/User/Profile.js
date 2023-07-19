@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import Footer from "../HomePage/Footer";
@@ -12,12 +14,12 @@ const Profile = () => {
   }, [userAccessToken]);
 
   return (
-    <>
-      <div className="mx-0 userInfo">
-        <div className="table-responsive dataInfo">
-          <h3 className="text-info text-center my-5">Your Profile</h3>
-          <div className="mx-1">
-            <table className="table table-bordered">
+    <div>
+      <div className='mx-0 userInfo'>
+        <div className='table-responsive dataInfo'>
+          <h3 className='text-info text-center my-5'>Your Profile</h3>
+          <div className='mx-1'>
+            <table className='table table-bordered'>
               <thead>
                 <tr>
                   <th>S. No.</th>
@@ -49,8 +51,7 @@ const Profile = () => {
                       userAccessToken
                         ? { color: "#65ef08", fontWeight: "bold" }
                         : { color: "#ff0000", fontWeight: "bold" }
-                    }
-                  >
+                    }>
                     {userAccessToken !== undefined ? "Active" : "Inactive"}
                   </td>
                 </tr>
@@ -59,10 +60,10 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <div className="profileUser">
+      <div className='profileUser'>
         <Footer />
       </div>
-    </>
+    </div>
   );
 };
 

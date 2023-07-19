@@ -1,3 +1,5 @@
+/** @format */
+
 export const occupationData = [
   { name: "Student" },
   { name: "Business Man" },
