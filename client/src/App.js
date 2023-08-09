@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState } from "react";
 import Register from "./Components/User/Register";
 import Login from "./Components/User/Login";
