@@ -13,7 +13,7 @@ const Navbar = () => {
   let navigate = useNavigate();
   const LogOut = () => {
     localStorage.removeItem("token");
-    navigate("/theAryan/group/login");
+    navigate("/login");
   };
   let location = useLocation();
   useEffect(() => {}, [location]);
@@ -40,101 +40,98 @@ const Navbar = () => {
       <nav
         className={`navbar navbar-expand-lg ${
           theme === "light-theme" ? "bg-info" : "bg-primary"
-        }`}>
-        <div className='container-fluid'>
-          <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-            <ul className='navbar-nav me-auto mb-lg-0'>
+        }`}
+      >
+        <div className="container-fluid">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-lg-0">
               {!localStorage.getItem("token") ? (
-                <li className='nav-item'>
-                  <Link className='navbar-brand' to='/theAryan/group/home'>
-                    <img src={image} alt='aryan' width={36} />
+                <li className="nav-item">
+                  <Link className="navbar-brand" to="/home">
+                    <img src={image} alt="aryan" width={36} />
                   </Link>
                 </li>
               ) : (
                 <>
                   <Link
                     className={`nav-link NavbarList ${
-                      location.pathname === "/theAryan/group/home"
-                        ? "active"
-                        : ""
+                      location.pathname === "/home" ? "active" : ""
                     }`}
-                    to='/theAryan/group/home'>
-                    <img src={image} alt='aryan' width={36} />
+                    to="/home"
+                  >
+                    <img src={image} alt="aryan" width={36} />
                   </Link>
                   <Link
                     className={`nav-link NavbarList ${
-                      location.pathname === "/theAryan/group/user"
-                        ? "active"
-                        : ""
+                      location.pathname === "/user" ? "active" : ""
                     }`}
-                    to='/theAryan/group/user'>
+                    to="/user"
+                  >
                     USER
                   </Link>
                   <Link
                     className={`nav-link NavbarList ${
-                      location.pathname === "/theAryan/group/product"
-                        ? "active"
-                        : ""
+                      location.pathname === "/product" ? "active" : ""
                     }`}
-                    to='/theAryan/group/product'>
+                    to="/product"
+                  >
                     PRODUCTS
                   </Link>
                   <Link
                     className={`nav-link NavbarList ${
-                      location.pathname === "/theAryan/group/about"
-                        ? "active"
-                        : ""
+                      location.pathname === "/about" ? "active" : ""
                     }`}
-                    to='/theAryan/group/about'>
+                    to="/about"
+                  >
                     ABOUT
                   </Link>
                 </>
               )}
             </ul>
-            <form className='d-flex'>
+            <form className="d-flex">
               <Link
                 className={`nav-link NavbarList ${
-                  location.pathname === "/theAryan/group/translate"
-                    ? "active"
-                    : ""
+                  location.pathname === "/translator" ? "active" : ""
                 }`}
-                to='/theAryan/group/translate'>
+                to="/translator"
+              >
                 <Icon.Translate
-                  className='my-1 mx-2'
+                  className="my-1 mx-2"
                   size={22}
-                  cursor='pointer'
+                  cursor="pointer"
                 />
               </Link>
               <Icon.SunFill
-                className='my-1 lightDark mx-2'
+                className="my-1 lightDark mx-2"
                 size={22}
-                cursor='pointer'
+                cursor="pointer"
                 onClick={ChangeTheme}
                 color={theme === "light-theme" ? "#ffff" : "#000"}
               />
               {!localStorage.getItem("token") ? (
                 <>
-                  <Link className='nav-link' to='/theAryan/group/login'>
-                    <button className='registerLoginButton mx-2'>LOGIN</button>
+                  <Link className="nav-link" to="/login">
+                    <button className="registerLoginButton mx-2">LOGIN</button>
                   </Link>
-                  <Link className='nav-link' to='/theAryan/group/register'>
-                    <button className='registerLoginButton'>REGISTER</button>
+                  <Link className="nav-link" to="/register">
+                    <button className="registerLoginButton">REGISTER</button>
                   </Link>
                 </>
               ) : (
                 <>
-                  <Link to='/theAryan/group/profile'>
+                  <Link to="/profile">
                     <Tippy
-                      content={userInfo === undefined ? "" : userInfo.name}>
+                      content={userInfo === undefined ? "" : userInfo.name}
+                    >
                       <Icon.PersonCircle
                         size={20}
-                        className='text-secondary'
+                        className="text-secondary"
                         style={{ outline: "none" }}
                       />
                     </Tippy>
                   </Link>
-                  <b className='logoutBtn mx-3' onClick={LogOut}>
-                    <Tippy content='LOG OUT'>
+                  <b className="logoutBtn mx-3" onClick={LogOut}>
+                    <Tippy content="LOG OUT">
                       <Icon.ArrowRightCircleFill size={20} />
                     </Tippy>
                   </b>

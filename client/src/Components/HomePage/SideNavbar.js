@@ -19,7 +19,7 @@ const SideNavbar = () => {
   let navigate = useNavigate();
   const LogOut = () => {
     localStorage.removeItem("token");
-    navigate("/theAryan/group/login");
+    navigate("/login");
   };
   let location = useLocation();
   useEffect(() => {}, [location]);
@@ -45,17 +45,18 @@ const SideNavbar = () => {
       <nav
         className={`navbar navbar-expand-lg ${
           theme === "light-theme" ? "bg-info" : "bg-primary"
-        }`}>
-        <div className='p-1 w-100' style={{ marginTop: "-8px" }}>
-          <div className='d-flex justify-content-between'>
+        }`}
+      >
+        <div className="p-1 w-100" style={{ marginTop: "-8px" }}>
+          <div className="d-flex justify-content-between">
             <Icon.TextLeft
               onClick={ToggleSidebar}
               size={30}
-              className='text-light mt-1 mx-2'
-              cursor='pointer'
+              className="text-light mt-1 mx-2"
+              cursor="pointer"
             />
-            <Link className='navbar-brand' to='/theAryan/group/home'>
-              <img src={image} alt='aryan' width={33} />
+            <Link className="navbar-brand" to="/home">
+              <img src={image} alt="aryan" width={33} />
             </Link>
           </div>
         </div>
@@ -63,14 +64,15 @@ const SideNavbar = () => {
       <div
         className={`sidebar 
      ${theme === "light-theme" ? "bg-info" : "bg-primary"}
-      ${isOpen === true ? "active" : ""}`}>
-        <div className='sd-header'>
+      ${isOpen === true ? "active" : ""}`}
+      >
+        <div className="sd-header">
           {!userAccessToken ? (
-            <img src={image} alt='img' className='mx-5' width={33} />
+            <img src={image} alt="img" className="mx-5" width={33} />
           ) : (
-            <b className='my-1 mx-2 text-light'>
+            <b className="my-1 mx-2 text-light">
               {userInfo === undefined ? (
-                <img src={image} alt='img' className='mx-5' width={33} />
+                <img src={image} alt="img" className="mx-5" width={33} />
               ) : (
                 <b>Welcome: {userInfo.name}</b>
               )}
@@ -79,69 +81,62 @@ const SideNavbar = () => {
           <Icon.ArrowLeft
             onClick={ToggleSidebar}
             size={25}
-            className='text-light mt-1'
-            cursor='pointer'
+            className="text-light mt-1"
+            cursor="pointer"
           />
         </div>
-        <div className='sd-body'>
-          <ul className='mx-2'>
+        <div className="sd-body">
+          <ul className="mx-2">
             {localStorage.getItem("token") ? (
               <div>
                 <li>
                   <Link
-                    className='sd-link'
-                    to='/theAryan/group/product'
-                    onClick={ToggleSidebar}>
+                    className="sd-link"
+                    to="/product"
+                    onClick={ToggleSidebar}
+                  >
                     PRODUCTS
-                    <Icon.ArrowRight className='mx-2' />
+                    <Icon.ArrowRight className="mx-2" />
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className='sd-link'
-                    to='/theAryan/group/user'
-                    onClick={ToggleSidebar}>
+                  <Link className="sd-link" to="/user" onClick={ToggleSidebar}>
                     USER
-                    <Icon.ArrowRight className='mx-2' />
+                    <Icon.ArrowRight className="mx-2" />
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className='sd-link'
-                    to='/theAryan/group/about'
-                    onClick={ToggleSidebar}>
+                  <Link className="sd-link" to="/about" onClick={ToggleSidebar}>
                     ABOUT
-                    <Icon.ArrowRight className='mx-2' />
+                    <Icon.ArrowRight className="mx-2" />
                   </Link>
                 </li>
                 <li>
                   <Link
                     className={`nav-link  ${
-                      location.pathname === "/theAryan/group/profile"
-                        ? "active"
-                        : ""
+                      location.pathname === "/profile" ? "active" : ""
                     }`}
-                    to='/theAryan/group/profile'
-                    onClick={ToggleSidebar}>
-                    <FaUser size={25} className='text-light' />
-                    <Icon.ArrowRight className='mx-2 text-light' />
+                    to="/profile"
+                    onClick={ToggleSidebar}
+                  >
+                    <FaUser size={25} className="text-light" />
+                    <Icon.ArrowRight className="mx-2 text-light" />
                   </Link>
                 </li>
                 <li>
                   <Link
                     className={`nav-link text-light ${
-                      location.pathname === "/theAryan/group/translate"
-                        ? "active"
-                        : ""
+                      location.pathname === "/translator" ? "active" : ""
                     }`}
-                    to='/theAryan/group/translate'
-                    onClick={ToggleSidebar}>
-                    <Icon.Translate size={22} cursor='pointer' />
-                    <Icon.ArrowRight className='mx-2' />
+                    to="/translator"
+                    onClick={ToggleSidebar}
+                  >
+                    <Icon.Translate size={22} cursor="pointer" />
+                    <Icon.ArrowRight className="mx-2" />
                   </Link>
                 </li>
                 <li onClick={ToggleSidebar}>
-                  <b className='logoutBtn' onClick={LogOut}>
+                  <b className="logoutBtn" onClick={LogOut}>
                     LOGOUT
                   </b>
                 </li>
@@ -150,27 +145,29 @@ const SideNavbar = () => {
               <div>
                 <li>
                   <Link
-                    className='nav-link'
-                    to='/theAryan/group/register'
-                    onClick={ToggleSidebar}>
-                    <button className='registerLoginButton'>SIGNUP</button>
+                    className="nav-link"
+                    to="/register"
+                    onClick={ToggleSidebar}
+                  >
+                    <button className="registerLoginButton">SIGNUP</button>
                   </Link>
                 </li>
                 <li>
                   <Link
-                    className='nav-link'
-                    to='/theAryan/group/login'
-                    onClick={ToggleSidebar}>
-                    <button className='registerLoginButton'>LOGIN</button>
+                    className="nav-link"
+                    to="/login"
+                    onClick={ToggleSidebar}
+                  >
+                    <button className="registerLoginButton">LOGIN</button>
                   </Link>
                 </li>
               </div>
             )}
             <li>
               <Icon.SunFill
-                className='my-1 lightDark mx-1'
+                className="my-1 lightDark mx-1"
                 size={22}
-                cursor='pointer'
+                cursor="pointer"
                 onClick={ChangeTheme}
                 color={theme === "light-theme" ? "#ffff" : "#000"}
               />

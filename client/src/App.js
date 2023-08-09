@@ -41,48 +41,42 @@ const App = () => {
     <div>
       <Provider store={store}>
         <BrowserRouter>
-          <div className='NavbarShowStyle'>
+          <div className="NavbarShowStyle">
             <Navbar />
           </div>
-          <div className='SideNavbarSwoStyle'>
+          <div className="SideNavbarSwoStyle">
             <SideNavbar />
           </div>
           <Alert alert={alert} />
           <Routes>
             <Route>
               <Route index element={<Home />} />
-              <Route path='/theAryan/group/home' element={<Home />} />
-              <Route path='*' element={<NoPage />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="*" element={<NoPage />} />
               <Route
-                path='/theAryan/group/register'
+                path="/register"
                 element={<Register showAlert={showAlert} />}
               />
-              <Route
-                path='/theAryan/group/login'
-                element={<Login showAlert={showAlert} />}
-              />
-              <Route
-                path='/theAryan/group/forget/password'
-                element={<ForgetPassword />}
-              />
-              <Route path='/theAryan/group/translate' element={<Translate />} />
+              <Route path="/login" element={<Login showAlert={showAlert} />} />
+              <Route path="/forget/password" element={<ForgetPassword />} />
+              <Route path="/translator" element={<Translate />} />
               <Route element={<PrivateComponent />}>
                 <Route
-                  path='/theAryan/group/user'
+                  path="/user"
                   element={<UserDetail showAlert={showAlert} />}
                 />
-                <Route path='/theAryan/group/profile' element={<Profile />} />
+                <Route path="/profile" element={<Profile />} />
                 <Route
-                  path='/theAryan/group/about'
+                  path="/about"
                   element={<About showAlert={showAlert} />}
                 />
-                <Route path='/theAryan/group/product' element={<Products />} />
+                <Route path="/product" element={<Products />} />
                 <Route
-                  path='/theAryan/group/add-user'
+                  path="/add-user"
                   element={<AddUser showAlert={showAlert} />}
                 />
                 <Route
-                  path='/theAryan/group/update/user/:id'
+                  path="/update/user/:id"
                   element={<UpdateUser showAlert={showAlert} />}
                 />
               </Route>

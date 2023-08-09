@@ -68,7 +68,7 @@ const UpdateUser = (props) => {
     setLoading(false);
     if (data.success === true) {
       showAlert("Data has been Updated successfully", "success");
-      navigate("/theAryan/group/user");
+      navigate("/user");
     }
     if (data.success === false) {
       showAlert("Select Country, State, District", "danger");
@@ -89,29 +89,30 @@ const UpdateUser = (props) => {
 
   return (
     <div>
-      <div className='container my-5'>
-        <h4 className='text-center text-info'>UPDATE YOUR DETAILS</h4>
-        <div className='row'>
-          <div className='col-md my-2'>
+      <div className="container my-5">
+        <h4 className="text-center text-info">UPDATE YOUR DETAILS</h4>
+        <div className="row">
+          <div className="col-md my-2">
             <b>
-              Name <span className='text-danger'> *</span>
+              Name <span className="text-danger"> *</span>
             </b>
             <input
-              type='text'
-              className='GInput'
-              placeholder='Name'
+              type="text"
+              className="GInput"
+              placeholder="Name"
               defaultValue={addedUser.name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className='col-md my-2'>
+          <div className="col-md my-2">
             <b>
-              Occupation <span className='text-danger'> *</span>
+              Occupation <span className="text-danger"> *</span>
             </b>
             <select
-              className='GSelect'
-              onChange={(e) => setOccupation(e.target.value)}>
-              <option value=''>Select</option>
+              className="GSelect"
+              onChange={(e) => setOccupation(e.target.value)}
+            >
+              <option value="">Select</option>
               {occupationData.map((item, i) => {
                 return (
                   <option key={i} value={item.name}>
@@ -122,44 +123,45 @@ const UpdateUser = (props) => {
             </select>
           </div>
         </div>
-        <div className='row'>
-          <div className='col-md my-2'>
+        <div className="row">
+          <div className="col-md my-2">
             <b>
-              Email Address <span className='text-danger'> *</span>
+              Email Address <span className="text-danger"> *</span>
             </b>
             <input
-              type='email'
-              className='GInput'
-              placeholder='Email address'
+              type="email"
+              className="GInput"
+              placeholder="Email address"
               defaultValue={addedUser.email}
               onChange={(e) => setEmail(e.target.value || addedUser.email)}
             />
           </div>
-          <div className='col-md my-2'>
+          <div className="col-md my-2">
             <b>
-              Phone Number <span className='text-danger'> *</span>
+              Phone Number <span className="text-danger"> *</span>
             </b>
             <input
-              type='text'
-              className='GInput'
-              placeholder='Phone Number'
+              type="text"
+              className="GInput"
+              placeholder="Phone Number"
               defaultValue={addedUser.phone}
               onChange={(e) => setPhone(e.target.value)}
             />
           </div>
         </div>
         <h6
-          className='bg-info text-white text-center my-3'
-          style={{ padding: "8px" }}>
+          className="bg-info text-white text-center my-3"
+          style={{ padding: "8px" }}
+        >
           ADDRESS DETAILS
         </h6>
-        <div className='row'>
-          <div className='col-md my-2'>
+        <div className="row">
+          <div className="col-md my-2">
             <b>
-              Country <span className='text-danger'> *</span>
+              Country <span className="text-danger"> *</span>
             </b>
-            <select className='GSelect' onChange={(e) => handleCountryCode(e)}>
-              <option value=''>Select Country</option>
+            <select className="GSelect" onChange={(e) => handleCountryCode(e)}>
+              <option value="">Select Country</option>
               {countryName.map((item, i) => {
                 return (
                   <option key={i} value={item.isoCode}>
@@ -169,12 +171,12 @@ const UpdateUser = (props) => {
               })}
             </select>
           </div>
-          <div className='col-md my-2'>
+          <div className="col-md my-2">
             <b>
-              State <span className='text-danger'> *</span>
+              State <span className="text-danger"> *</span>
             </b>
-            <select className='GSelect' onChange={(e) => handleStateCode(e)}>
-              <option value=''>Select State</option>
+            <select className="GSelect" onChange={(e) => handleStateCode(e)}>
+              <option value="">Select State</option>
               {selectedState.map((item, i) => {
                 return (
                   <option key={i} value={item.isoCode}>
@@ -185,15 +187,16 @@ const UpdateUser = (props) => {
             </select>
           </div>
         </div>
-        <div className='row'>
-          <div className='col-md my-2'>
+        <div className="row">
+          <div className="col-md my-2">
             <b>
-              City <span className='text-danger'> *</span>
+              City <span className="text-danger"> *</span>
             </b>
             <select
-              className='GSelect'
-              onChange={(e) => setCity(e.target.value)}>
-              <option value=''>Select City</option>
+              className="GSelect"
+              onChange={(e) => setCity(e.target.value)}
+            >
+              <option value="">Select City</option>
               {selectedCity.map((item, i) => {
                 return (
                   <option key={i} value={item.name}>
@@ -203,43 +206,43 @@ const UpdateUser = (props) => {
               })}
             </select>
           </div>
-          <div className='col-md my-2'>
+          <div className="col-md my-2">
             <b>
-              Pin Code <span className='text-danger'> *</span>
+              Pin Code <span className="text-danger"> *</span>
             </b>
             <input
-              type='text'
-              className='GInput'
-              placeholder='Pin Code'
+              type="text"
+              className="GInput"
+              placeholder="Pin Code"
               defaultValue={addedUser.postalCode}
               onChange={(e) => setPostalCode(e.target.value)}
             />
           </div>
-          <div className=' my-2'>
+          <div className=" my-2">
             <b>
-              Address <span className='text-danger'> *</span>
+              Address <span className="text-danger"> *</span>
             </b>
             <textarea
-              className='GTextArea'
-              placeholder='Address'
+              className="GTextArea"
+              placeholder="Address"
               defaultValue={addedUser.address}
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
         </div>
-        <div className='d-flex justify-content-between my-3'>
-          <Link to='/theAryan/group/user'>
-            <button className='CButton'>GO BACK</button>
+        <div className="d-flex justify-content-between my-3">
+          <Link to="/user">
+            <button className="CButton">GO BACK</button>
           </Link>
-          <button type='submit' className='CButton' onClick={UpdateUserDetails}>
+          <button type="submit" className="CButton" onClick={UpdateUserDetails}>
             {loading ? (
               <span
-                className='spinner-border spinner-border-sm'
-                role='status'
-                aria-hidden='true'
+                className="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
               />
             ) : (
-              <span className='sr-only'>UPDATE</span>
+              <span className="sr-only">UPDATE</span>
             )}
           </button>
         </div>
