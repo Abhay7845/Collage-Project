@@ -5,109 +5,144 @@ import { Field, Form, Formik } from "formik";
 import ShowError from "../Common/ShowError";
 import "../Style/Forgot.css";
 import { FaLockOpen, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import {
   forgotSchema,
   ForgotInitialValue,
 } from "../ValidationSchema/ForgotSchema";
 
-const ForgetPassword = () => {
+const ForgetPassword = (props) => {
+  const { showAlert } = props;
+  const navigate = useNavigate();
   const [newPasswordShown, setNewPasswordShown] = useState(false);
   const [confirmPasswordShown, setConPasswordShown] = useState(false);
+  const [loading, setLoading] = useState(false);
   const newPassword = () => {
     setNewPasswordShown(!newPasswordShown);
   };
   const conPasswordShown = () => {
     setConPasswordShown(!confirmPasswordShown);
   };
-  const onForgot = (payload) => {
-    const { email, newPassword, conPassword } = payload;
-    console.log("Data==>", email, newPassword, conPassword);
+  const ForgotPassword = (payload) => {
+    setLoading(true);
+    axios
+      .put("http://localhost:5000/api/user/forgot/password", payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => res)
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.success === true) {
+          showAlert("Your Password Changed Successfly", "success");
+          navigate("/login");
+        }
+        if (response.data.success === false) {
+          showAlert("Invalid Email", "danger");
+        }
+        setLoading(false);
+      })
+      .then((error) => {
+        setLoading(false);
+        console.log("error=>", error);
+      });
   };
   return (
     <div>
-      <div className='container my-5 d-flex-justify-content-center'>
-        <div className='container forgotFormStyle'>
-          <div className='text-center text-info my-4'>
+      <div className="container my-5 d-flex-justify-content-center">
+        <div className="container forgotFormStyle">
+          <div className="text-center text-info my-4">
             <FaLockOpen size={30} />
             <h4>FORGET PASSWORD</h4>
           </div>
           <Formik
             initialValues={ForgotInitialValue}
             validationSchema={forgotSchema}
-            onSubmit={(payload) => onForgot(payload)}>
+            onSubmit={(payload) => ForgotPassword(payload)}
+          >
             <Form>
-              <div className='my-2'>
+              <div className="my-2">
                 <b>
-                  Registered Email <span className='text-danger'> *</span>
+                  Registered Email <span className="text-danger"> *</span>
                 </b>
-                <Field placeholder='Email' name='email' className='GInput' />
-                <ShowError name='email' />
+                <Field placeholder="Email" name="email" className="GInput" />
+                <ShowError name="email" />
               </div>
-              <div className='my-2'>
+              <div className="my-2">
                 <b>
-                  New Password <span className='text-danger'> *</span>
+                  New Password <span className="text-danger"> *</span>
                 </b>
-                <div className='d-flex'>
+                <div className="d-flex">
                   <Field
                     type={newPasswordShown ? "text" : "password"}
-                    placeholder='New Password'
-                    className='GInput'
-                    name='newPassword'
+                    placeholder="New Password"
+                    className="GInput"
+                    name="newPassword"
                   />
-                  <span className='border-bottom'>
+                  <span className="border-bottom">
                     {newPasswordShown ? (
                       <FaRegEye
                         size={20}
-                        cursor='pointer'
+                        cursor="pointer"
                         onClick={newPassword}
                         style={{ marginTop: 15 }}
                       />
                     ) : (
                       <FaRegEyeSlash
                         size={20}
-                        cursor='pointer'
+                        cursor="pointer"
                         onClick={newPassword}
                         style={{ marginTop: 15 }}
                       />
                     )}
                   </span>
                 </div>
-                <ShowError name='newPassword' />
+                <ShowError name="newPassword" />
               </div>
-              <div className='my-2'>
+              <div className="my-2">
                 <b>
-                  Confirm Password <span className='text-danger'> *</span>
+                  Confirm Password <span className="text-danger"> *</span>
                 </b>
-                <div className='d-flex'>
+                <div className="d-flex">
                   <Field
                     type={confirmPasswordShown ? "text" : "password"}
-                    placeholder='Confirm Password'
-                    className='GInput'
-                    name='conPassword'
+                    placeholder="Confirm Password"
+                    className="GInput"
+                    name="conPassword"
                   />
-                  <span className='border-bottom'>
+                  <span className="border-bottom">
                     {confirmPasswordShown ? (
                       <FaRegEye
                         size={20}
-                        cursor='pointer'
+                        cursor="pointer"
                         onClick={conPasswordShown}
                         style={{ marginTop: 15 }}
                       />
                     ) : (
                       <FaRegEyeSlash
                         size={20}
-                        cursor='pointer'
+                        cursor="pointer"
                         onClick={conPasswordShown}
                         style={{ marginTop: 15 }}
                       />
                     )}
                   </span>
                 </div>
-                <ShowError name='conPassword' />
+                <ShowError name="conPassword" />
               </div>
-              <div className='d-flex justify-content-end my-4 mx-2'>
-                <button type='submit' className='CButton'>
-                  NEXT
+              <div className="d-flex justify-content-end my-4 mx-2">
+                <button type="submit" className="CButton">
+                  {loading ? (
+                    <span
+                      className="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <span className="sr-only">RESET</span>
+                  )}
                 </button>
               </div>
             </Form>

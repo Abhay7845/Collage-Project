@@ -38,7 +38,7 @@ const Navbar = () => {
   return (
     <div>
       <nav
-        className={`navbar navbar-expand-lg sticky-top ${
+        className={`navbar navbar-expand-lg ${
           theme === "light-theme" ? "bg-info" : "bg-primary"
         }`}
       >

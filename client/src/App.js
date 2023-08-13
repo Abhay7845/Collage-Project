@@ -53,7 +53,10 @@ const App = () => {
                 element={<Register showAlert={showAlert} />}
               />
               <Route path="/login" element={<Login showAlert={showAlert} />} />
-              <Route path="/forget/password" element={<ForgetPassword />} />
+              <Route
+                path="/forget/password"
+                element={<ForgetPassword showAlert={showAlert} />}
+              />
               <Route path="/translator" element={<Translate />} />
               <Route element={<PrivateComponent />}>
                 <Route
