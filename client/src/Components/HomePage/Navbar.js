@@ -32,7 +32,9 @@ const Navbar = () => {
   const [userInfo, setUserinfo] = useState({});
   const userAccessToken = localStorage.getItem("token");
   useEffect(() => {
-    ProfileAPI().then((res) => setUserinfo(res.data.data));
+    if (userAccessToken) {
+      ProfileAPI().then((res) => setUserinfo(res.data.data));
+    }
   }, [userAccessToken]);
 
   return (

@@ -10,16 +10,18 @@ const Profile = () => {
   const [userInfo, setUserinfo] = useState([]);
   const userAccessToken = localStorage.getItem("token");
   useEffect(() => {
-    ProfileAPI().then((res) => setUserinfo(res.data.data));
+    if (userAccessToken) {
+      ProfileAPI().then((res) => setUserinfo(res.data.data));
+    }
   }, [userAccessToken]);
 
   return (
     <div>
-      <div className='mx-0 userInfo'>
-        <div className='table-responsive dataInfo'>
-          <h3 className='text-info text-center my-5'>Your Profile</h3>
-          <div className='mx-1'>
-            <table className='table table-bordered'>
+      <div className="mx-0 userInfo">
+        <div className="table-responsive dataInfo">
+          <h3 className="text-info text-center my-5">Your Profile</h3>
+          <div className="mx-1">
+            <table className="table table-bordered">
               <thead>
                 <tr>
                   <th>S. No.</th>
@@ -51,7 +53,8 @@ const Profile = () => {
                       userAccessToken
                         ? { color: "#65ef08", fontWeight: "bold" }
                         : { color: "#ff0000", fontWeight: "bold" }
-                    }>
+                    }
+                  >
                     {userAccessToken !== undefined ? "Active" : "Inactive"}
                   </td>
                 </tr>
@@ -60,7 +63,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <div className='profileUser'>
+      <div className="profileUser">
         <Footer />
       </div>
     </div>
