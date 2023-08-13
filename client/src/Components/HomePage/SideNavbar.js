@@ -151,7 +151,7 @@ const SideNavbar = () => {
                     to="/register"
                     onClick={ToggleSidebar}
                   >
-                    <button className="registerLoginButton">SIGNUP</button>
+                    <button className="registerLoginButton">REGISTER</button>
                   </Link>
                 </li>
                 <li>

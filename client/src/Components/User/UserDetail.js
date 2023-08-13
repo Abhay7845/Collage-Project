@@ -20,10 +20,9 @@ const UserDetail = (props) => {
           Authorization: userAccessToken,
         },
       })
-      .then(async (res) => {
-        const response = await res.data.addUserData;
-        setAddUserInfo(response);
-      });
+      .then((res) => res)
+      .then((response) => setAddUserInfo(response.data.addUserData))
+      .catch((error) => console.log(""));
   };
   GetUserDetails();
 

@@ -1,5 +1,5 @@
 /** @format */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import "../Style/RegisterLogin.css";
 import "../../App.css";
@@ -18,20 +18,10 @@ const Login = (props) => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const LoginTime = localStorage.getItem("loginTime");
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
-
-  useEffect(() => {
-    const currentTime = new Date().getTime();
-    if (currentTime < LoginTime) {
-      navigate("/home");
-    } else {
-      navigate("/login");
-    }
-  }, [LoginTime, navigate]);
 
   const onLogin = async (payload) => {
     setLoading(true);
@@ -45,9 +35,7 @@ const Login = (props) => {
     });
     const data = await response.json();
     if (data.success === true) {
-      const loginTime = new Date(data.loginTime).getTime();
       localStorage.setItem("token", data.token);
-      localStorage.setItem("loginTime", loginTime);
       navigate("/home");
       setLoading(false);
     } else {
