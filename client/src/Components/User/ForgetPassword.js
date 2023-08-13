@@ -36,7 +36,7 @@ const ForgetPassword = (props) => {
       .then((res) => res)
       .then((response) => {
         if (response.data.success === true) {
-          showAlert("Your Password Changed successfully", "success");
+          showAlert("Your Password Reset successfully", "success");
           navigate("/login");
         }
         setLoading(false);
