@@ -11,6 +11,7 @@ import {
   forgotSchema,
   ForgotInitialValue,
 } from "../ValidationSchema/ForgotSchema";
+import { HOST_URL } from "../../API/Host";
 
 const ForgetPassword = (props) => {
   const { showAlert } = props;
@@ -26,27 +27,25 @@ const ForgetPassword = (props) => {
   };
   const ForgotPassword = (payload) => {
     setLoading(true);
+    const forgot = {
+      email: payload.email,
+      conPassword: payload.conPassword,
+    };
     axios
-      .put("http://localhost:5000/api/user/forgot/password", payload, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .put(`${HOST_URL}/forgot/password`, forgot)
       .then((res) => res)
       .then((response) => {
-        console.log(response.data);
         if (response.data.success === true) {
-          showAlert("Your Password Changed Successfly", "success");
+          showAlert("Your Password Changed successfully", "success");
           navigate("/login");
         }
-        if (response.data.success === false) {
+        setLoading(false);
+      })
+      .catch((error) => {
+        if (error.response.data.success === false) {
           showAlert("Invalid Email", "danger");
         }
         setLoading(false);
-      })
-      .then((error) => {
-        setLoading(false);
-        console.log("error=>", error);
       });
   };
   return (
