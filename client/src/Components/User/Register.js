@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import "../Style/RegisterLogin.css";
@@ -20,19 +20,11 @@ const Register = (props) => {
   const [loading, setLoading] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
   const navigate = useNavigate();
-  const LoginTime = localStorage.getItem("loginTime");
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
-  useEffect(() => {
-    const currentTime = new Date().getTime();
-    if (currentTime < LoginTime) {
-      navigate("/home");
-    } else {
-      navigate("/login");
-    }
-  }, [LoginTime, navigate]);
+
   const onSubmit = async (payload) => {
     setLoading(true);
     const { name, email, phone, password } = payload;
@@ -45,9 +37,7 @@ const Register = (props) => {
     });
     result = await result.json();
     if (result.success) {
-      const loginTime = new Date(result.loginTime).getTime();
       localStorage.setItem("token", result.token);
-      localStorage.setItem("loginTime", loginTime);
       showAlert("Your Account created Successfully", "success");
       navigate("/home");
       setLoading(false);
