@@ -60,7 +60,7 @@ const Products = () => {
                           </h6>
                           <img
                             src={imageURL}
-                            className="img-thumbnail my-2"
+                            className="img-thumbnail my-2 w-100"
                             alt="product"
                           />
                           <p className="card-text">Product ID -{orderId}</p>
