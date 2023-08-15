@@ -127,7 +127,11 @@ const Navbar = () => {
                     >
                       <Icon.PersonCircle
                         size={20}
-                        className="text-secondary"
+                        className={`${
+                          location.pathname === "/profile"
+                            ? "text-dark"
+                            : "text-light"
+                        }`}
                         style={{ outline: "none" }}
                       />
                     </Tippy>
