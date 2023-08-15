@@ -1,6 +1,4 @@
-/** @format */
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import moment from "moment";
@@ -8,11 +6,12 @@ import axios from "axios";
 import { HOST_URL } from "../../API/Host";
 
 const UserDetail = (props) => {
-  const [addUserInfo, setAddUserInfo] = useState([]);
-  const userAccessToken = localStorage.getItem("token");
   const { showAlert } = props;
+  const [addUserInfo, setAddUserInfo] = useState([]);
+  const [userId, setUserID] = useState("");
+  const userAccessToken = localStorage.getItem("token");
 
-  const GetUserDetails = () => {
+  useEffect(() => {
     axios
       .get(`${HOST_URL}/fetchAddUser`, {
         headers: {
@@ -21,12 +20,19 @@ const UserDetail = (props) => {
         },
       })
       .then((res) => res)
-      .then((response) => setAddUserInfo(response.data.addUserData))
-      .catch((error) => console.log(""));
-  };
-  GetUserDetails();
+      .then((response) => {
+        if (response.data.success === true) {
+          setAddUserInfo(response.data.addUserData);
+        }
+      })
+      .catch((error) => {
+        console.log("");
+        setAddUserInfo([]);
+      });
+  }, [userAccessToken, userId, addUserInfo.length]);
 
-  const DeleteUer = (id) => {
+  const DeleteUser = (id) => {
+    setUserID(id);
     axios
       .delete(`${HOST_URL}/delete/user/${id}`)
       .then((res) => res)
@@ -34,6 +40,9 @@ const UserDetail = (props) => {
         if (result.data.success === true) {
           showAlert("Data has been Deleted", "success");
         }
+      })
+      .catch((error) => {
+        console.log("");
       });
   };
 
@@ -55,36 +64,38 @@ const UserDetail = (props) => {
                 <th className="text-center">Edit/Delete</th>
               </tr>
             </thead>
-            <tbody>
-              {addUserInfo.map((item, i) => {
-                return (
-                  <tr key={i}>
-                    <td className="userId"> {i + 1}. </td>
-                    <td>{item.name}</td>
-                    <td>{item.occupation}</td>
-                    <td>{item.email}</td>
-                    <td>{item.phone}</td>
-                    <td>
-                      {item.address}, {item.city}, {item.state}, {item.country},{" "}
-                      {item.postalCode}
-                    </td>
-                    <td className="text-center">
-                      {moment(item.date).format("ll")}
-                    </td>
-                    <td className="text-center">
-                      <Link to={`/update/user/${item._id}`}>
-                        <Icon.PencilSquare className="EditIcon" size={19} />
-                      </Link>
-                      <Icon.Trash
-                        className="DeleteIcon"
-                        size={20}
-                        onClick={() => DeleteUer(item._id)}
-                      />
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
+            {addUserInfo.length > 0 && (
+              <tbody>
+                {addUserInfo.map((item, i) => {
+                  return (
+                    <tr key={i}>
+                      <td className="userId"> {i + 1}. </td>
+                      <td>{item.name}</td>
+                      <td>{item.occupation}</td>
+                      <td>{item.email}</td>
+                      <td>{item.phone}</td>
+                      <td>
+                        {item.address}, {item.city}, {item.state},{" "}
+                        {item.country}, {item.postalCode}
+                      </td>
+                      <td className="text-center">
+                        {moment(item.date).format("ll")}
+                      </td>
+                      <td className="text-center">
+                        <Link to={`/update/user/${item._id}`}>
+                          <Icon.PencilSquare className="EditIcon" size={19} />
+                        </Link>
+                        <Icon.Trash
+                          className="DeleteIcon"
+                          size={20}
+                          onClick={() => DeleteUser(item._id)}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            )}
           </table>
         </div>
         <div className="d-flex justify-content-end my-2">
