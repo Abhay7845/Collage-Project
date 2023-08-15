@@ -4,14 +4,17 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import axios from "axios";
 import { HOST_URL } from "../../API/Host";
+import AppLoader from "../Common/AppLoader";
 
 const UserDetail = (props) => {
   const { showAlert } = props;
   const [addUserInfo, setAddUserInfo] = useState([]);
   const [userId, setUserID] = useState("");
+  const [loading, setLoading] = useState("");
   const userAccessToken = localStorage.getItem("token");
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`${HOST_URL}/fetchAddUser`, {
         headers: {
@@ -24,14 +27,17 @@ const UserDetail = (props) => {
         if (response.data.success === true) {
           setAddUserInfo(response.data.addUserData);
         }
+        setLoading(false);
       })
       .catch((error) => {
         console.log("");
         setAddUserInfo([]);
+        setLoading(false);
       });
   }, [userAccessToken, userId, addUserInfo.length]);
 
   const DeleteUser = (id) => {
+    setLoading(true);
     setUserID(id);
     axios
       .delete(`${HOST_URL}/delete/user/${id}`)
@@ -40,14 +46,17 @@ const UserDetail = (props) => {
         if (result.data.success === true) {
           showAlert("Data has been Deleted", "success");
         }
+        setLoading(false);
       })
       .catch((error) => {
         console.log("");
+        setLoading(false);
       });
   };
 
   return (
     <div>
+      {loading === true && <AppLoader />}
       <div className="container">
         <div className="table-responsive my-3">
           <h3 className="text-center text-info my-3">ADD USER DETAILS</h3>

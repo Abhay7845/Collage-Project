@@ -6,6 +6,7 @@ import { occupationData } from "./UserListData";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { HOST_URL } from "../../API/Host";
+import AppLoader from "../Common/AppLoader";
 
 const UpdateUser = (props) => {
   const { showAlert } = props;
@@ -82,6 +83,8 @@ const UpdateUser = (props) => {
   };
 
   useEffect(() => {
+    setLoading(true);
+
     axios
       .get(`${HOST_URL}/fetch/AddUser/${id}`, {
         headers: {
@@ -93,12 +96,17 @@ const UpdateUser = (props) => {
         if (result.data.success === true) {
           setAddedUser(result.data.AddedUser);
         }
+        setLoading(false);
       })
-      .catch((error) => console.log("error==>", error));
+      .catch((error) => {
+        console.log("error==>", error);
+        setLoading(false);
+      });
   }, [id]);
 
   return (
     <div>
+      {loading === true && <AppLoader />}
       <div className="container my-5">
         <h4 className="text-center text-info">UPDATE YOUR DETAILS</h4>
         <div className="row">
