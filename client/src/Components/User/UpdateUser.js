@@ -91,7 +91,6 @@ const UpdateUser = (props) => {
 
   useEffect(() => {
     setLoading(true);
-
     axios
       .get(`${HOST_URL}/fetch/AddUser/${id}`, {
         headers: {
@@ -110,6 +109,8 @@ const UpdateUser = (props) => {
         setLoading(false);
       });
   }, [id]);
+
+  console.log("addedUser==>", addedUser);
 
   return (
     <div>
