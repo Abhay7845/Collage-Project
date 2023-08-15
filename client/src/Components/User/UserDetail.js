@@ -60,14 +60,14 @@ const UserDetail = (props) => {
       <div className="container">
         <div className="table-responsive my-3">
           <h3 className="text-center text-info my-3">ADD USER DETAILS</h3>
-          <table className="table table-hover table-bordered table-pointer">
+          <table className="table table-hover table-bordered border-light">
             <thead className="bg-secondary text-white">
               <tr>
                 <th>S.No.</th>
                 <th>Name</th>
                 <th>Occupation</th>
-                <th>Email Address</th>
-                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Phone</th>
                 <th>Address</th>
                 <th className="text-center">Date</th>
                 <th className="text-center">Edit/Delete</th>
@@ -77,7 +77,7 @@ const UserDetail = (props) => {
               <tbody>
                 {addUserInfo.map((item, i) => {
                   return (
-                    <tr key={i}>
+                    <tr key={i} className="border-dark">
                       <td className="userId"> {i + 1}. </td>
                       <td>{item.name}</td>
                       <td>{item.occupation}</td>

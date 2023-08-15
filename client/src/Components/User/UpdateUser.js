@@ -1,5 +1,4 @@
-/** @format */
-
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { Country, State, City } from "country-state-city";
 import { occupationData } from "./UserListData";
@@ -10,6 +9,7 @@ import AppLoader from "../Common/AppLoader";
 
 const UpdateUser = (props) => {
   const { showAlert } = props;
+  const userAccessToken = localStorage.getItem("token");
   const { id } = useParams();
   const [name, setName] = useState("");
   const [occupation, setOccupation] = useState("");
@@ -28,22 +28,29 @@ const UpdateUser = (props) => {
 
   const countryName = Country.getAllCountries();
   const handleCountryCode = (e) => {
-    const countryCode = e.target.value;
+    const countryCode = !e ? addedUser.country : e.target.value;
     setCountry(countryCode);
     const getState = State.getAllStates().filter(
       (state) => state.countryCode === countryCode
     );
     setSelectedState(getState);
   };
-  const userAccessToken = localStorage.getItem("token");
+  useEffect(() => {
+    handleCountryCode();
+  }, [addedUser.country]);
+
   const handleStateCode = (e) => {
-    const stateCode = e.target.value;
+    const stateCode = !e ? addedUser.state : e.target.value;
     setState(stateCode);
     const getCity = City.getAllCities().filter(
       (city) => city.stateCode === stateCode
     );
     setSelectedCity(getCity);
   };
+
+  useEffect(() => {
+    handleStateCode();
+  }, [addedUser.state]);
 
   const UpdateUserDetails = () => {
     setLoading(true);
@@ -162,6 +169,7 @@ const UpdateUser = (props) => {
             <input
               type="text"
               className="GInput"
+              maxLength={10}
               placeholder="Phone Number"
               defaultValue={addedUser.phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -240,6 +248,7 @@ const UpdateUser = (props) => {
             </b>
             <input
               type="text"
+              maxLength={6}
               className="GInput"
               placeholder="Pin Code"
               defaultValue={addedUser.postalCode}
