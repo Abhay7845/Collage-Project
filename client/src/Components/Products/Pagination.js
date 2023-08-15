@@ -29,11 +29,11 @@ const Pagination = ({ showPerPage, onPagination }) => {
         </button>
         <button
           className={`btn btn-info btn-sm text-white ${
-            nextMute > 500 ? "disabled" : ""
+            nextMute > 11 ? "disabled" : ""
           }`}
           onClick={() => setCounter(counter + 1)}
         >
-          {nextMute > 500 ? "Disabled" : "Next"}
+          {nextMute > 11 ? "Disabled" : "Next"}
         </button>
       </div>
     </div>
