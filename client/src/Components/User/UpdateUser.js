@@ -22,7 +22,7 @@ const UpdateUser = (props) => {
   const [loading, setLoading] = useState(false);
   const [selectedState, setSelectedState] = useState([]);
   const [selectedCity, setSelectedCity] = useState([]);
-  const [addedUser, setAddedUser] = useState([]);
+  const [addedUser, setAddedUser] = useState({});
   const navigate = useNavigate();
 
   const countryName = Country.getAllCountries();
@@ -44,35 +44,41 @@ const UpdateUser = (props) => {
     setSelectedCity(getCity);
   };
 
-  const UpdateUserDetails = async () => {
+  const UpdateUserDetails = () => {
     setLoading(true);
-    const response = await fetch(`${HOST_URL}/update/user/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: userAccessToken,
-      },
-      body: JSON.stringify({
-        name,
-        occupation,
-        email,
-        phone,
-        country,
-        state,
-        city,
-        postalCode,
-        address,
-      }),
-    });
-    const data = await response.json();
-    setLoading(false);
-    if (data.success === true) {
-      showAlert("Data has been Updated successfully", "success");
-      navigate("/user");
-    }
-    if (data.success === false) {
-      showAlert("Select Country, State, District", "danger");
-    }
+    const updateinput = {
+      name: !name ? addedUser.name : name,
+      occupation: !occupation ? addedUser.occupation : occupation,
+      email: !email ? addedUser.email : email,
+      phone: !phone ? addedUser.phone : phone,
+      country: !country ? addedUser.country : country,
+      state: !state ? addedUser.state : state,
+      city: !city ? addedUser.city : city,
+      postalCode: !postalCode ? addedUser.postalCode : postalCode,
+      address: !address ? addedUser.address : address,
+    };
+    axios
+      .put(`${HOST_URL}/update/user/${id}`, updateinput, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: userAccessToken,
+        },
+      })
+      .then((res) => res)
+      .then((response) => {
+        if (response.data.success === true) {
+          showAlert("Data has been Updated successfully", "success");
+          navigate("/user");
+        }
+        if (response.data.success === false) {
+          showAlert("Select Country, State, District", "danger");
+        }
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log("error==>", error);
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -83,7 +89,11 @@ const UpdateUser = (props) => {
         },
       })
       .then((res) => res)
-      .then((result) => setAddedUser(result.data.AddedUser))
+      .then((result) => {
+        if (result.data.success === true) {
+          setAddedUser(result.data.AddedUser);
+        }
+      })
       .catch((error) => console.log("error==>", error));
   }, [id]);
 
@@ -111,6 +121,7 @@ const UpdateUser = (props) => {
             <select
               className="GSelect"
               onChange={(e) => setOccupation(e.target.value)}
+              value={!occupation ? addedUser.occupation : occupation}
             >
               <option value="">Select</option>
               {occupationData.map((item, i) => {
@@ -160,7 +171,11 @@ const UpdateUser = (props) => {
             <b>
               Country <span className="text-danger"> *</span>
             </b>
-            <select className="GSelect" onChange={(e) => handleCountryCode(e)}>
+            <select
+              className="GSelect"
+              onChange={(e) => handleCountryCode(e)}
+              value={!country ? addedUser.country : country}
+            >
               <option value="">Select Country</option>
               {countryName.map((item, i) => {
                 return (
@@ -175,7 +190,11 @@ const UpdateUser = (props) => {
             <b>
               State <span className="text-danger"> *</span>
             </b>
-            <select className="GSelect" onChange={(e) => handleStateCode(e)}>
+            <select
+              className="GSelect"
+              onChange={(e) => handleStateCode(e)}
+              value={!state ? addedUser.state : state}
+            >
               <option value="">Select State</option>
               {selectedState.map((item, i) => {
                 return (
@@ -195,6 +214,7 @@ const UpdateUser = (props) => {
             <select
               className="GSelect"
               onChange={(e) => setCity(e.target.value)}
+              value={!city ? addedUser.city : city}
             >
               <option value="">Select City</option>
               {selectedCity.map((item, i) => {

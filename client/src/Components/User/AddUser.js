@@ -75,7 +75,7 @@ const AddUser = (props) => {
   return (
     <div>
       <div className="container my-5">
-        <h4 className="text-center text-info"> ADD USER</h4>
+        <h4 className="text-center text-info">ADD USER</h4>
         <Formik
           initialValues={addUserInitialValue}
           validationSchema={addUserSchema}
