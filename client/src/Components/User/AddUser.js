@@ -11,6 +11,7 @@ import {
 } from "../ValidationSchema/AddUserSchema";
 import ShowError from "../Common/ShowError";
 import { HOST_URL } from "../../API/Host";
+import Footer from "../HomePage/Footer";
 
 const AddUser = (props) => {
   const { showAlert } = props;
@@ -246,6 +247,7 @@ const AddUser = (props) => {
           </Form>
         </Formik>
       </div>
+      <Footer />
     </div>
   );
 };

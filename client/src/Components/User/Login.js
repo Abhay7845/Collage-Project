@@ -120,7 +120,7 @@ const Login = (props) => {
           <hr className="mx-4" />
           <div className="text-center">
             <Link to="/forget/password" className="forgotPassStyle">
-              Forget Password
+              Reset Password
             </Link>
           </div>
         </div>

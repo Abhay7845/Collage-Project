@@ -53,7 +53,7 @@ const ForgetPassword = (props) => {
         <div className="container forgotFormStyle">
           <div className="text-center text-info my-4">
             <FaLockOpen size={30} />
-            <h4>FORGET PASSWORD</h4>
+            <h4>RESET PASSWORD</h4>
           </div>
           <Formik
             initialValues={ForgotInitialValue}

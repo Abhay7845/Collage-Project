@@ -78,13 +78,9 @@ const Register = (props) => {
               </div>
               <div className="my-2">
                 <b>
-                  Email Address <span className="text-danger"> *</span>
+                  Email<span className="text-danger"> *</span>
                 </b>
-                <Field
-                  placeholder="Email Address"
-                  name="email"
-                  className="GInput"
-                />
+                <Field placeholder="Email" name="email" className="GInput" />
                 <ShowError name="email" />
               </div>
               <div className="my-2">

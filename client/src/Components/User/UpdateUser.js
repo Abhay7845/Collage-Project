@@ -6,6 +6,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { HOST_URL } from "../../API/Host";
 import AppLoader from "../Common/AppLoader";
+import Footer from "../HomePage/Footer";
 
 const UpdateUser = (props) => {
   const { showAlert } = props;
@@ -283,6 +284,7 @@ const UpdateUser = (props) => {
           </button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
