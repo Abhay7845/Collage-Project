@@ -60,7 +60,7 @@ const UserDetail = (props) => {
       <div className="container">
         <div className="table-responsive my-3">
           <h3 className="text-center text-info my-3">ADD USER DETAILS</h3>
-          <table className="table table-hover table-bordered border-light">
+          <table className="table table-hover table-bordered">
             <thead className="bg-secondary text-white">
               <tr>
                 <th>S.No.</th>
@@ -77,7 +77,7 @@ const UserDetail = (props) => {
               <tbody>
                 {addUserInfo.map((item, i) => {
                   return (
-                    <tr key={i} className="border-dark">
+                    <tr key={i}>
                       <td className="userId"> {i + 1}. </td>
                       <td>{item.name}</td>
                       <td>{item.occupation}</td>
