@@ -6,9 +6,7 @@ import axios from "axios";
 
 const Products = () => {
   const [productList, setProductList] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [showPerPage, setShowPerPage] = useState(8);
-
   const [pagination, setPagination] = useState({
     start: 0,
     end: showPerPage,
@@ -19,22 +17,18 @@ const Products = () => {
   };
 
   useEffect(() => {
-    setLoading(true);
     axios
       .get("https://my-json-server.typicode.com/codebuds-fk/chat/chats")
       .then((res) => res)
       .then((response) => setProductList(response.data))
       .catch((error) => {
         console.log("");
-        setLoading(false);
       });
-    setLoading(false);
   }, [setShowPerPage]);
 
   return (
     <div>
-      {loading === true && <AppLoader />}
-      {productList.length > 0 && (
+      {productList.length > 0 ? (
         <div className="container">
           <div className="pricing-header p-3 pb-md-4 mx-auto text-center my-3">
             <h3 className="fw-bold text-info">Our Products</h3>
@@ -77,6 +71,8 @@ const Products = () => {
             />
           </div>
         </div>
+      ) : (
+        <AppLoader />
       )}
       {productList.length > 0 && <Footer />}
     </div>

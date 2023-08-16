@@ -65,7 +65,6 @@ const UpdateUser = (props) => {
       postalCode: !postalCode ? addedUser.postalCode : postalCode,
       address: !address ? addedUser.address : address,
     };
-    console.log("updateinput-->", updateinput);
     axios
       .put(`${HOST_URL}/update/user/${id}`, updateinput, {
         headers: {
