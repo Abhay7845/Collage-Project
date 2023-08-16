@@ -45,7 +45,10 @@ const About = (props) => {
         },
       })
       .then((res) => res)
-      .then((result) => setComments(result.data.comments));
+      .then((result) => setComments(result.data.comments))
+      .catch((error) => {
+        console.log("");
+      });
   }, [comments]);
 
   const totalComments = comments.length;
