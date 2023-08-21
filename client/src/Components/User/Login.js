@@ -12,6 +12,7 @@ import {
 } from "../ValidationSchema/LoginSchema";
 import ShowError from "../Common/ShowError";
 import { HOST_URL } from "../../API/Host";
+import axios from "axios";
 
 const Login = (props) => {
   const { showAlert } = props;
@@ -42,6 +43,16 @@ const Login = (props) => {
       showAlert("Please enter your valid email and password", "danger");
       setLoading(false);
     }
+  };
+
+  // LOGIN WITH GOOGLE
+
+  const LoginWithGoogle = () => {
+    axios
+      .get("http://localhost:5000/api/user/auth/google")
+      .then((res) => res)
+      .then((response) => console.log("response==>", response.data))
+      .catch((error) => console.log("error==>", error));
   };
   return (
     <div>
@@ -123,6 +134,7 @@ const Login = (props) => {
               Reset Password
             </Link>
           </div>
+          <button onClick={LoginWithGoogle}>CLICK</button>
         </div>
       </div>
       <div className="footerStyle">
