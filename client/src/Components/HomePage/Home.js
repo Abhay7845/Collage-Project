@@ -17,52 +17,55 @@ const Home = () => {
   return (
     <div>
       <SearchEngine />
-      <div className='container'>
-        <div className='row mx-0 my-5'>
-          <div className='col-lg-4'>
-            <div className='text-center my-2'>
-              <img src={Heading1} className='HomeImageStyle' alt='' />
+      <div className="container">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-12 g-3 my-5">
+          <div className="col-lg-4">
+            <div className="text-center my-2">
+              <img src={Heading1} className="HomeImageStyle" alt="" />
             </div>
-            <h6 className='fw-bold'>Plagiarism Checking</h6>
-            <p className='textJustify'>
+            <h6 className="fw-bold">Plagiarism Checking</h6>
+            <p className="textJustify">
               {showMore1 ? text1 : `${text1.substring(0, 118)}`}
             </p>
-            <div className='d-flex justify-content-end'>
+            <div className="d-flex justify-content-end">
               <button
-                className='VButton'
-                onClick={() => setShowMore1(!showMore1)}>
+                className="VButton"
+                onClick={() => setShowMore1(!showMore1)}
+              >
                 {showMore1 ? "Hide Details" : "View Details"}
               </button>
             </div>
           </div>
-          <div className='col-lg-4'>
-            <div className='text-center my-2'>
-              <img src={Heading2} className='HomeImageStyle' alt='' />
+          <div className="col-lg-4">
+            <div className="text-center my-2">
+              <img src={Heading2} className="HomeImageStyle" alt="" />
             </div>
-            <h6 className='fw-bold'>Writing Enhancements</h6>
-            <p className='textJustify'>
+            <h6 className="fw-bold">Writing Enhancements</h6>
+            <p className="textJustify">
               {showMore2 ? text2 : `${text2.substring(0, 114)}`}
             </p>
-            <div className='d-flex justify-content-end'>
+            <div className="d-flex justify-content-end">
               <button
-                className='VButton'
-                onClick={() => setShowMore2(!showMore2)}>
+                className="VButton"
+                onClick={() => setShowMore2(!showMore2)}
+              >
                 {showMore2 ? "Hide Details" : "View Details"}
               </button>
             </div>
           </div>
-          <div className='col-lg-4'>
-            <div className='text-center my-2'>
-              <img src={Heading3} className='HomeImageStyle' alt='' />
+          <div className="col-lg-4">
+            <div className="text-center my-2">
+              <img src={Heading3} className="HomeImageStyle" alt="" />
             </div>
-            <h6 className='fw-bold'>Why Use a Plagiarism ?</h6>
-            <p className='textJustify'>
+            <h6 className="fw-bold">Why Use a Plagiarism ?</h6>
+            <p className="textJustify">
               {showMore3 ? text3 : `${text3.substring(0, 120)}`}
             </p>
-            <div className='d-flex justify-content-end'>
+            <div className="d-flex justify-content-end">
               <button
-                className='VButton'
-                onClick={() => setShowMore3(!showMore3)}>
+                className="VButton"
+                onClick={() => setShowMore3(!showMore3)}
+              >
                 {showMore3 ? "Hide Details" : "View Details"}
               </button>
             </div>
