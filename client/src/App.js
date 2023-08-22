@@ -46,8 +46,8 @@ const App = () => {
           <Alert alert={alert} />
           <Routes>
             <Route>
-              <Route index element={<Home />} />
-              <Route path="/home" element={<Home />} />
+              <Route index element={<Home showAlert={showAlert} />} />
+              <Route path="/home" element={<Home showAlert={showAlert} />} />
               <Route path="*" element={<NoPage />} />
               <Route
                 path="/register"

@@ -9,16 +9,16 @@ import SearchEngine from "./SearchEngine";
 import { text1, text2, text3 } from "./DefaultText";
 import Services from "./Services";
 
-const Home = () => {
+const Home = (props) => {
+  const { showAlert } = props;
   const [showMore1, setShowMore1] = useState("");
   const [showMore2, setShowMore2] = useState("");
   const [showMore3, setShowMore3] = useState("");
-
   return (
     <div>
       <SearchEngine />
       <div className="container">
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-12 g-3 my-5">
+        <div className="row mt-2">
           <div className="col-lg-4">
             <div className="text-center my-2">
               <img src={Heading1} className="HomeImageStyle" alt="" />
@@ -72,7 +72,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Services />
+      <Services showAlert={showAlert} />
       <Footer />
     </div>
   );

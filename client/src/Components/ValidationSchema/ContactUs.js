@@ -5,7 +5,7 @@ import * as yup from "yup";
 export const contactUsInitialValue = {
   yourName: "",
   phone: "",
-  massage: "",
+  message: "",
 };
 
 export const contactUsSchema = yup.object({
@@ -17,8 +17,8 @@ export const contactUsSchema = yup.object({
       /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
       "Not Valid Number"
     ),
-  massage: yup
+  message: yup
     .string()
-    .required("Massage is required")
-    .min(20, "Massage should be more than 20 charectors"),
+    .required("Message is required")
+    .min(20, "Message should be more than 20 charectors"),
 });

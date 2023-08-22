@@ -8,20 +8,33 @@ import {
   contactUsInitialValue,
   contactUsSchema,
 } from "../ValidationSchema/ContactUs";
+import axios from "axios";
+import { HOST_URL } from "../../API/Host";
 
-const Services = () => {
+const Services = (props) => {
+  const { showAlert } = props;
   const [loading, setLoading] = useState(false);
-
-  const onSendComment = (payload) => {
-    console.log("payload==>", payload);
-    setLoading(false);
-  };
   const markerIcon = new L.Icon({
     iconUrl: require("../../Asset/img/Location.png"),
     iconSize: [35, 35],
   });
-
   const center = [24.518690259537042, 85.09853062939109];
+  const ContactUs = (payload) => {
+    setLoading(true);
+    axios
+      .post(`${HOST_URL}/contact/with/us`, payload)
+      .then((res) => res)
+      .then((response) => {
+        if (response.data.success === true) {
+          showAlert("Our Team Will Contact Soon", "success");
+        }
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log("error=>", error);
+        setLoading(false);
+      });
+  };
   return (
     <div>
       <div className="container my-5">
@@ -47,7 +60,7 @@ const Services = () => {
               initialValues={contactUsInitialValue}
               validationSchema={contactUsSchema}
               onSubmit={(payload, { resetForm }) => {
-                onSendComment(payload);
+                ContactUs(payload);
                 resetForm();
               }}
             >
@@ -67,7 +80,7 @@ const Services = () => {
                 </div>
                 <div className="my-3">
                   <b>
-                    Phone <span className="text-danger"> *</span>
+                    Your Phone<span className="text-danger"> *</span>
                   </b>
                   <Field
                     type="text"
@@ -83,11 +96,11 @@ const Services = () => {
                   </b>
                   <Field
                     as="textarea"
-                    name="massage"
-                    placeholder="Your Massage"
+                    name="message"
+                    placeholder="Your Message"
                     className="GTextArea"
                   />
-                  <ShowError name="massage" />
+                  <ShowError name="message" />
                 </div>
                 <div className="d-flex justify-content-end">
                   <button type="submit" className="subscribe-button my-2">
