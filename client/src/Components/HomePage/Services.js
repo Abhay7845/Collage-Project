@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { ImageList } from "../../Data/DataList";
 import { Field, Form, Formik } from "formik";
+import L from "leaflet";
 import ShowError from "../Common/ShowError";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import {
   contactUsInitialValue,
   contactUsSchema,
@@ -14,7 +16,12 @@ const Services = () => {
     console.log("payload==>", payload);
     setLoading(false);
   };
+  const markerIcon = new L.Icon({
+    iconUrl: require("../../Asset/img/Location.png"),
+    iconSize: [35, 35],
+  });
 
+  const center = [12.925683599374741, 77.58827189641126];
   return (
     <div>
       <div className="container my-5">
@@ -99,12 +106,31 @@ const Services = () => {
             </Formik>
           </div>
           <div className="col border">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Last name"
-              aria-label="Last name"
-            />
+            <h5 className="text-center my-3">OUR LOCATION</h5>
+            <MapContainer
+              center={center}
+              zoom={11.4}
+              // style={{ width: "10%", height: "10vh" }}
+              // ref={mapRef}
+            >
+              <TileLayer
+                url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=yWf5XdnBxBRhEaDUGS2n"
+                attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+              />
+              <Marker icon={markerIcon} position={center}>
+                {center.map((item, i) => {
+                  return (
+                    <Popup key={i}>
+                      <b>City Name- {item.name}</b>
+                      <br />
+                      <b>Country Code- {item.countryCode}</b>
+                      <br />
+                      <b>State Code- {item.stateCode}</b>
+                    </Popup>
+                  );
+                })}
+              </Marker>
+            </MapContainer>
           </div>
         </div>
       </div>
