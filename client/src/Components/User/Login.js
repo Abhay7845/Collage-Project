@@ -12,7 +12,6 @@ import {
 } from "../ValidationSchema/LoginSchema";
 import ShowError from "../Common/ShowError";
 import { HOST_URL } from "../../API/Host";
-import axios from "axios";
 
 const Login = (props) => {
   const { showAlert } = props;
@@ -46,14 +45,13 @@ const Login = (props) => {
   };
 
   // LOGIN WITH GOOGLE
-
-  const LoginWithGoogle = () => {
-    axios
-      .get("http://localhost:5000/api/user/auth/google")
-      .then((res) => res)
-      .then((response) => console.log("response==>", response.data))
-      .catch((error) => console.log("error==>", error));
-  };
+  // const LoginWithGoogle = () => {
+  //   axios
+  //     .get("http://localhost:5000/api/user/auth/google")
+  //     .then((res) => res)
+  //     .then((response) => console.log("response==>", response.data))
+  //     .catch((error) => console.log("error==>", error));
+  // };
   return (
     <div>
       <div className="row mx-0">
@@ -134,7 +132,6 @@ const Login = (props) => {
               Reset Password
             </Link>
           </div>
-          <button onClick={LoginWithGoogle}>CLICK</button>
         </div>
       </div>
       <div className="footerStyle">

@@ -55,7 +55,7 @@ const Home = () => {
           </div>
           <div className="col-lg-4">
             <div className="text-center my-2">
-              <img src={Heading3} className="HomeImageStyle" alt="" />
+              <img src={Heading3} className="HomeImageStyle" alt="Heading3" />
             </div>
             <h6 className="fw-bold">Why Use a Plagiarism ?</h6>
             <p className="textJustify">
@@ -73,9 +73,7 @@ const Home = () => {
         </div>
       </div>
       <Services />
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };

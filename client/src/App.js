@@ -19,6 +19,7 @@ import { Provider } from "react-redux";
 import { store } from "./Redux/Store";
 import UpdateUser from "./Components/User/UpdateUser";
 import "tippy.js/dist/tippy.css";
+import "leaflet/dist/leaflet.css";
 
 const App = () => {
   const [alert, setAlert] = useState(null);

@@ -21,7 +21,7 @@ const Services = () => {
     iconSize: [35, 35],
   });
 
-  const center = [12.925683599374741, 77.58827189641126];
+  const center = [24.518690259537042, 85.09853062939109];
   return (
     <div>
       <div className="container my-5">
@@ -52,7 +52,7 @@ const Services = () => {
               }}
             >
               <Form className="w-100 mx-1">
-                <h5 className="text-center my-3">CONTACT WITH US</h5>
+                <h5 className="text-center">CONTACT WITH US</h5>
                 <div>
                   <b>
                     Your Name <span className="text-danger"> *</span>
@@ -98,37 +98,34 @@ const Services = () => {
                         aria-hidden="true"
                       />
                     ) : (
-                      <span className="sr-only">COMMENT</span>
+                      <span className="sr-only">SUBMIT</span>
                     )}
                   </button>
                 </div>
               </Form>
             </Formik>
           </div>
-          <div className="col border">
-            <h5 className="text-center my-3">OUR LOCATION</h5>
+          <div className="col">
+            <h5 className="text-center">OUR LOCATION</h5>
             <MapContainer
               center={center}
-              zoom={11.4}
-              // style={{ width: "10%", height: "10vh" }}
-              // ref={mapRef}
+              zoom={5.5}
+              style={{ width: "100%", height: "88%" }}
             >
               <TileLayer
                 url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=yWf5XdnBxBRhEaDUGS2n"
                 attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
               />
               <Marker icon={markerIcon} position={center}>
-                {center.map((item, i) => {
-                  return (
-                    <Popup key={i}>
-                      <b>City Name- {item.name}</b>
-                      <br />
-                      <b>Country Code- {item.countryCode}</b>
-                      <br />
-                      <b>State Code- {item.stateCode}</b>
-                    </Popup>
-                  );
-                })}
+                <Popup>
+                  <b className="text-primary">
+                    Company- The Aryan Company Pvt. Ltd.
+                  </b>
+                  <br />
+                  <b className="text-danger">Owner- Abhay Aryan</b>
+                  <br />
+                  <b>Gaya (Bihar), 824201, INDIA</b>
+                </Popup>
               </Marker>
             </MapContainer>
           </div>
