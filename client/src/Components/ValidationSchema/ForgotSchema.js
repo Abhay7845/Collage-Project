@@ -1,6 +1,4 @@
-/** @format */
 /* eslint-disable no-useless-escape */
-
 import * as yup from "yup";
 
 export const ForgotInitialValue = {
