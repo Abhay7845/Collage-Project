@@ -65,7 +65,7 @@ const Services = (props) => {
               }}
             >
               <Form className="w-100 mx-1">
-                <h5 className="text-center">CONTACT WITH US</h5>
+                <h5 className="text-center">CONTACT US</h5>
                 <div>
                   <b>
                     Your Name <span className="text-danger"> *</span>
@@ -122,7 +122,7 @@ const Services = (props) => {
             <h5 className="text-center">OUR LOCATION</h5>
             <MapContainer
               center={center}
-              zoom={5.5}
+              zoom={8}
               style={{ width: "100%", height: "88%" }}
             >
               <TileLayer

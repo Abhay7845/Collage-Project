@@ -81,7 +81,7 @@ const About = (props) => {
               }}
             >
               <Form className="w-100 mx-1">
-                <h5 className="text-center my-3">JOIN WITH US</h5>
+                <h5 className="text-center my-3">GIVE YOUR FEEDBACK</h5>
                 <b>
                   Email Address <span className="text-danger"> *</span>
                 </b>
@@ -89,17 +89,18 @@ const About = (props) => {
                   type="text"
                   name="email"
                   placeholder="Email"
-                  className="GInput my-2"
+                  className="GInput"
                 />
                 <ShowError name="email" />
+                <br />
                 <b>
-                  Comment <span className="text-danger"> *</span>
+                  Your Feedback <span className="text-danger"> *</span>
                 </b>
                 <Field
-                  type="text"
+                  as="textarea"
                   name="comment"
-                  placeholder="Enter your comment"
-                  className="GInput my-2"
+                  placeholder="Enter your Feedback"
+                  className="GTextArea"
                 />
                 <ShowError name="comment" />
                 <div className="d-flex justify-content-end">
@@ -121,7 +122,7 @@ const About = (props) => {
         </div>
       </div>
       <p className="mx-2 text-secondary">
-        Comments By Peoples:
+        Feedback By Peoples:
         <span style={{ fontWeight: "bold", marginLeft: "5px" }}>
           {totalComments}
         </span>

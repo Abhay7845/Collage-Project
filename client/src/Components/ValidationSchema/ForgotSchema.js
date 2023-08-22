@@ -39,6 +39,6 @@ export const contactSchema = yup.object({
     .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g, "Enter valid Email"),
   comment: yup
     .string()
-    .required("Commnet is required")
-    .min(20, "Commnet should be more than 20 charectors"),
+    .required("Feedback is required")
+    .min(20, "Feedback should be more than 20 charectors"),
 });
