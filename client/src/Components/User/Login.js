@@ -12,6 +12,8 @@ import {
 } from "../ValidationSchema/LoginSchema";
 import ShowError from "../Common/ShowError";
 import { HOST_URL } from "../../API/Host";
+import axios from "axios";
+import GoogleLogin from "react-google-login";
 
 const Login = (props) => {
   const { showAlert } = props;
@@ -44,14 +46,18 @@ const Login = (props) => {
     }
   };
 
+  const clientID =
+    "632374650147-qgk47m10ks6td9r45j3q6fgnat8ncc6s.apps.googleusercontent.com";
   // LOGIN WITH GOOGLE
-  // const LoginWithGoogle = () => {
-  //   axios
-  //     .get("http://localhost:5000/api/user/auth/google")
-  //     .then((res) => res)
-  //     .then((response) => console.log("response==>", response.data))
-  //     .catch((error) => console.log("error==>", error));
-  // };
+  const LoginWithGoogle = (data) => {
+    console.log("data==>", data);
+    axios
+      .get("http://localhost:5000/api/user/login/success/aryan123@gmail.com")
+      .then((res) => res)
+      .then((response) => console.log("response=>", response))
+      .catch((error) => console.log("error==>", error));
+  };
+
   return (
     <div>
       <div className="row mx-0">
@@ -131,6 +137,13 @@ const Login = (props) => {
             <Link to="/forget/password" className="forgotPassStyle">
               Reset Password
             </Link>
+          </div>
+          <div className="d-flex justify-content-center mt-4">
+            <GoogleLogin
+              clientId={clientID}
+              buttonText="Login With Google Account"
+              onSuccess={LoginWithGoogle}
+            />
           </div>
         </div>
       </div>
