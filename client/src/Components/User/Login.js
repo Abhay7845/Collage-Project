@@ -12,7 +12,6 @@ import {
 } from "../ValidationSchema/LoginSchema";
 import ShowError from "../Common/ShowError";
 import { HOST_URL } from "../../API/Host";
-import axios from "axios";
 import GoogleLogin from "react-google-login";
 
 const Login = (props) => {
@@ -51,13 +50,16 @@ const Login = (props) => {
   // LOGIN WITH GOOGLE
   const LoginWithGoogle = (data) => {
     console.log("data==>", data);
-    axios
-      .get("http://localhost:5000/api/user/login/success/aryan123@gmail.com")
-      .then((res) => res)
-      .then((response) => console.log("response=>", response))
-      .catch((error) => console.log("error==>", error));
+  };
+  const errorMessage = (error) => {
+    console.log(error);
   };
 
+  //  axios
+  //    .get("http://localhost:5000/api/user/login/success/aryan123@gmail.com")
+  //    .then((res) => res)
+  //    .then((response) => console.log("response=>", response))
+  //    .catch((error) => console.log("error==>", error));
   return (
     <div>
       <div className="row mx-0">
@@ -141,8 +143,10 @@ const Login = (props) => {
           <div className="d-flex justify-content-center mt-4">
             <GoogleLogin
               clientId={clientID}
+              clientSecret="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"
               buttonText="Login With Google Account"
               onSuccess={LoginWithGoogle}
+              onError={errorMessage}
             />
           </div>
         </div>
