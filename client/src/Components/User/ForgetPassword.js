@@ -43,8 +43,8 @@ const ForgetPassword = (props) => {
       .catch((error) => {
         if (error.response.data.success === false) {
           showAlert("Invalid Email", "danger");
+          setLoading(false);
         }
-        setLoading(false);
       });
   };
   return (
