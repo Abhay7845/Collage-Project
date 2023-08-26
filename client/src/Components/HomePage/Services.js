@@ -31,7 +31,7 @@ const Services = (props) => {
         setLoading(false);
       })
       .catch((error) => {
-        console.log("error=>", error);
+        showAlert("Server is not running", "warning");
         setLoading(false);
       });
   };
