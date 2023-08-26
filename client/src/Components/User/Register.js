@@ -14,6 +14,7 @@ import {
   RegisterSchema,
 } from "../ValidationSchema/RegisterSchema";
 import { HOST_URL } from "../../API/Host";
+import axios from "axios";
 
 const Register = (props) => {
   const { showAlert } = props;
@@ -25,31 +26,31 @@ const Register = (props) => {
     setPasswordShown(!passwordShown);
   };
 
-  const onSubmit = async (payload) => {
+  const onSubmit = (payload) => {
     setLoading(true);
-    const { name, email, phone, password } = payload;
-    let result = await fetch(`${HOST_URL}/register`, {
-      method: "POST",
-      body: JSON.stringify({ name, email, phone, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    result = await result.json();
-    if (result.success) {
-      localStorage.setItem("token", result.token);
-      showAlert("Your Account created Successfully", "success");
-      navigate("/home");
-      setLoading(false);
-    }
-    if (result.success === false) {
-      showAlert("Email is Already Registered", "danger");
-      setLoading(false);
-    }
-    if (result.errors) {
-      props.showAlert("Please enter your Correct Details", "danger");
-      setLoading(false);
-    }
+    axios
+      .post(`${HOST_URL}/register`, payload)
+      .then((res) => res)
+      .then((response) => {
+        if (response.data.success === true) {
+          localStorage.setItem("token", response.data.token);
+          showAlert("Your Account created Successfully", "success");
+          navigate("/home");
+          setLoading(false);
+        }
+        if (response.data.success === false) {
+          showAlert("Email is Already Registered", "danger");
+          setLoading(false);
+        }
+        if (response.data.errors) {
+          props.showAlert("Please enter your Correct Details", "danger");
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        showAlert("Server is not running", "warning");
+        setLoading(false);
+      });
   };
 
   return (
