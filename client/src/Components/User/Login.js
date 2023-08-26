@@ -13,6 +13,7 @@ import {
 import ShowError from "../Common/ShowError";
 import { HOST_URL } from "../../API/Host";
 import GoogleLogin from "react-google-login";
+import axios from "axios";
 
 const Login = (props) => {
   const { showAlert } = props;
@@ -24,25 +25,25 @@ const Login = (props) => {
     setPasswordShown(!passwordShown);
   };
 
-  const onLogin = async (payload) => {
+  const onLogin = (payload) => {
     setLoading(true);
-    const { email, password } = payload;
-    const response = await fetch(`${HOST_URL}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
-    const data = await response.json();
-    if (data.success === true) {
-      localStorage.setItem("token", data.token);
-      navigate("/home");
-      setLoading(false);
-    } else {
-      showAlert("Please enter your valid email and password", "danger");
-      setLoading(false);
-    }
+    axios
+      .post(`${HOST_URL}/login`, payload)
+      .then((res) => res)
+      .then((response) => {
+        if (response.data.success === true) {
+          localStorage.setItem("token", response.data.token);
+          navigate("/home");
+          setLoading(false);
+        } else {
+          showAlert("Please enter your valid email and password", "danger");
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        setLoading(false);
+        showAlert("Server is not running", "warning");
+      });
   };
 
   const clientID =
