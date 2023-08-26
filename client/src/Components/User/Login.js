@@ -48,18 +48,13 @@ const Login = (props) => {
   const clientID =
     "632374650147-qgk47m10ks6td9r45j3q6fgnat8ncc6s.apps.googleusercontent.com";
   // LOGIN WITH GOOGLE
-  const LoginWithGoogle = (data) => {
-    console.log("data==>", data);
+  const LoginWithGoogle = async (data) => {
+    console.log("data==>", await data);
   };
   const errorMessage = (error) => {
     console.log(error);
   };
 
-  //  axios
-  //    .get("http://localhost:5000/api/user/login/success/aryan123@gmail.com")
-  //    .then((res) => res)
-  //    .then((response) => console.log("response=>", response))
-  //    .catch((error) => console.log("error==>", error));
   return (
     <div>
       <div className="row mx-0">
