@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Register from "./Components/User/Register";
 import Login from "./Components/User/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Alert from "./Components/Common/Alert";
 import UserDetail from "./Components/User/UserDetail";
 import Profile from "./Components/User/Profile";
 import PrivateComponent from "./Components/Common/PrivateComponent";
@@ -18,24 +17,13 @@ import Translate from "./Components/Translate/Translate";
 import { Provider } from "react-redux";
 import { store } from "./Redux/Store";
 import UpdateUser from "./Components/User/UpdateUser";
-import "tippy.js/dist/tippy.css";
-import "leaflet/dist/leaflet.css";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
-  const [alert, setAlert] = useState(null);
-  const showAlert = (massage, type) => {
-    setAlert({
-      msg: massage,
-      type: type,
-    });
-    setTimeout(() => {
-      setAlert(null);
-    }, 4000);
-  };
-
   return (
     <div>
       <Provider store={store}>
+        <ToastContainer />
         <BrowserRouter>
           <div className="NavbarShowStyle">
             <Navbar />
@@ -43,41 +31,22 @@ const App = () => {
           <div className="SideNavbarSwoStyle">
             <SideNavbar />
           </div>
-          <Alert alert={alert} />
           <Routes>
             <Route>
-              <Route index element={<Home showAlert={showAlert} />} />
-              <Route path="/home" element={<Home showAlert={showAlert} />} />
+              <Route index element={<Home />} />
+              <Route path="/home" element={<Home />} />
               <Route path="*" element={<NoPage />} />
-              <Route
-                path="/register"
-                element={<Register showAlert={showAlert} />}
-              />
-              <Route path="/login" element={<Login showAlert={showAlert} />} />
-              <Route
-                path="/forget/password"
-                element={<ForgetPassword showAlert={showAlert} />}
-              />
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/forget/password" element={<ForgetPassword />} />
               <Route path="/translator" element={<Translate />} />
               <Route element={<PrivateComponent />}>
-                <Route
-                  path="/user"
-                  element={<UserDetail showAlert={showAlert} />}
-                />
+                <Route path="/user" element={<UserDetail />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route
-                  path="/about"
-                  element={<About showAlert={showAlert} />}
-                />
+                <Route path="/about" element={<About />} />
                 <Route path="/product" element={<Products />} />
-                <Route
-                  path="/add-user"
-                  element={<AddUser showAlert={showAlert} />}
-                />
-                <Route
-                  path="/update/user/:id"
-                  element={<UpdateUser showAlert={showAlert} />}
-                />
+                <Route path="/add-user" element={<AddUser />} />
+                <Route path="/update/user/:id" element={<UpdateUser />} />
               </Route>
             </Route>
           </Routes>

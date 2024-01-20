@@ -4,6 +4,7 @@ import { FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import "../Style/RegisterLogin.css";
 import "../../App.css";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Footer from "../HomePage/Footer";
 import { Form, Formik, Field } from "formik";
 import {
@@ -15,8 +16,7 @@ import { HOST_URL } from "../../API/Host";
 import GoogleLogin from "react-google-login";
 import axios from "axios";
 
-const Login = (props) => {
-  const { showAlert } = props;
+const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -36,25 +36,27 @@ const Login = (props) => {
           navigate("/home");
           setLoading(false);
         } else {
-          showAlert("Please enter your valid email and password", "danger");
+          toast.error("Please enter your valid email and password", {
+            theme: "colored",
+            autoClose: 1000,
+          });
           setLoading(false);
         }
       })
       .catch((error) => {
         setLoading(false);
-        showAlert("Server is not running", "warning");
+        toast.warn("Server is not running", {
+          theme: "colored",
+          autoClose: 2000,
+        });
       });
   };
 
   const clientID =
     "632374650147-qgk47m10ks6td9r45j3q6fgnat8ncc6s.apps.googleusercontent.com";
   // LOGIN WITH GOOGLE
-  const LoginWithGoogle = async (data) => {
-    console.log("data==>", await data);
-  };
-  const errorMessage = (error) => {
-    console.log(error);
-  };
+  const LoginWithGoogle = async (data) => {};
+  const errorMessage = (error) => {};
 
   return (
     <div>

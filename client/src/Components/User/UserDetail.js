@@ -5,9 +5,9 @@ import moment from "moment";
 import axios from "axios";
 import { HOST_URL } from "../../API/Host";
 import AppLoader from "../Common/AppLoader";
+import { toast } from "react-toastify";
 
-const UserDetail = (props) => {
-  const { showAlert } = props;
+const UserDetail = () => {
   const [addUserInfo, setAddUserInfo] = useState([]);
   const [userId, setUserID] = useState("");
   const [loading, setLoading] = useState("");
@@ -30,7 +30,6 @@ const UserDetail = (props) => {
         setLoading(false);
       })
       .catch((error) => {
-        console.log("");
         setAddUserInfo([]);
         setLoading(false);
       });
@@ -44,12 +43,14 @@ const UserDetail = (props) => {
       .then((res) => res)
       .then((result) => {
         if (result.data.success === true) {
-          showAlert("Data has been Deleted", "success");
+          toast.success("Data has been Deleted", {
+            theme: "colored",
+            autoClose: 1000,
+          });
         }
         setLoading(false);
       })
       .catch((error) => {
-        console.log("");
         setLoading(false);
       });
   };

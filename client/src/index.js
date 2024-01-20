@@ -3,6 +3,9 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "react-toastify/dist/ReactToastify.css";
+import "tippy.js/dist/tippy.css";
+import "leaflet/dist/leaflet.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

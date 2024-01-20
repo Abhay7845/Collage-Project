@@ -6,6 +6,7 @@ import { FaUserAlt } from "react-icons/fa";
 import "../Style/RegisterLogin.css";
 import "../../App.css";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
+import { toast } from "react-toastify";
 import Footer from "../HomePage/Footer";
 import { Field, Form, Formik } from "formik";
 import ShowError from "../Common/ShowError";
@@ -16,8 +17,7 @@ import {
 import { HOST_URL } from "../../API/Host";
 import axios from "axios";
 
-const Register = (props) => {
-  const { showAlert } = props;
+const Register = () => {
   const [loading, setLoading] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
   const navigate = useNavigate();
@@ -34,21 +34,33 @@ const Register = (props) => {
       .then((response) => {
         if (response.data.success === true) {
           localStorage.setItem("token", response.data.token);
-          showAlert("Your Account created Successfully", "success");
+          toast.success("Your Account created Successfully", {
+            theme: "colored",
+            autoClose: 2000,
+          });
           navigate("/home");
           setLoading(false);
         }
         if (response.data.success === false) {
-          showAlert("Email is Already Registered", "danger");
+          toast.error("Email is Already Registered", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           setLoading(false);
         }
         if (response.data.errors) {
-          props.showAlert("Please enter your Correct Details", "danger");
+          toast.error("Please enter your Correct Details", {
+            theme: "colored",
+            autoClose: 3000,
+          });
           setLoading(false);
         }
       })
       .catch((error) => {
-        showAlert("Server is not running", "warning");
+        toast.warn("Server is not running", {
+          theme: "colored",
+          autoClose: 2000,
+        });
         setLoading(false);
       });
   };

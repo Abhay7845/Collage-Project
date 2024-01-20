@@ -3,13 +3,13 @@ import React, { useState, useEffect } from "react";
 import { Country, State, City } from "country-state-city";
 import { occupationData } from "./UserListData";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "axios";
 import { HOST_URL } from "../../API/Host";
 import AppLoader from "../Common/AppLoader";
 import Footer from "../HomePage/Footer";
 
-const UpdateUser = (props) => {
-  const { showAlert } = props;
+const UpdateUser = () => {
   const userAccessToken = localStorage.getItem("token");
   const { id } = useParams();
   const [name, setName] = useState("");
@@ -76,18 +76,21 @@ const UpdateUser = (props) => {
       .then((res) => res)
       .then((response) => {
         if (response.data.success === true) {
-          showAlert("Data has been Updated successfully", "success");
+          toast.success("Data has been Updated successfully", {
+            theme: "colored",
+            autoClose: 1000,
+          });
           navigate("/user");
         }
         if (response.data.success === false) {
-          showAlert("Select Country, State, District", "danger");
+          toast.error("Select Country, State, District", {
+            theme: "colored",
+            autoClose: 3000,
+          });
         }
         setLoading(false);
       })
-      .catch((error) => {
-        console.log("error==>", error);
-        setLoading(false);
-      });
+      .catch((error) => setLoading(false));
   };
 
   useEffect(() => {
@@ -105,10 +108,7 @@ const UpdateUser = (props) => {
         }
         setLoading(false);
       })
-      .catch((error) => {
-        console.log("error==>", error);
-        setLoading(false);
-      });
+      .catch((error) => setLoading(false));
   }, [id]);
 
   return (

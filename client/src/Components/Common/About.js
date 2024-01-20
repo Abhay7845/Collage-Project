@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState, useEffect } from "react";
 import { Field, Form, Formik } from "formik";
 import moment from "moment";
@@ -14,8 +12,9 @@ import "../../Components/Style/About.css";
 import image from "../../Asset/img/laptop.png";
 import axios from "axios";
 import { HOST_URL } from "../../API/Host";
+import { toast } from "react-toastify";
 
-const About = (props) => {
+const About = () => {
   const [loading, setLoading] = useState(false);
   const [comments, setComments] = useState([]);
 
@@ -31,7 +30,10 @@ const About = (props) => {
     });
     result = await result.json();
     if (result.success) {
-      props.showAlert("Thank You For  Support", "success");
+      toast.success("Thank You For  Support", {
+        theme: "colored",
+        autoClose: 1000,
+      });
       setLoading(false);
     }
   };
@@ -47,7 +49,7 @@ const About = (props) => {
       .then((res) => res)
       .then((result) => setComments(result.data.comments))
       .catch((error) => {
-        console.log("");
+        setLoading(false);
       });
   }, [comments]);
 

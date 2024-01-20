@@ -4,6 +4,7 @@ import { Field, Form, Formik } from "formik";
 import L from "leaflet";
 import ShowError from "../Common/ShowError";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { toast } from "react-toastify";
 import {
   contactUsInitialValue,
   contactUsSchema,
@@ -11,8 +12,7 @@ import {
 import axios from "axios";
 import { HOST_URL } from "../../API/Host";
 
-const Services = (props) => {
-  const { showAlert } = props;
+const Services = () => {
   const [loading, setLoading] = useState(false);
   const markerIcon = new L.Icon({
     iconUrl: require("../../Asset/img/Location.png"),
@@ -26,12 +26,18 @@ const Services = (props) => {
       .then((res) => res)
       .then((response) => {
         if (response.data.success === true) {
-          showAlert("Our Team Will Contact Soon", "success");
+          toast.success("Our Team Will Contact Soon", {
+            theme: "colored",
+            autoClose: 1000,
+          });
         }
         setLoading(false);
       })
       .catch((error) => {
-        showAlert("Server is not running", "warning");
+        toast.warn("Server is not running", {
+          theme: "colored",
+          autoClose: 2000,
+        });
         setLoading(false);
       });
   };

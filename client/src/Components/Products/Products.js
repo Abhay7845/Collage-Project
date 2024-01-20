@@ -21,9 +21,7 @@ const Products = () => {
       .get("https://my-json-server.typicode.com/codebuds-fk/chat/chats")
       .then((res) => res)
       .then((response) => setProductList(response.data))
-      .catch((error) => {
-        console.log("");
-      });
+      .catch((error) => {});
   }, [setShowPerPage]);
 
   return (

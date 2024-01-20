@@ -6,14 +6,14 @@ import "../Style/Forgot.css";
 import { FaLockOpen, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   forgotSchema,
   ForgotInitialValue,
 } from "../ValidationSchema/ForgotSchema";
 import { HOST_URL } from "../../API/Host";
 
-const ForgetPassword = (props) => {
-  const { showAlert } = props;
+const ForgetPassword = () => {
   const navigate = useNavigate();
   const [newPasswordShown, setNewPasswordShown] = useState(false);
   const [confirmPasswordShown, setConPasswordShown] = useState(false);
@@ -35,14 +35,17 @@ const ForgetPassword = (props) => {
       .then((res) => res)
       .then((response) => {
         if (response.data.success === true) {
-          showAlert("Your Password Reset successfully", "success");
+          toast.success("Your Password Reset successfully", {
+            theme: "colored",
+            autoClose: 1000,
+          });
           navigate("/login");
         }
         setLoading(false);
       })
       .catch((error) => {
         if (error.response.data.success === false) {
-          showAlert("Invalid Email", "danger");
+          toast.error("Invalid Email", { theme: "colored", autoClose: 3000 });
           setLoading(false);
         }
       });

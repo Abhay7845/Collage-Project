@@ -10,6 +10,6 @@ export const ProfileAPI = async () => {
         Authorization: userAccessToken,
       },
     })
-    .catch((error) => console.log("error==>", error));
+    .catch((error) => {});
   return response;
 };

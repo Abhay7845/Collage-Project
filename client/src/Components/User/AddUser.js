@@ -1,10 +1,9 @@
-/** @format */
-
 import React, { useState } from "react";
 import { Country, State, City } from "country-state-city";
 import { occupationData } from "./UserListData";
 import { Link, useNavigate } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
+import { toast } from "react-toastify";
 import {
   addUserInitialValue,
   addUserSchema,
@@ -13,8 +12,7 @@ import ShowError from "../Common/ShowError";
 import { HOST_URL } from "../../API/Host";
 import Footer from "../HomePage/Footer";
 
-const AddUser = (props) => {
-  const { showAlert } = props;
+const AddUser = () => {
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
@@ -65,10 +63,16 @@ const AddUser = (props) => {
     const data = await response.json();
     setLoading(false);
     if (data.success === false) {
-      showAlert("Select Country, State, District", "danger");
+      toast.error("Select Country, State, District", {
+        theme: "colored",
+        autoClose: 3000,
+      });
     }
     if (data.success === true) {
-      showAlert("User Added Successfully", "success");
+      toast.success("User Added Successfully", {
+        theme: "colored",
+        autoClose: 1000,
+      });
       navigate("/user");
     }
   };

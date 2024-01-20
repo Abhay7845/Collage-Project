@@ -10,7 +10,6 @@ import { text1, text2, text3 } from "./DefaultText";
 import Services from "./Services";
 
 const Home = (props) => {
-  const { showAlert } = props;
   const [showMore1, setShowMore1] = useState("");
   const [showMore2, setShowMore2] = useState("");
   const [showMore3, setShowMore3] = useState("");
@@ -72,7 +71,7 @@ const Home = (props) => {
           </div>
         </div>
       </div>
-      <Services showAlert={showAlert} />
+      <Services />
       <Footer />
     </div>
   );

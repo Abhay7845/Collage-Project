@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../HomePage/Footer";
+import { toast } from "react-toastify";
 const axios = require("axios");
 
 const Translate = () => {
@@ -21,32 +22,45 @@ const Translate = () => {
         let result = await res.data;
         setOption(result);
       });
-  }, []);
+  }, [option]);
 
   const translateLanguage = async () => {
-    setLoading(true);
     const params = new URLSearchParams();
     params.append("q", input);
     params.append("source", from);
     params.append("target", to);
     params.append("api_key", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx");
-
-    axios
-      .post("https://libretranslate.de/translate", params, {
-        headers: {
-          accept: "application/json, text/plain, */*",
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      })
-      .then(async (res) => {
-        let result = await res.data.translatedText;
-        setOutput(result);
-        setLoading(false);
+    if (input) {
+      setLoading(true);
+      axios
+        .post("https://libretranslate.de/translate", params, {
+          headers: {
+            accept: "application/json, text/plain, */*",
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        })
+        .then((res) => res)
+        .then((response) => {
+          setOutput(response.data.translatedText);
+          setLoading(false);
+        })
+        .catch((error) => {
+          toast.warn("Server is not running", {
+            theme: "colored",
+            autoClose: 2000,
+          });
+          setLoading(false);
+        });
+    } else {
+      toast.error("Please enter your text", {
+        theme: "colored",
+        autoClose: 2000,
       });
+    }
   };
 
   return (
-    <>
+    <div>
       <div className="container">
         <div className="translateStyle">
           <h4 className="my-2">Translate Your Language </h4>
@@ -80,18 +94,15 @@ const Translate = () => {
         <textarea
           className="GTextArea"
           placeholder="Enter text here"
-          rows={7}
+          rows={4}
           onChange={(e) => setInput(e.target.value)}
         />
-        <br />
-        <br />
         <textarea
           className="GTextArea"
           placeholder="Your output"
-          rows={7}
+          rows={4}
           defaultValue={output}
         />
-
         <div className="d-flex justify-content-end my-4">
           <button
             onClick={(e) => translateLanguage()}
@@ -110,7 +121,7 @@ const Translate = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
