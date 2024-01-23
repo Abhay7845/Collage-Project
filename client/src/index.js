@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import "react-toastify/dist/ReactToastify.css";
 import "tippy.js/dist/tippy.css";
 import "leaflet/dist/leaflet.css";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

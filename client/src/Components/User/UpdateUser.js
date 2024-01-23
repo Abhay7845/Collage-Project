@@ -78,7 +78,7 @@ const UpdateUser = () => {
         if (response.data.success === true) {
           toast.success("Data has been Updated successfully", {
             theme: "colored",
-            autoClose: 1000,
+            autoClose: 2000,
           });
           navigate("/user");
         }

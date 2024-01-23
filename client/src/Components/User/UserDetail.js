@@ -6,14 +6,14 @@ import axios from "axios";
 import { HOST_URL } from "../../API/Host";
 import AppLoader from "../Common/AppLoader";
 import { toast } from "react-toastify";
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 
 const UserDetail = () => {
   const [addUserInfo, setAddUserInfo] = useState([]);
-  const [userId, setUserID] = useState("");
   const [loading, setLoading] = useState("");
   const userAccessToken = localStorage.getItem("token");
 
-  useEffect(() => {
+  const GetUserDetails = (userAccessToken) => {
     setLoading(true);
     axios
       .get(`${HOST_URL}/fetchAddUser`, {
@@ -33,11 +33,14 @@ const UserDetail = () => {
         setAddUserInfo([]);
         setLoading(false);
       });
-  }, [userAccessToken, userId, addUserInfo.length]);
+  };
+
+  useEffect(() => {
+    GetUserDetails(userAccessToken);
+  }, [userAccessToken]);
 
   const DeleteUser = (id) => {
     setLoading(true);
-    setUserID(id);
     axios
       .delete(`${HOST_URL}/delete/user/${id}`)
       .then((res) => res)
@@ -47,6 +50,7 @@ const UserDetail = () => {
             theme: "colored",
             autoClose: 1000,
           });
+          GetUserDetails(userAccessToken);
         }
         setLoading(false);
       })
@@ -61,37 +65,37 @@ const UserDetail = () => {
       <div className="container">
         <div className="table-responsive my-3">
           <h3 className="text-center text-info my-3">ADD USER DETAILS</h3>
-          <table className="table table-hover table-bordered">
-            <thead className="bg-secondary text-white">
-              <tr>
-                <th>S.No.</th>
-                <th>Name</th>
-                <th>Occupation</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th className="text-center">Date</th>
-                <th className="text-center">Edit/Delete</th>
-              </tr>
-            </thead>
+          <Table className="table table-hover table-bordered">
+            <Thead className="bg-secondary text-white">
+              <Tr>
+                <Th>S.No.</Th>
+                <Th>Name</Th>
+                <Th>Occupation</Th>
+                <Th>Email</Th>
+                <Th>Phone</Th>
+                <Th>Address</Th>
+                <Th className="text-center">Date</Th>
+                <Th className="text-center">Edit/Delete</Th>
+              </Tr>
+            </Thead>
             {addUserInfo.length > 0 && (
-              <tbody>
+              <Tbody>
                 {addUserInfo.map((item, i) => {
                   return (
-                    <tr key={i}>
-                      <td className="userId"> {i + 1}. </td>
-                      <td>{item.name}</td>
-                      <td>{item.occupation}</td>
-                      <td>{item.email}</td>
-                      <td>{item.phone}</td>
-                      <td>
+                    <Tr key={i}>
+                      <Td className="userId"> {i + 1}. </Td>
+                      <Td>{item.name}</Td>
+                      <Td>{item.occupation}</Td>
+                      <Td>{item.email}</Td>
+                      <Td>{item.phone}</Td>
+                      <Td>
                         {item.address}, {item.city}, {item.state},{" "}
                         {item.country}, {item.postalCode}
-                      </td>
-                      <td className="text-center">
+                      </Td>
+                      <Td className="text-center">
                         {moment(item.date).format("ll")}
-                      </td>
-                      <td className="text-center">
+                      </Td>
+                      <Td className="text-center">
                         <Link to={`/update/user/${item._id}`}>
                           <Icon.PencilSquare className="EditIcon" size={19} />
                         </Link>
@@ -100,13 +104,13 @@ const UserDetail = () => {
                           size={20}
                           onClick={() => DeleteUser(item._id)}
                         />
-                      </td>
-                    </tr>
+                      </Td>
+                    </Tr>
                   );
                 })}
-              </tbody>
+              </Tbody>
             )}
-          </table>
+          </Table>
         </div>
         <div className="d-flex justify-content-end my-2">
           <Link to="/add-user">
