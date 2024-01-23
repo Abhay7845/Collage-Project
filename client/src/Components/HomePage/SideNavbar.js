@@ -174,6 +174,21 @@ const SideNavbar = () => {
                 color={theme === "light-theme" ? "#ffff" : "#000"}
               />
             </li>
+            <li>
+              <Link
+                className={`nav-link NavbarList ${
+                  location.pathname === "/translator" ? "active" : ""
+                }`}
+                to="/translator"
+                onClick={ToggleSidebar}
+              >
+                <Icon.Translate
+                  className="my-1 mx-2"
+                  size={22}
+                  cursor="pointer"
+                />
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
