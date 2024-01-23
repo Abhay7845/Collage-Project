@@ -46,6 +46,21 @@ const About = () => {
       });
   }, [comments]);
 
+  const DeleteUserComment = (id) => {
+    axios
+      .delete(`${HOST_URL}/delete/comment/${id}`)
+      .then((res) => res)
+      .then((response) => {
+        if (response.data.success === true) {
+          toast.success("Delete Successfully", {
+            theme: "colored",
+            autoClose: 2000,
+          });
+        }
+      })
+      .catch((error) => setLoading(false));
+  };
+
   return (
     <div>
       <div className="about-section">
@@ -140,6 +155,13 @@ const About = () => {
                     {item.comment}.
                   </span>
                   <span className="commentDate">
+                    <b
+                      className="text-danger mx-3"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => DeleteUserComment(item._id)}
+                    >
+                      Delete
+                    </b>
                     {moment(item.date).format("ll")}
                   </span>
                 </div>
