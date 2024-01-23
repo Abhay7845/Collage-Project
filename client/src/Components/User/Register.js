@@ -40,15 +40,13 @@ const Register = () => {
           });
           navigate("/home");
           setLoading(false);
-        }
-        if (response.data.success === false) {
+        } else if (response.data.success === false) {
           toast.error("Email is Already Registered", {
             theme: "colored",
             autoClose: 3000,
           });
           setLoading(false);
-        }
-        if (response.data.errors) {
+        } else if (response.data.errors) {
           toast.error("Please enter your Correct Details", {
             theme: "colored",
             autoClose: 3000,

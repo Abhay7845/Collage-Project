@@ -20,32 +20,25 @@ const About = () => {
 
   const onSendComment = async (payload) => {
     setLoading(true);
-    const { email, comment } = payload;
-    let result = await fetch(`${HOST_URL}/subscription`, {
-      method: "POST",
-      body: JSON.stringify({ email, comment }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    result = await result.json();
-    if (result.success) {
-      toast.success("Thank You For  Support", {
-        theme: "colored",
-        autoClose: 1000,
-      });
-      setLoading(false);
-    }
+    axios
+      .post(`${HOST_URL}/comment`, payload)
+      .then((res) => res)
+      .then((result) => {
+        if (result.data.success === true) {
+          toast.success("Thank You For Support", {
+            theme: "colored",
+            autoClose: 2000,
+          });
+        }
+        setLoading(false);
+      })
+      .catch((erro) => setLoading(false));
   };
 
   //FETCH USERS COMMENTS
   useEffect(() => {
     axios
-      .get(`${HOST_URL}/fetch/comment`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .get(`${HOST_URL}/fetch/comment`, {})
       .then((res) => res)
       .then((result) => setComments(result.data.comments))
       .catch((error) => {
@@ -53,7 +46,6 @@ const About = () => {
       });
   }, [comments]);
 
-  const totalComments = comments.length;
   return (
     <div>
       <div className="about-section">
@@ -126,7 +118,7 @@ const About = () => {
       <p className="mx-2 text-secondary">
         Feedback By Peoples:
         <span style={{ fontWeight: "bold", marginLeft: "5px" }}>
-          {totalComments}
+          {comments.length}
         </span>
       </p>
       {comments.length === 0 ? (
